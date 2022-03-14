@@ -7,15 +7,15 @@ public class Room {
   private Room north;
   private Room east;
   private Room west;
-  private Room position;
+  private Room playerPosition;
 
   public Room(String name, String description){
     this.name = name;
     this.description = description;
-    this.north = north;
-    this.east = east;
-    this.south = south;
-    this.west = west;
+    this.north = null;
+    this.east = null;
+    this.south = null;
+    this.west = null;
   }
   public void setName(String name){
     this.name = name;
@@ -35,16 +35,16 @@ public class Room {
   public void setWest(Room room){
     this.west=room;
   }
-  public void goEast(){
-    this.position = this.east;
+  public Room goEast(){
+    return this.east;
   }
-  public void goNorth(){
-    this.position = this.north;
+  public Room goNorth(){
+    return this.north;
   }
-  public void goSouth(){
-    this.position = this.south;
+  public Room goSouth(){
+    return this.south;
   }
-  public void goWest(){
-    this.position = this.west;
+  public Room goWest(){
+    return this.west;
   }
 }

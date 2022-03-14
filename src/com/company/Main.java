@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
 
     public Scanner keybord = new Scanner(System.in);
+    public Room playerPosition;
 
     public void buildRooms() {
         Room room1 = new Room("1","derp");
@@ -19,10 +20,34 @@ public class Main {
 
 
         room1.setEast(room2);
+        room1.setSouth(room4);
+        room2.setEast(room3);
+        room2.setWest(room1);
+        room3.setWest(room2);
+        room3.setSouth(room6);
+        room4.setNorth(room1);
+        room4.setSouth(room7);
+        room5.setSouth(room8);
+        room6.setNorth(room3);
+        room6.setSouth(room9);
+        room7.setNorth(room4);
+        room7.setEast(room8);
+        room8.setEast(room9);
+        room8.setNorth(room5);
+        room8.setWest(room7);
+        room9.setWest(room8);
+        room9.setNorth(room6);
+        playerPosition = room1;
 
     }
+    public void mazeWall(Room room){
+        if (room == null){
+            System.out.println("you walked into a wall, ouch");
+            mainMenu();
+        }
+    }
 
-    public void MainMenu () {
+    public void mainMenu () {
 
         buildRooms();
 
@@ -38,11 +63,11 @@ public class Main {
 
             case ("help") -> System.out.println("helping");
             case ("exit") -> System.out.println("Exit");
-            case ("look") -> System.out.println("looking");
-            case ("go north") -> System.out.println("go north");
-            case ("go south") -> System.out.println("go south");
-            case ("go east") -> System.out.println("go east");
-            case ("go west") -> System.out.println("go west");
+            case ("look") -> System.out.println(playerPosition.getName());
+            case ("go north") -> playerPosition = playerPosition.goNorth();
+            case ("go south") -> playerPosition = playerPosition.goSouth();
+            case ("go east") -> playerPosition = playerPosition.goEast();
+            case ("go west") -> playerPosition = playerPosition.goWest();
 
         }
 
@@ -55,7 +80,7 @@ public class Main {
 	// write your code here
         Main action = new Main();
 
-        new Main().MainMenu();
+        new Main().mainMenu();
 
 
     }
