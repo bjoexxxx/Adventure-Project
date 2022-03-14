@@ -23,6 +23,18 @@ public class Room {
   public String getName(){
     return this.name;
   }
+  public void setNorth(Room room){
+    this.position=room;
+  }
+  public void setEast(Room room){
+    this.position=room;
+  }
+  public void setSouth(Room room){
+    this.position=room;
+  }
+  public void setWest(Room room){
+    this.position=room;
+  }
   public void goEast(){
     this.position = this.east;
   }
