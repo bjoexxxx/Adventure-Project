@@ -46,14 +46,9 @@ public class Main {
         Room room8 = new Room("8","derp");
         Room room9 = new Room("9","derp");
 
-        room1.setEast(room2);
-
-
-
-
         new Main().MainMenu();
 
-
+        room1.setEast(room2);
 
     }
 }
