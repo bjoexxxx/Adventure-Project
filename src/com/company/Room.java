@@ -7,7 +7,6 @@ public class Room {
   private Room north;
   private Room east;
   private Room west;
-  private Room playerPosition;
 
   public Room(String name, String description){
     this.name = name;
@@ -17,12 +16,16 @@ public class Room {
     this.south = null;
     this.west = null;
   }
-  public void setName(String name){
-    this.name = name;
-  }
+
+
   public String getName(){
     return this.name;
   }
+
+  public String getDescription() {
+    return description;
+  }
+
   public void setNorth(Room room){
     this.north=room;
   }

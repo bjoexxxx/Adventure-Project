@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public Scanner keybord = new Scanner(System.in);
+    public final Scanner keyboard = new Scanner(System.in);
     public Room playerPosition;
 
     public void buildRooms() {
@@ -40,12 +40,45 @@ public class Main {
         playerPosition = room1;
 
     }
-    public void mazeWall(Room room){
-        if (room == null){
+
+// --Commented out by Inspection START (14-03-2022 15:59):
+//    public void mazeWall(Room room){
+//        if (room == null){
+//            System.out.println("you walked into a wall, ouch");
+//            mainMenu();
+//        }
+//    }
+// --Commented out by Inspection STOP (14-03-2022 15:59)
+
+    public void goNorth(){
+        if (playerPosition.goNorth() == null){
             System.out.println("you walked into a wall, ouch");
-            mainMenu();
+        } else {
+            playerPosition = playerPosition.goNorth();
         }
     }
+    public void goWest(){
+        if (playerPosition.goWest() == null){
+            System.out.println("you walked into a wall, ouch");
+        } else {
+            playerPosition = playerPosition.goWest();
+        }
+    }
+    public void goSouth(){
+        if (playerPosition.goSouth() == null){
+            System.out.println("you walked into a wall, ouch");
+        } else {
+            playerPosition = playerPosition.goSouth();
+        }
+    }
+    public void goEast(){
+        if (playerPosition.goEast() == null){
+            System.out.println("you walked into a wall, ouch");
+        } else {
+            playerPosition = playerPosition.goEast();
+        }
+    }
+
 
     public void mainMenu () {
 
@@ -54,20 +87,17 @@ public class Main {
         boolean loop = true;
         while (loop) {
 
-        String fullAnswer = keybord.nextLine();
-//        int firstIndex = fullAnswer.indexOf(' ');
-//        String firstPartAnswer = fullAnswer.substring(0,firstIndex);
-//        String secondPartAnswer = fullAnswer.substring(firstIndex);
+        String fullAnswer = keyboard.nextLine();
 
         switch (fullAnswer) {
 
             case ("help") -> System.out.println("helping");
-            case ("exit") -> System.out.println("Exit");
-            case ("look") -> System.out.println(playerPosition.getName());
-            case ("go north") -> playerPosition = playerPosition.goNorth();
-            case ("go south") -> playerPosition = playerPosition.goSouth();
-            case ("go east") -> playerPosition = playerPosition.goEast();
-            case ("go west") -> playerPosition = playerPosition.goWest();
+            case ("exit") -> loop = false;
+            case ("look") -> System.out.println(playerPosition.getName()+ ": " + playerPosition.getDescription());
+            case ("go north") -> goNorth();
+            case ("go south") -> goSouth();
+            case ("go east") -> goEast();
+            case ("go west") -> goWest();
 
         }
 
@@ -78,8 +108,6 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        Main action = new Main();
-
         new Main().mainMenu();
 
 
