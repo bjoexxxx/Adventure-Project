@@ -2,16 +2,19 @@ package com.company;
 
 public class Room {
   private String name;
+  private String description;
   private Room south;
   private Room north;
   private Room east;
   private Room west;
+  private Room position;
 
-  public Room(String name, Room south, Room north, Room east, Room west){
+  public Room(String name, String description, Room north, Room east, Room south, Room west){
     this.name = name;
+    this.description = description;
+    this.north = north;
     this.east = east;
     this.south = south;
-    this.north = north;
     this.west = west;
   }
   public void setName(String name){
@@ -21,6 +24,15 @@ public class Room {
     return this.name;
   }
   public void goEast(){
-    goeast = get.east.room
+    this.position = this.east;
+  }
+  public void goNorth(){
+    this.position = this.north;
+  }
+  public void goSouth(){
+    this.position = this.south;
+  }
+  public void goWest(){
+    this.position = this.west;
   }
 }
