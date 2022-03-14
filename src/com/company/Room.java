@@ -21,6 +21,6 @@ public class Room {
     return this.name;
   }
   public void goEast(){
-    goeast = get.east.room
+
   }
 }
