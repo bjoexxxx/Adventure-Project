@@ -9,7 +9,7 @@ public class Room {
   private Room west;
   private Room position;
 
-  public Room(String name, String description, Room north, Room east, Room south, Room west){
+  public Room(String name, String description){
     this.name = name;
     this.description = description;
     this.north = north;
@@ -24,16 +24,16 @@ public class Room {
     return this.name;
   }
   public void setNorth(Room room){
-    this.position=room;
+    this.north=room;
   }
   public void setEast(Room room){
-    this.position=room;
+    this.east=room;
   }
   public void setSouth(Room room){
-    this.position=room;
+    this.south=room;
   }
   public void setWest(Room room){
-    this.position=room;
+    this.west=room;
   }
   public void goEast(){
     this.position = this.east;
