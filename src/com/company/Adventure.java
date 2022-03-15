@@ -91,7 +91,7 @@ public class Adventure {
   public void movePlayer(Room room) {
     if (room == null) { //checks if the next room is a wall
       System.out.println("you walked into a wall, ouch");
-    } else if (!playerPosition.getDoor().isOpen() && checkdoor(room)) { //checks if there is a looked type of door and checks locations
+    } else if (playerPosition.getDoor() != null && !playerPosition.getDoor().isOpen()  && checkdoor(room)) { //checks if there is a looked type of door and checks locations
       System.out.println("You found a " + playerPosition.getDoor().getTypeOfDoor() + " that is locked.");
     } else { //if player makes a valid move
       playerPosition.setIsVisited(true);
