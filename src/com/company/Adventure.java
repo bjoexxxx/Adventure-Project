@@ -9,15 +9,15 @@ public class Adventure {
 
   private void buildRooms() {
     Room room1 = new Room("Staging Grounds", "you find yourself at the entrance of a dungeon. " +
-        "This is where heroes pick up their arms and venture forth","Staging area at the start of the dungeon.");
-    Room room2 = new Room("Forsaken Chapel", "A room of holy congregation long abandoned","Forsaken chapel");
-    Room room3 = new Room("Inner Sanctum", "Where priests keep their secrets","Inner sanctum ");
-    Room room4 = new Room("Dank Cave", "A dark narrow cavern","A dank cave");
-    Room room5 = new Room("Boss Room", "A great ornate hall, with a massive figure towering over you","Great ornate hall");
-    Room room6 = new Room("Room Of Forbidden Idols", "Odd trinkets adorn this room, you have never seen their like before"," Room of forbidden Idols");
-    Room room7 = new Room("Dark Portal", "A grouping of stone, crackling with power that gives an ominous feeling ","A dark portal");
-    Room room8 = new Room("Blood Grounds", "A great carnage has been committed here","Blood soaked grounds");
-    Room room9 = new Room("Torture Room", "Blood racks and chains litter the room, some even have human remains on them","the torture room");
+        "This is where heroes pick up their arms and venture forth", "Staging area at the start of the dungeon.");
+    Room room2 = new Room("Forsaken Chapel", "A room of holy congregation long abandoned", "Forsaken chapel");
+    Room room3 = new Room("Inner Sanctum", "Where priests keep their secrets", "Inner sanctum ");
+    Room room4 = new Room("Dank Cave", "A dark narrow cavern", "A dank cave");
+    Room room5 = new Room("Boss Room", "A great ornate hall, with a massive figure towering over you", "Great ornate hall");
+    Room room6 = new Room("Room Of Forbidden Idols", "Odd trinkets adorn this room, you have never seen their like before", " Room of forbidden Idols");
+    Room room7 = new Room("Dark Portal", "A grouping of stone, crackling with power that gives an ominous feeling ", "A dark portal");
+    Room room8 = new Room("Blood Grounds", "A great carnage has been committed here", "Blood soaked grounds");
+    Room room9 = new Room("Torture Room", "Blood racks and chains litter the room, some even have human remains on them", "the torture room");
 
     // oversigt over dungeon:
 //    ------------------------
@@ -28,8 +28,8 @@ public class Adventure {
 //   | room7 = room8  = room9 |
 //    ------------------------
 
-    // added a door
-    room1.setDoor(new Door(false,"secret hatch",room6,room9));
+    // added a door & true means open, false means closed
+    room1.setDoor(new Door(false, "steel door", room1, room4));
 
     //connecting the rooms
     room1.setEast(room2);
@@ -43,7 +43,6 @@ public class Adventure {
     room8.setEast(room9);
     room9.setWest(room8);
     playerPosition = room1;
-
 
 
   }
@@ -67,7 +66,7 @@ public class Adventure {
     }
   }
 
-  private void help () {
+  private void help() {
     System.out.println(); // all the help funktions listed below
     System.out.println("You have the following options in the game:");
     System.out.println("-\"exit\" will end the game. ");
@@ -79,19 +78,20 @@ public class Adventure {
 
   }
 
-  public boolean checkdoor (Room room) {
+  public boolean checkdoor(Room room) {
     //comparing to see if the current room and the next room has a door between them
-    if (playerPosition == playerPosition.getDoor().getStartRoom() && room == playerPosition.getDoor().getEndRoom()){
-      return false;
-    } else {
-      return true;
-    }
+    return playerPosition == playerPosition.getDoor().getStartRoom() && room == playerPosition.getDoor().getEndRoom();
+  }
+
+  public void openDoor() {
+    playerPosition.getDoor().setOpen(true);
+    System.out.println("You open the " + playerPosition.getDoor().getTypeOfDoor() + ".");
   }
 
   public void movePlayer(Room room) {
     if (room == null) { //checks if the next room is a wall
       System.out.println("you walked into a wall, ouch");
-    } else if (!checkdoor(room)) { //checks if there is a looked type of door
+    } else if (!playerPosition.getDoor().isOpen() && checkdoor(room)) { //checks if there is a looked type of door and checks locations
       System.out.println("You found a " + playerPosition.getDoor().getTypeOfDoor() + " that is locked.");
     } else { //if player makes a valid move
       playerPosition.setIsVisited(true);
@@ -126,6 +126,7 @@ public class Adventure {
         case ("go south") -> movePlayer(playerPosition.getSouth());
         case ("go east") -> movePlayer(playerPosition.getEast());
         case ("go west") -> movePlayer(playerPosition.getWest());
+        case ("open door") -> openDoor();
 
       }
     }
@@ -135,7 +136,6 @@ public class Adventure {
   public static void main(String[] args) {
     // write your code here
     new Adventure().mainMenu();
-
 
 
   }

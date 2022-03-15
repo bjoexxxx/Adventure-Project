@@ -16,7 +16,7 @@ public class Room {
   private Door door;
 
 
-  public Room(String name, String description, String shortDescription){
+  public Room(String name, String description, String shortDescription) {
     this.name = name;
     this.description = description;
     this.north = null;
@@ -45,7 +45,7 @@ public class Room {
     return shortDescription;
   }
 
-  public boolean getIsVisited () {
+  public boolean getIsVisited() {
     return this.isVisted;
   }
 
@@ -53,7 +53,7 @@ public class Room {
     this.isVisted = visited;
   }
 
-  public String getName(){
+  public String getName() {
     return this.name;
   }
 
@@ -61,53 +61,68 @@ public class Room {
     return description;
   }
 
-  public void setNorth(Room room){
-    this.north=room;
-    if (room.getSouth() == null){
-    room.setSouth(this);}
+  public void setNorth(Room room) {
+    this.north = room;
+    if (room.getSouth() == null) {
+      room.setSouth(this);
+    }
   }
-  public void setEast(Room room){
-    this.east=room;
-    if (room.getWest() == null){
-    room.setWest(this);}
+
+  public void setEast(Room room) {
+    this.east = room;
+    if (room.getWest() == null) {
+      room.setWest(this);
+    }
   }
-  public void setSouth(Room room){
-    this.south=room;
-      if (room.getNorth() == null){
-    room.setNorth(this);}
+
+  public void setSouth(Room room) {
+    this.south = room;
+    if (room.getNorth() == null) {
+      room.setNorth(this);
+    }
 
   }
-  public void setWest(Room room){
-    this.west=room;
-        if (room.getEast() == null){
-    room.setEast(this);}
+
+  public void setWest(Room room) {
+    this.west = room;
+    if (room.getEast() == null) {
+      room.setEast(this);
+    }
   }
-  public Room getEast(){
+
+  public Room getEast() {
     this.triedEast = true;
     return this.east;
   }
-  public Room getNorth(){
+
+  public Room getNorth() {
     this.triedNorth = true;
     return this.north;
   }
-  public Room getSouth(){
+
+  public Room getSouth() {
     this.triedSouth = true;
     return this.south;
   }
-  public Room getWest(){
+
+  public Room getWest() {
     this.triedWest = true;
     return this.west;
   }
-  public boolean getTriedNorth(){
+
+  public boolean getTriedNorth() {
     return triedNorth;
   }
-  public boolean getTriedEast(){
+
+  public boolean getTriedEast() {
     return triedEast;
   }
-  public boolean getTriedSouth(){
+
+  public boolean getTriedSouth() {
     return triedSouth;
   }
-  public boolean getTriedWest(){
+
+  public boolean getTriedWest() {
     return triedWest;
   }
 }

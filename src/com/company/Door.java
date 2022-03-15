@@ -7,7 +7,7 @@ public class Door {
   private Room startRoom;
   private Room endRoom;
 
-  Door (boolean isOpen, String typeOfDoor, Room startRoom, Room endRoom){
+  Door(boolean isOpen, String typeOfDoor, Room startRoom, Room endRoom) {
     this.isOpen = isOpen;
     this.typeOfDoor = typeOfDoor;
     this.startRoom = startRoom;
@@ -24,6 +24,10 @@ public class Door {
 
   public String getTypeOfDoor() {
     return typeOfDoor;
+  }
+
+  public boolean isOpen() {
+    return isOpen;
   }
 
   public void setOpen(boolean open) {
