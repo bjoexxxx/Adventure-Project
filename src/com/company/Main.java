@@ -54,8 +54,13 @@ public class Main {
     if (room == null) {
       System.out.println("you walked into a wall, ouch");
     } else {
+      playerPosition.setIsVisited(true);
       playerPosition = room;
-      System.out.println(playerPosition.getDescription());
+      if (!playerPosition.getIsVisited()){
+        System.out.println(playerPosition.getDescription());
+      } else {
+        System.out.println(playerPosition.getShortDescription());
+      }
     }
   }
 
