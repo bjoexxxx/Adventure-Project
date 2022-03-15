@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Scanner;
 
-public class Main {
+public class Adventure {
 
   public final Scanner keyboard = new Scanner(System.in);
   public Room playerPosition;
