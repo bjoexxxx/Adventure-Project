@@ -28,26 +28,35 @@ public class Room {
 
   public void setNorth(Room room){
     this.north=room;
+    if (room.getSouth() == null){
+    room.setSouth(this);}
   }
   public void setEast(Room room){
     this.east=room;
+    if (room.getWest() == null){
+    room.setWest(this);}
   }
   public void setSouth(Room room){
     this.south=room;
+      if (room.getNorth() == null){
+    room.setNorth(this);}
+
   }
   public void setWest(Room room){
     this.west=room;
+        if (room.getEast() == null){
+    room.setEast(this);}
   }
-  public Room goEast(){
+  public Room getEast(){
     return this.east;
   }
-  public Room goNorth(){
+  public Room getNorth(){
     return this.north;
   }
-  public Room goSouth(){
+  public Room getSouth(){
     return this.south;
   }
-  public Room goWest(){
+  public Room getWest(){
     return this.west;
   }
 }
