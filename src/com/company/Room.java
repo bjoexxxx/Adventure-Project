@@ -10,7 +10,7 @@ public class Room {
   private Room east;
   private Room west;
 
-  public Room(String name, String description){
+  public Room(String name, String description, String shortDescription){
     this.name = name;
     this.description = description;
     this.north = null;
@@ -18,7 +18,7 @@ public class Room {
     this.south = null;
     this.west = null;
     this.isVisted = false;
-    shortDescription = "short description";
+    this.shortDescription = shortDescription;
   }
 
   public String getShortDescription() {

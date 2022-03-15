@@ -8,15 +8,15 @@ public class Main {
   public Room playerPosition;
 
   private void buildRooms() {
-    Room room1 = new Room("Staging Grounds", "Where heroes pick up their arms");
-    Room room2 = new Room("Forsaken Chapel", "A room of holy congregation long abandoned");
-    Room room3 = new Room("Inner Sanctum", "Where priests keep their secrets");
-    Room room4 = new Room("Dank Cave", "A dark narrow cavern");
-    Room room5 = new Room("Boss Room", "A great ornate hall, with a massive figure towering over you");
-    Room room6 = new Room("Room Of Forbidden Idols", "Odd trinkets adorn this room, you have never seen their like before");
-    Room room7 = new Room("Dark Portal", "A grouping of stone, crackling with power that gives an ominous feeling ");
-    Room room8 = new Room("Blood Grounds", "A great carnage has been committed here");
-    Room room9 = new Room("Torture Room", "Blood racks and chains litter the room, some even have human remains on them");
+    Room room1 = new Room("Staging Grounds", "Where heroes pick up their arms","");
+    Room room2 = new Room("Forsaken Chapel", "A room of holy congregation long abandoned","");
+    Room room3 = new Room("Inner Sanctum", "Where priests keep their secrets","");
+    Room room4 = new Room("Dank Cave", "A dark narrow cavern","");
+    Room room5 = new Room("Boss Room", "A great ornate hall, with a massive figure towering over you","");
+    Room room6 = new Room("Room Of Forbidden Idols", "Odd trinkets adorn this room, you have never seen their like before","");
+    Room room7 = new Room("Dark Portal", "A grouping of stone, crackling with power that gives an ominous feeling ","");
+    Room room8 = new Room("Blood Grounds", "A great carnage has been committed here","");
+    Room room9 = new Room("Torture Room", "Blood racks and chains litter the room, some even have human remains on them","");
 
 
 
@@ -97,6 +97,12 @@ public class Main {
     // write your code here
     new Main().mainMenu();
 
+
+//    room1 = room 2 = room3
+//      ||  ----------  ||
+//    room4 | room5  | room6
+//      ||  |   ||   |  ||
+//    room7 = room8  = room9
 
   }
 }
