@@ -19,6 +19,7 @@ public class Main {
     Room room9 = new Room("Torture Room", "Blood racks and chains litter the room, some even have human remains on them");
 
 
+
     room1.setEast(room2);
     room1.setSouth(room4);
     room2.setEast(room3);
