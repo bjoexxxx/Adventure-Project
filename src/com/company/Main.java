@@ -8,15 +8,15 @@ public class Main {
   public Room playerPosition;
 
   private void buildRooms() {
-    Room room1 = new Room("1", "derp");
-    Room room2 = new Room("2", "herajer");
-    Room room3 = new Room("3", "eorekasd");
-    Room room4 = new Room("4", "djeajdkae");
-    Room room5 = new Room("5", "derp");
-    Room room6 = new Room("6", "derp");
-    Room room7 = new Room("7", "derp");
-    Room room8 = new Room("8", "derp");
-    Room room9 = new Room("9", "derp");
+    Room room1 = new Room("1", "Staging Grounds");
+    Room room2 = new Room("2", "Forsaken Chapel");
+    Room room3 = new Room("3", "Inner Sanctum");
+    Room room4 = new Room("4", "Dank Cave");
+    Room room5 = new Room("5", "Boss Room");
+    Room room6 = new Room("6", "Room Of Forbidden Idols");
+    Room room7 = new Room("7", "Dark Portal");
+    Room room8 = new Room("8", "Blood Grounds");
+    Room room9 = new Room("9", "Torture Room");
 
 
     room1.setEast(room2);
