@@ -34,19 +34,21 @@ public class Main {
   }
 
   private void look () {
-    System.out.println(playerPosition.getName() + ": " + playerPosition.getDescription());
+    System.out.println(playerPosition.getDescription());
   }
 
   private void help () {
     System.out.println();
-    System.out.println("You have the following option:");
+    System.out.println("You have the following options in the game:");
     System.out.println("-\"exit\" will end the game. ");
     System.out.println("-\"look\" will display the description of the room you're in. ");
     System.out.println("-\"go north\" will move you north, if that direction is clear." +
         " The same applies for go \"south\", \"go east\" and \"go west\".");
+    System.out.println();
 
 
   }
+
 
   public void movePlayer(Room room) {
     if (room == null) {
@@ -61,6 +63,10 @@ public class Main {
 
     buildRooms();
 
+    System.out.println("Welcome to the game!");
+    System.out.println("In case of confusion input \"help\".");
+    System.out.println("\n" + playerPosition.getDescription());
+
     boolean loop = true;
     while (loop) {
 
@@ -71,10 +77,10 @@ public class Main {
         case ("help") -> help();
         case ("exit") -> loop = false;
         case ("look") -> look();
-        case ("go north") -> movePlayer(playerPosition.goNorth());
-        case ("go south") -> movePlayer(playerPosition.goSouth());
-        case ("go east") -> movePlayer(playerPosition.goEast());
-        case ("go west") -> movePlayer(playerPosition.goWest());
+        case ("go north") -> movePlayer(playerPosition.getNorth());
+        case ("go south") -> movePlayer(playerPosition.getSouth());
+        case ("go east") -> movePlayer(playerPosition.getEast());
+        case ("go west") -> movePlayer(playerPosition.getWest());
 
       }
     }
