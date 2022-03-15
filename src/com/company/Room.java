@@ -1,8 +1,8 @@
 package com.company;
 
 public class Room {
-  private String name;
-  private String description;
+  private final String name;
+  private final String description;
   private Room south;
   private Room north;
   private Room east;

@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
@@ -7,11 +8,11 @@ public class Main {
   public final Scanner keyboard = new Scanner(System.in);
   public Room playerPosition;
 
-  public void buildRooms() {
+  private void buildRooms() {
     Room room1 = new Room("1", "derp");
-    Room room2 = new Room("2", "derp");
-    Room room3 = new Room("3", "derp");
-    Room room4 = new Room("4", "derp");
+    Room room2 = new Room("2", "herajer");
+    Room room3 = new Room("3", "eorekasd");
+    Room room4 = new Room("4", "djeajdkae");
     Room room5 = new Room("5", "derp");
     Room room6 = new Room("6", "derp");
     Room room7 = new Room("7", "derp");
@@ -57,7 +58,7 @@ public class Main {
     boolean loop = true;
     while (loop) {
 
-      String fullAnswer = keyboard.nextLine();
+      String fullAnswer = keyboard.nextLine().toLowerCase();
 
       switch (fullAnswer) {
 
