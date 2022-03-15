@@ -43,13 +43,21 @@ public class Main {
 
   }
 
-  private void look () {
+  private void look() {
     System.out.println(playerPosition.getDescription());
-    if(playerPosition.getTriedNorth()&&
-        playerPosition.getTriedEast()&&
-        playerPosition.getTriedSouth()&&
-        playerPosition.getTriedWest()){
-      System.out.println("looked everywhere");
+    Room[] options = {playerPosition.getNorth(), playerPosition.getEast(), playerPosition.getSouth(), playerPosition.getWest()};
+    String[] directions = {"north", "east", "south", "west"};
+    if (playerPosition.getTriedNorth() &&
+        playerPosition.getTriedEast() &&
+        playerPosition.getTriedSouth() &&
+        playerPosition.getTriedWest()) {
+      System.out.println("You have these options:");
+      for (int i = 0; i < options.length; i++) {
+        if (options[i] != null) {
+          System.out.println(directions[i] + " is available");
+        }
+      }
+      System.out.println();
     }
   }
 
@@ -64,7 +72,6 @@ public class Main {
 
 
   }
-
 
   public void movePlayer(Room room) {
     if (room == null) {
