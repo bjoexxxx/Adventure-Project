@@ -8,15 +8,15 @@ public class Main {
   public Room playerPosition;
 
   private void buildRooms() {
-    Room room1 = new Room("1", "derp");
-    Room room2 = new Room("2", "herajer");
-    Room room3 = new Room("3", "eorekasd");
-    Room room4 = new Room("4", "djeajdkae");
-    Room room5 = new Room("5", "derp");
-    Room room6 = new Room("6", "derp");
-    Room room7 = new Room("7", "derp");
-    Room room8 = new Room("8", "derp");
-    Room room9 = new Room("9", "derp");
+    Room room1 = new Room("1", "description of room 1");
+    Room room2 = new Room("2", "description of room 2");
+    Room room3 = new Room("3", "description of room 3");
+    Room room4 = new Room("4", "description of room 4");
+    Room room5 = new Room("5", "description of room 5");
+    Room room6 = new Room("6", "description of room 6");
+    Room room7 = new Room("7", "description of room 7");
+    Room room8 = new Room("8", "description of room 8");
+    Room room9 = new Room("9", "description of room 9");
 
 
     room1.setEast(room2);
@@ -34,19 +34,21 @@ public class Main {
   }
 
   private void look () {
-    System.out.println(playerPosition.getName() + ": " + playerPosition.getDescription());
+    System.out.println(playerPosition.getDescription());
   }
 
   private void help () {
     System.out.println();
-    System.out.println("You have the following option:");
+    System.out.println("You have the following options in the game:");
     System.out.println("-\"exit\" will end the game. ");
     System.out.println("-\"look\" will display the description of the room you're in. ");
     System.out.println("-\"go north\" will move you north, if that direction is clear." +
         " The same applies for go \"south\", \"go east\" and \"go west\".");
+    System.out.println();
 
 
   }
+
 
   public void movePlayer(Room room) {
     if (room == null) {
@@ -61,6 +63,10 @@ public class Main {
 
     buildRooms();
 
+    System.out.println("Welcome to the game!");
+    System.out.println("In case of confusion input \"help\".");
+    System.out.println("\n" + playerPosition.getDescription());
+
     boolean loop = true;
     while (loop) {
 
@@ -71,10 +77,10 @@ public class Main {
         case ("help") -> help();
         case ("exit") -> loop = false;
         case ("look") -> look();
-        case ("go north") -> movePlayer(playerPosition.goNorth());
-        case ("go south") -> movePlayer(playerPosition.goSouth());
-        case ("go east") -> movePlayer(playerPosition.goEast());
-        case ("go west") -> movePlayer(playerPosition.goWest());
+        case ("go north") -> movePlayer(playerPosition.getNorth());
+        case ("go south") -> movePlayer(playerPosition.getSouth());
+        case ("go east") -> movePlayer(playerPosition.getEast());
+        case ("go west") -> movePlayer(playerPosition.getWest());
 
       }
     }
