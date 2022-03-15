@@ -41,12 +41,27 @@ public class Main {
 
   }
 
+  private void look () {
+    System.out.println(playerPosition.getName() + ": " + playerPosition.getDescription());
+  }
+
+  private void help () {
+    System.out.println();
+    System.out.println("You have the following option:");
+    System.out.println("-\"exit\" will end the game. ");
+    System.out.println("-\"look\" will display the description of the room you're in. ");
+    System.out.println("-\"go north\" will move you north, if that direction is clear." +
+        " The same applies for go \"south\", \"go east\" and \"go west\".");
+
+
+  }
 
   public void movePlayer(Room room) {
     if (room == null) {
       System.out.println("you walked into a wall, ouch");
     } else {
       playerPosition = room;
+      System.out.println(playerPosition.getDescription());
     }
   }
 
@@ -61,9 +76,9 @@ public class Main {
 
       switch (fullAnswer) {
 
-        case ("help") -> System.out.println("helping");
+        case ("help") -> help();
         case ("exit") -> loop = false;
-        case ("look") -> System.out.println(playerPosition.getName() + ": " + playerPosition.getDescription());
+        case ("look") -> look();
         case ("go north") -> movePlayer(playerPosition.goNorth());
         case ("go south") -> movePlayer(playerPosition.goSouth());
         case ("go east") -> movePlayer(playerPosition.goEast());
@@ -71,7 +86,6 @@ public class Main {
 
       }
     }
-
   }
 
   public static void main(String[] args) {
