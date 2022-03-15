@@ -3,6 +3,8 @@ package com.company;
 public class Room {
   private final String name;
   private final String description;
+  private final String shortDescription;
+  private boolean isVisted;
   private Room south;
   private Room north;
   private Room east;
@@ -15,8 +17,21 @@ public class Room {
     this.east = null;
     this.south = null;
     this.west = null;
+    this.isVisted = false;
+    shortDescription = "short description";
   }
 
+  public String getShortDescription() {
+    return shortDescription;
+  }
+
+  public boolean getIsVisited () {
+    return this.isVisted;
+  }
+
+  public void setIsVisited(boolean visited) {
+    this.isVisted = visited;
+  }
 
   public String getName(){
     return this.name;
