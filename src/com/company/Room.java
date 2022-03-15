@@ -13,6 +13,8 @@ public class Room {
   private Room north;
   private Room east;
   private Room west;
+  private Door door;
+
 
   public Room(String name, String description, String shortDescription){
     this.name = name;
@@ -27,6 +29,16 @@ public class Room {
     this.triedSouth = false;
     this.triedWest = false;
     this.shortDescription = shortDescription;
+    this.door = null;
+
+  }
+
+  public Door getDoor() {
+    return door;
+  }
+
+  public void setDoor(Door door) {
+    this.door = door;
   }
 
   public String getShortDescription() {

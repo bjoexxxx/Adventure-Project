@@ -28,7 +28,10 @@ public class Adventure {
 //   | room7 = room8  = room9 |
 //    ------------------------
 
+    // added a door
+    room1.setDoor(new Door(false,"secret hatch",room6,room9));
 
+    //connecting the rooms
     room1.setEast(room2);
     room1.setSouth(room4);
     room2.setEast(room3);
@@ -41,10 +44,13 @@ public class Adventure {
     room9.setWest(room8);
     playerPosition = room1;
 
+
+
   }
 
   private void look() {
     System.out.println(playerPosition.getDescription());
+    // the following code checks to see if player has tried going all directions, if yes, the available moves are displayed
     Room[] options = {playerPosition.getNorth(), playerPosition.getEast(), playerPosition.getSouth(), playerPosition.getWest()};
     String[] directions = {"north", "east", "south", "west"};
     if (playerPosition.getTriedNorth() &&
@@ -62,7 +68,7 @@ public class Adventure {
   }
 
   private void help () {
-    System.out.println();
+    System.out.println(); // all the help funktions listed below
     System.out.println("You have the following options in the game:");
     System.out.println("-\"exit\" will end the game. ");
     System.out.println("-\"look\" will display the description of the room you're in. ");
@@ -73,13 +79,24 @@ public class Adventure {
 
   }
 
-  public void movePlayer(Room room) {
-    if (room == null) {
-      System.out.println("you walked into a wall, ouch");
+  public boolean checkdoor (Room room) {
+    //comparing to see if the current room and the next room has a door between them
+    if (playerPosition == playerPosition.getDoor().getStartRoom() && room == playerPosition.getDoor().getEndRoom()){
+      return false;
     } else {
+      return true;
+    }
+  }
+
+  public void movePlayer(Room room) {
+    if (room == null) { //checks if the next room is a wall
+      System.out.println("you walked into a wall, ouch");
+    } else if (!checkdoor(room)) { //checks if there is a looked type of door
+      System.out.println("You found a " + playerPosition.getDoor().getTypeOfDoor() + " that is locked.");
+    } else { //if player makes a valid move
       playerPosition.setIsVisited(true);
       playerPosition = room;
-      if (!playerPosition.getIsVisited()){
+      if (!playerPosition.getIsVisited()) {
         System.out.println(playerPosition.getDescription());
       } else {
         System.out.println(playerPosition.getShortDescription());
