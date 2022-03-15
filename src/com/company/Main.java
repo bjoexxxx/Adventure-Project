@@ -36,6 +36,12 @@ public class Main {
 
   private void look () {
     System.out.println(playerPosition.getDescription());
+    if(playerPosition.getTriedNorth()&&
+        playerPosition.getTriedEast()&&
+        playerPosition.getTriedSouth()&&
+        playerPosition.getTriedWest()){
+      System.out.println("looked everywhere");
+    }
   }
 
   private void help () {

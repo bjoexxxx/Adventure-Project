@@ -5,6 +5,10 @@ public class Room {
   private final String description;
   private final String shortDescription;
   private boolean isVisted;
+  private boolean triedNorth;
+  private boolean triedEast;
+  private boolean triedSouth;
+  private boolean triedWest;
   private Room south;
   private Room north;
   private Room east;
@@ -19,6 +23,10 @@ public class Room {
     this.west = null;
     this.isVisted = false;
     shortDescription = "short description";
+    this.triedNorth = false;
+    this.triedEast = false;
+    this.triedSouth = false;
+    this.triedWest = false;
   }
 
   public String getShortDescription() {
@@ -56,6 +64,7 @@ public class Room {
       if (room.getNorth() == null){
     room.setNorth(this);}
 
+
   }
   public void setWest(Room room){
     this.west=room;
@@ -63,15 +72,31 @@ public class Room {
     room.setEast(this);}
   }
   public Room getEast(){
+    this.triedEast = true;
     return this.east;
   }
   public Room getNorth(){
+    this.triedNorth = true;
     return this.north;
   }
   public Room getSouth(){
+    this.triedSouth = true;
     return this.south;
   }
   public Room getWest(){
+    this.triedWest = true;
     return this.west;
+  }
+  public boolean getTriedNorth(){
+    return triedNorth;
+  }
+  public boolean getTriedEast(){
+    return triedEast;
+  }
+  public boolean getTriedSouth(){
+    return triedSouth;
+  }
+  public boolean getTriedWest(){
+    return triedWest;
   }
 }
