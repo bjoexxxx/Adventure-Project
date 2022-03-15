@@ -7,11 +7,11 @@ public class Main {
   public final Scanner keyboard = new Scanner(System.in);
   public Room playerPosition;
 
-  public void buildRooms() {
+  private void buildRooms() {
     Room room1 = new Room("1", "derp");
-    Room room2 = new Room("2", "derp");
-    Room room3 = new Room("3", "derp");
-    Room room4 = new Room("4", "derp");
+    Room room2 = new Room("2", "herajer");
+    Room room3 = new Room("3", "eorekasd");
+    Room room4 = new Room("4", "djeajdkae");
     Room room5 = new Room("5", "derp");
     Room room6 = new Room("6", "derp");
     Room room7 = new Room("7", "derp");
@@ -22,21 +22,13 @@ public class Main {
     room1.setEast(room2);
     room1.setSouth(room4);
     room2.setEast(room3);
-    room2.setWest(room1);
-    room3.setWest(room2);
     room3.setSouth(room6);
-    room4.setNorth(room1);
     room4.setSouth(room7);
     room5.setSouth(room8);
-    room6.setNorth(room3);
     room6.setSouth(room9);
-    room7.setNorth(room4);
     room7.setEast(room8);
     room8.setEast(room9);
-    room8.setNorth(room5);
-    room8.setWest(room7);
     room9.setWest(room8);
-    room9.setNorth(room6);
     playerPosition = room1;
 
   }
@@ -72,7 +64,7 @@ public class Main {
     boolean loop = true;
     while (loop) {
 
-      String fullAnswer = keyboard.nextLine();
+      String fullAnswer = keyboard.nextLine().toLowerCase();
 
       switch (fullAnswer) {
 
@@ -86,6 +78,7 @@ public class Main {
 
       }
     }
+
   }
 
   public static void main(String[] args) {
