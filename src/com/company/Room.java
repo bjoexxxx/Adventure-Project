@@ -14,7 +14,7 @@ public class Room {
   private Room east;
   private Room west;
 
-  public Room(String name, String description){
+  public Room(String name, String description, String shortDescription){
     this.name = name;
     this.description = description;
     this.north = null;
@@ -22,11 +22,11 @@ public class Room {
     this.south = null;
     this.west = null;
     this.isVisted = false;
-    shortDescription = "short description";
     this.triedNorth = false;
     this.triedEast = false;
     this.triedSouth = false;
     this.triedWest = false;
+    this.shortDescription = shortDescription;
   }
 
   public String getShortDescription() {
@@ -63,7 +63,6 @@ public class Room {
     this.south=room;
       if (room.getNorth() == null){
     room.setNorth(this);}
-
 
   }
   public void setWest(Room room){
