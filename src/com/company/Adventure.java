@@ -84,7 +84,7 @@ public class Adventure {
         case ("exit") -> loop = false;
         case ("look") -> look();
         case ("go") -> player.move(secondWord);
-        case ("open door") -> player.openDoor();
+        case ("open") -> player.open(secondWord);
 
       }
     }

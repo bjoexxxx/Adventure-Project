@@ -27,7 +27,9 @@ public class WorldCreator {
 //    ------------------------
 
     // added a door & true means open, false means closed
-    //room1.setDoor(new Door(false, "steel door", room1, room4));
+    room1.setDoor(new Door(false, room1, room4));
+    room4.setDoor(room1.getDoor());
+
 
     //connecting the rooms
     room1.setEast(room2);
@@ -40,7 +42,7 @@ public class WorldCreator {
     room7.setEast(room8);
     room8.setEast(room9);
     room9.setWest(room8);
-    playerPosition = room1;
+    playerPosition = room4;
 
 
   }

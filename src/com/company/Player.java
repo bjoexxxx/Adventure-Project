@@ -11,6 +11,15 @@ public class Player {
     return currentRoom;
   }
 
+  public void open(String type){
+    switch (type){
+      case "door" -> {
+        currentRoom.getDoor().setOpen(true);
+        System.out.println("You open the door.");
+      }
+    }
+  }
+
   public void move(String direction) {
 
     Room room = null;
@@ -38,7 +47,7 @@ public class Player {
     if (room == null) { //checks if the next room is a wall
       System.out.println("you walked into a wall, ouch");
     } else if (currentRoom.getDoor() != null && !currentRoom.getDoor().isOpen() && checkdoor(room)) { //checks if there is a looked door and checks locations
-      System.out.println("You found a " + currentRoom.getDoor().getTypeOfDoor() + " that is locked.");
+      System.out.println("You found a found a door that is locked.");
     } else { //if player makes a valid move
       currentRoom.setIsVisited(true);
       currentRoom = room;
@@ -52,12 +61,9 @@ public class Player {
 
   public boolean checkdoor(Room room) {
     //comparing to see if the current room and the next room has a door between them
-    return currentRoom == currentRoom.getDoor().getStartRoom() && room == currentRoom.getDoor().getEndRoom();
-  }
-
-  public void openDoor() {
-    currentRoom.getDoor().setOpen(true);
-    System.out.println("You open the " + currentRoom.getDoor().getTypeOfDoor() + ".");
+    boolean a = currentRoom == currentRoom.getDoor().getStartRoom() && room == currentRoom.getDoor().getEndRoom();
+    boolean b = currentRoom == currentRoom.getDoor().getEndRoom() && room == currentRoom.getDoor().getStartRoom();
+    return a || b;
   }
 
 
