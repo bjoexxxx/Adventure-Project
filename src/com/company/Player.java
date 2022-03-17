@@ -43,7 +43,6 @@ public class Player {
       }
     }
 
-
     if (room == null) { //checks if the next room is a wall
       System.out.println("you walked into a wall, ouch");
     } else if (currentRoom.getDoor() != null && !currentRoom.getDoor().isOpen() && checkdoor(room)) { //checks if there is a looked door and checks locations
