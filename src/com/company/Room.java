@@ -53,10 +53,6 @@ public class Room {
     this.isVisted = visited;
   }
 
-  public String getName() {
-    return this.name;
-  }
-
   public String getDescription() {
     return description;
   }
@@ -124,5 +120,21 @@ public class Room {
 
   public boolean getTriedWest() {
     return triedWest;
+  }
+
+  public void setTriedNorth(boolean triedNorth) {
+    this.triedNorth = triedNorth;
+  }
+
+  public void setTriedEast(boolean triedEast) {
+    this.triedEast = triedEast;
+  }
+
+  public void setTriedSouth(boolean triedSouth) {
+    this.triedSouth = triedSouth;
+  }
+
+  public void setTriedWest(boolean triedWest) {
+    this.triedWest = triedWest;
   }
 }

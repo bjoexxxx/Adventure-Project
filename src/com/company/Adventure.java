@@ -8,6 +8,9 @@ public class Adventure {
   private Player player;
   public WorldCreator creator;
 
+  public boolean triedRooms (Room room) {
+    return room.getTriedNorth() && room.getTriedEast() && room.getTriedSouth() && room.getTriedWest();
+  }
 
   private void look() {
     Room room = player.getCurrentRoom();
@@ -15,10 +18,7 @@ public class Adventure {
     // the following code checks to see if player has tried going all directions, if yes, the available moves are displayed
     Room[] options = {room.getNorth(), room.getEast(), room.getSouth(), room.getWest()};
     String[] directions = {"north", "east", "south", "west"};
-    if (room.getTriedNorth() &&
-        room.getTriedEast() &&
-        room.getTriedSouth() &&
-        room.getTriedWest()) {
+    if (triedRooms(room)){
       System.out.println("You have these options:");
       for (int i = 0; i < options.length; i++) {
         if (options[i] != null) {

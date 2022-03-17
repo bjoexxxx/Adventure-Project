@@ -44,9 +44,7 @@ public class WorldCreator {
 
 
   }
-  public void setPlayerPosition(Room playerPosition){
-    this.playerPosition = playerPosition;
-  }
+
   public Room getPlayerPosition(){
     return this.playerPosition;
   }

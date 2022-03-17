@@ -16,16 +16,28 @@ public class Player {
     Room room = null;
 
     switch (direction) {
-      case "north","n" -> room = currentRoom.getNorth();
-      case "south","s" -> room = currentRoom.getSouth();
-      case "east","e" -> room = currentRoom.getEast();
-      case "west","w" -> room = currentRoom.getWest();
-
-
+      case "north", "n" -> {
+        room = currentRoom.getNorth();
+        room.setTriedNorth(true);
+      }
+      case "south", "s" -> {
+        room = currentRoom.getSouth();
+        room.setTriedSouth(true);
+      }
+      case "east", "e" -> {
+        room = currentRoom.getEast();
+        room.setTriedEast(true);
+      }
+      case "west", "w" -> {
+        room = currentRoom.getWest();
+        room.setTriedWest(true);
+      }
     }
+
+
     if (room == null) { //checks if the next room is a wall
       System.out.println("you walked into a wall, ouch");
-    } else if (currentRoom.getDoor() != null && !currentRoom.getDoor().isOpen()  && checkdoor(room)) { //checks if there is a looked door and checks locations
+    } else if (currentRoom.getDoor() != null && !currentRoom.getDoor().isOpen() && checkdoor(room)) { //checks if there is a looked door and checks locations
       System.out.println("You found a " + currentRoom.getDoor().getTypeOfDoor() + " that is locked.");
     } else { //if player makes a valid move
       currentRoom.setIsVisited(true);
