@@ -6,8 +6,9 @@ public class Adventure {
 
   public final Scanner keyboard = new Scanner(System.in);
   public Room playerPosition;
+  public WorldCreator creator = new WorldCreator();
 
-  private void buildRooms() {
+  /*private void buildRooms() {
     Room room1 = new Room("Staging Grounds", "you find yourself at the entrance of a dungeon. " +
         "This is where heroes pick up their arms and venture forth", "Staging area at the start of the dungeon.");
     Room room2 = new Room("Forsaken Chapel", "A room of holy congregation long abandoned", "Forsaken chapel");
@@ -45,7 +46,7 @@ public class Adventure {
     playerPosition = room1;
 
 
-  }
+  }*/
 
   private void look() {
     System.out.println(playerPosition.getDescription());
@@ -107,7 +108,9 @@ public class Adventure {
 
   public void mainMenu() {
 
-    buildRooms();
+    //creator.setPlayerPosition(null);
+    creator.buildRooms();
+    playerPosition = creator.getPlayerPosition();
 
     System.out.println("Welcome to the game!");
     System.out.println("In case of confusion input \"help\".");
