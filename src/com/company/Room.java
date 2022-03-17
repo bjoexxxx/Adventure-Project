@@ -87,22 +87,18 @@ public class Room {
   }
 
   public Room getEast() {
-    this.triedEast = true;
     return this.east;
   }
 
   public Room getNorth() {
-    this.triedNorth = true;
     return this.north;
   }
 
   public Room getSouth() {
-    this.triedSouth = true;
     return this.south;
   }
 
   public Room getWest() {
-    this.triedWest = true;
     return this.west;
   }
 
