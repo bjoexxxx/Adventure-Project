@@ -12,6 +12,13 @@ public class Door {
     this.typeOfDoor = typeOfDoor;
     this.startRoom = startRoom;
     this.endRoom = endRoom;
+    buildroom();
+  }
+
+  private void buildroom () {
+    if (startRoom.getDoor() != null && endRoom.getDoor() == null) {
+      endRoom.setDoor(new Door(isOpen, typeOfDoor, endRoom, startRoom));
+    }
   }
 
   public Room getStartRoom() {

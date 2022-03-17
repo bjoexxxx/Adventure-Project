@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Adventure {
 
   public final Scanner keyboard = new Scanner(System.in);
-  public Room playerPosition;
-  public WorldCreator creator = new WorldCreator();
+  private Player player;
+  public WorldCreator creator;
 
   /*private void buildRooms() {
     Room room1 = new Room("Staging Grounds", "you find yourself at the entrance of a dungeon. " +
@@ -49,14 +49,15 @@ public class Adventure {
   }*/
 
   private void look() {
-    System.out.println(playerPosition.getDescription());
+    Room room = player.getCurrentRoom();
+    System.out.println(room.getDescription());
     // the following code checks to see if player has tried going all directions, if yes, the available moves are displayed
-    Room[] options = {playerPosition.getNorth(), playerPosition.getEast(), playerPosition.getSouth(), playerPosition.getWest()};
+    Room[] options = {room.getNorth(), room.getEast(), room.getSouth(), room.getWest()};
     String[] directions = {"north", "east", "south", "west"};
-    if (playerPosition.getTriedNorth() &&
-        playerPosition.getTriedEast() &&
-        playerPosition.getTriedSouth() &&
-        playerPosition.getTriedWest()) {
+    if (room.getTriedNorth() &&
+        room.getTriedEast() &&
+        room.getTriedSouth() &&
+        room.getTriedWest()) {
       System.out.println("You have these options:");
       for (int i = 0; i < options.length; i++) {
         if (options[i] != null) {
@@ -80,41 +81,20 @@ public class Adventure {
 
   }
 
-  public boolean checkdoor(Room room) {
-    //comparing to see if the current room and the next room has a door between them
-    return playerPosition == playerPosition.getDoor().getStartRoom() && room == playerPosition.getDoor().getEndRoom();
-  }
 
-  public void openDoor() {
-    playerPosition.getDoor().setOpen(true);
-    System.out.println("You open the " + playerPosition.getDoor().getTypeOfDoor() + ".");
-  }
-
-  public void movePlayer(Room room) {
-    if (room == null) { //checks if the next room is a wall
-      System.out.println("you walked into a wall, ouch");
-    } else if (playerPosition.getDoor() != null && !playerPosition.getDoor().isOpen()  && checkdoor(room)) { //checks if there is a looked type of door and checks locations
-      System.out.println("You found a " + playerPosition.getDoor().getTypeOfDoor() + " that is locked.");
-    } else { //if player makes a valid move
-      playerPosition.setIsVisited(true);
-      playerPosition = room;
-      if (!playerPosition.getIsVisited()) {
-        System.out.println(playerPosition.getDescription());
-      } else {
-        System.out.println(playerPosition.getShortDescription());
-      }
-    }
-  }
 
   public void mainMenu() {
 
     //creator.setPlayerPosition(null);
+    creator = new WorldCreator();
     creator.buildRooms();
-    playerPosition = creator.getPlayerPosition();
+
+    player = new Player();
+    player.setCurrentRoom(creator.getPlayerPosition());
 
     System.out.println("Welcome to the game!");
     System.out.println("In case of confusion input \"help\".");
-    System.out.println("\n" + playerPosition.getDescription());
+    System.out.println("\n" + player.getCurrentRoom().getDescription());
 
     boolean loop = true;
     while (loop) {
@@ -126,11 +106,11 @@ public class Adventure {
         case ("help") -> help();
         case ("exit") -> loop = false;
         case ("look") -> look();
-        case ("go north") -> movePlayer(playerPosition.getNorth());
-        case ("go south") -> movePlayer(playerPosition.getSouth());
-        case ("go east") -> movePlayer(playerPosition.getEast());
-        case ("go west") -> movePlayer(playerPosition.getWest());
-        case ("open door") -> openDoor();
+        case ("go north") -> player.move(playerPosition.getNorth());
+        case ("go south") -> player.move(playerPosition.getSouth());
+        case ("go east") -> player.move(playerPosition.getEast());
+        case ("go west") -> player.move(playerPosition.getWest());
+        case ("open door") -> player.openDoor();
 
       }
     }
