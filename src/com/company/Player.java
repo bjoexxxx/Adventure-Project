@@ -11,8 +11,18 @@ public class Player {
     return currentRoom;
   }
 
-  public void move(Room room) {
+  public void move(String direction) {
 
+    Room room = null;
+
+    switch (direction) {
+      case "north","n" -> room = currentRoom.getNorth();
+      case "south","s" -> room = currentRoom.getSouth();
+      case "east","e" -> room = currentRoom.getEast();
+      case "west","w" -> room = currentRoom.getWest();
+
+
+    }
     if (room == null) { //checks if the next room is a wall
       System.out.println("you walked into a wall, ouch");
     } else if (currentRoom.getDoor() != null && !currentRoom.getDoor().isOpen()  && checkdoor(room)) { //checks if there is a looked door and checks locations
