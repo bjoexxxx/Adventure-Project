@@ -26,20 +26,20 @@ public class Player {
 
     switch (direction) {
       case "north", "n" -> {
+        currentRoom.setTriedNorth(true);
         room = currentRoom.getNorth();
-        room.setTriedNorth(true);
       }
       case "south", "s" -> {
+        currentRoom.setTriedSouth(true);
         room = currentRoom.getSouth();
-        room.setTriedSouth(true);
       }
       case "east", "e" -> {
+        currentRoom.setTriedEast(true);
         room = currentRoom.getEast();
-        room.setTriedEast(true);
       }
       case "west", "w" -> {
+        currentRoom.setTriedWest(true);
         room = currentRoom.getWest();
-        room.setTriedWest(true);
       }
     }
 

@@ -42,7 +42,7 @@ public class WorldCreator {
     room7.setEast(room8);
     room8.setEast(room9);
     room9.setWest(room8);
-    playerPosition = room4;
+    playerPosition = room1;
 
 
   }
