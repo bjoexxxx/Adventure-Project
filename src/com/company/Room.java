@@ -1,6 +1,9 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Room {
+  private ArrayList<Item> lootTable;
   private final String name;
   private final String description;
   private final String shortDescription;
@@ -30,6 +33,7 @@ public class Room {
     this.triedWest = false;
     this.shortDescription = shortDescription;
     this.door = null;
+    this.lootTable = new ArrayList<>();
 
   }
 
@@ -132,5 +136,11 @@ public class Room {
 
   public void setTriedWest(boolean triedWest) {
     this.triedWest = triedWest;
+  }
+  public void setLootTable(Item loot){
+    this.lootTable.add(loot);
+  }
+  public ArrayList<Item> getLootTable(){
+    return this.lootTable;
   }
 }

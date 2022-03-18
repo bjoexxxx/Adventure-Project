@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Adventure {
@@ -15,6 +16,8 @@ public class Adventure {
   private void look() {
     Room room = player.getCurrentRoom();
     System.out.println(room.getDescription());
+    if (!player.getCurrentRoom().getLootTable().isEmpty()){
+    System.out.println(player.getCurrentRoom().getLootTable());}
     // the following code checks to see if player has tried going all directions, if yes, the available moves are displayed
     Room[] options = {room.getNorth(), room.getEast(), room.getSouth(), room.getWest()};
     String[] directions = {"north", "east", "south", "west"};
@@ -64,7 +67,7 @@ public class Adventure {
     creator = new WorldCreator();
     creator.buildRooms();
 
-    player = new Player();
+    player = new Player(creator.playerPosition,new ArrayList<>());
     player.setCurrentRoom(creator.getPlayerPosition());
 
     System.out.println("Welcome to the game!");

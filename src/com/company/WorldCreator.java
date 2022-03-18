@@ -44,6 +44,9 @@ public class WorldCreator {
     room9.setWest(room8);
     playerPosition = room1;
 
+    room1.setLootTable(new Item("Lambras","An elvish flatbred"));
+    room1.setLootTable(new Item("Sword", "very pointy"));
+
 
   }
 

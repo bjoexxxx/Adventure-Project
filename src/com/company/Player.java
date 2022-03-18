@@ -1,7 +1,15 @@
 package com.company;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Player {
-  Room currentRoom;
+  private Room currentRoom;
+  private ArrayList<Item> inventory = new ArrayList<>();
+  public Player(Room currentRoom, ArrayList<Item> inventory){
+    this.currentRoom = currentRoom;
+    this.inventory = inventory;
+  }
 
   public void setCurrentRoom(Room currentRoom) {
     this.currentRoom = currentRoom;
