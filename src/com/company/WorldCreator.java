@@ -48,6 +48,7 @@ public class WorldCreator {
 
     room1.setLootTable(generateLoot("sword"));
     room1.setLootTable(generateLoot("lambas"));
+    room3.setLootTable(generateLoot("flute"));
 
 
   }
@@ -64,6 +65,9 @@ public class WorldCreator {
       }
       case "lambas" -> {
         return new Item("Lambras", "An elvish flatbred");
+      }
+      case "flute" -> {
+        return new Item("Boneflute", "Can make a eerie high pitch tone");
       }
       default ->{
         return null;
