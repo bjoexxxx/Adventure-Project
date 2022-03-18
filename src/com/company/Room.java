@@ -143,4 +143,7 @@ public class Room {
   public ArrayList<Item> getLootTable(){
     return this.lootTable;
   }
+  public void removeItem(Item loot){
+    this.lootTable.remove(loot);
+  }
 }

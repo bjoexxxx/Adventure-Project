@@ -44,13 +44,24 @@ public class WorldCreator {
     room9.setWest(room8);
     playerPosition = room1;
 
-    room1.setLootTable(new Item("Lambras","An elvish flatbred"));
-    room1.setLootTable(new Item("Sword", "very pointy"));
+    room1.setLootTable(generateLoot("sword"));
+    room1.setLootTable(new Item("sword", "very pointy"));
 
 
   }
 
   public Room getPlayerPosition(){
     return this.playerPosition;
+  }
+  public Item generateLoot(String name){
+    switch (name){
+      case "sword" -> {
+        return new Item("Sword", "very pointy");
+      }
+    }
+   Item lambras = new Item("Lambras","An elvish flatbred");
+   //Item sword = new Item("Sword", "very pointy");
+    //getPlayerPosition().getLootTable().add(sword);
+    return null;
   }
 }

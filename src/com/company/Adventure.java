@@ -88,6 +88,8 @@ public class Adventure {
         case ("look") -> look();
         case ("go") -> player.move(secondWord);
         case ("open") -> player.open(secondWord);
+        case ("take") -> player.pickupItem(secondWord);
+        case ("inventory") -> player.checkInventory();
 
       }
     }

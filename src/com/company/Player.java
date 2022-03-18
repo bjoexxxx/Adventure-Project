@@ -72,6 +72,16 @@ public class Player {
     boolean b = currentRoom == currentRoom.getDoor().getEndRoom() && room == currentRoom.getDoor().getStartRoom();
     return a || b;
   }
+  public void pickupItem(String name){
+    for (int i = 0; i < getCurrentRoom().getLootTable().size(); i++) {
+      if (getCurrentRoom().getLootTable().get(i).getName().equals(name)){
+        this.inventory.add(getCurrentRoom().getLootTable().get(i));
+      }
+    }
+  }
+  public void checkInventory(){
+    inventory.forEach((n)-> System.out.println(n));
+  }
 
 
 }
