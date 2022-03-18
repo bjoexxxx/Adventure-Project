@@ -2,9 +2,11 @@ package com.company;
 
 public class WorldCreator {
   public Room playerPosition;
-  public WorldCreator(){
+
+  public WorldCreator() {
     this.playerPosition = null;
   }
+
   public void buildRooms() {
     Room room1 = new Room("Staging Grounds", "you find yourself at the entrance of a dungeon. " +
         "This is where heroes pick up their arms and venture forth", "Staging area at the start of the dungeon.");
@@ -27,8 +29,8 @@ public class WorldCreator {
 //    ------------------------
 
     // added a door & true means open, false means closed
-    room1.setDoor(new Door(false, room1, room4));
-    room4.setDoor(room1.getDoor());
+    room8.setDoor(new Door(false, room8, room9));
+    room9.setDoor(room8.getDoor());
 
 
     //connecting the rooms
@@ -45,23 +47,29 @@ public class WorldCreator {
     playerPosition = room1;
 
     room1.setLootTable(generateLoot("sword"));
-    room1.setLootTable(new Item("sword", "very pointy"));
+    room1.setLootTable(generateLoot("lambas"));
 
 
   }
 
-  public Room getPlayerPosition(){
+  public Room getPlayerPosition() {
     return this.playerPosition;
   }
-  public Item generateLoot(String name){
-    switch (name){
+
+  public Item generateLoot(String name) {
+
+    switch (name) {
       case "sword" -> {
-        return new Item("Sword", "very pointy");
+        return new Item("Sword", "Its very pointy");
       }
+      case "lambas" -> {
+        return new Item("Lambras", "An elvish flatbred");
+      }
+      default ->{
+        return null;
     }
-   Item lambras = new Item("Lambras","An elvish flatbred");
-   //Item sword = new Item("Sword", "very pointy");
-    //getPlayerPosition().getLootTable().add(sword);
-    return null;
-  }
-}
+
+    }
+  }}
+
+

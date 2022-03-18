@@ -16,8 +16,12 @@ public class Adventure {
   private void look() {
     Room room = player.getCurrentRoom();
     System.out.println(room.getDescription());
-    if (!player.getCurrentRoom().getLootTable().isEmpty()){
-    System.out.println(player.getCurrentRoom().getLootTable());}
+    if (!player.getCurrentRoom().getLootTable().isEmpty()) {
+      System.out.println();
+      System.out.print("Around you there is: ");
+      System.out.print(player.getCurrentRoom().getLootTable());
+      System.out.println();
+    }
     // the following code checks to see if player has tried going all directions, if yes, the available moves are displayed
     Room[] options = {room.getNorth(), room.getEast(), room.getSouth(), room.getWest()};
     String[] directions = {"north", "east", "south", "west"};
@@ -77,7 +81,7 @@ public class Adventure {
     boolean loop = true;
     while (loop) {
 
-      String playerCommand = keyboard.nextLine().toLowerCase();
+      String playerCommand = keyboard.nextLine();
       String firstWord = firstWord(playerCommand);
       String secondWord = secondWord(playerCommand);
 
@@ -90,6 +94,7 @@ public class Adventure {
         case ("open") -> player.open(secondWord);
         case ("take") -> player.pickupItem(secondWord);
         case ("inventory") -> player.checkInventory();
+        case ("drop") -> player.dropItem(secondWord);
 
       }
     }

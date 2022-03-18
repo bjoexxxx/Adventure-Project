@@ -16,7 +16,7 @@ public class Item {
 
   @Override
   public String toString() {
-    return "\nyou found a "+name+" "+description;
+    return name+": "+description+ "  ";
   }
 
   public void setDescription(String description){
