@@ -5,10 +5,13 @@ import java.util.ArrayList;
 
 public class Player {
   private Room currentRoom;
-  private ArrayList<Item> inventory = new ArrayList<>();
-  public Player(Room currentRoom, ArrayList<Item> inventory){
+  private ArrayList<Item> inventory;
+  private Userinterface userinterface;
+
+  public Player(Room currentRoom, ArrayList<Item> inventory) {
     this.currentRoom = currentRoom;
     this.inventory = inventory;
+    this.userinterface = new Userinterface();
   }
 
   public void setCurrentRoom(Room currentRoom) {
@@ -19,11 +22,11 @@ public class Player {
     return currentRoom;
   }
 
-  public void open(String type){
-    switch (type){
+  public void open(String type) {
+    switch (type) {
       case "door" -> {
         currentRoom.getDoor().setOpen(true);
-        System.out.println("You open the door.");
+        userinterface.displayOpendDoor();
       }
     }
   }
@@ -52,16 +55,16 @@ public class Player {
     }
 
     if (room == null) { //checks if the next room is a wall
-      System.out.println("you walked into a wall, ouch");
+      userinterface.displayWalkedIntoWall();
     } else if (currentRoom.getDoor() != null && !currentRoom.getDoor().isOpen() && checkdoor(room)) { //checks if there is a looked door and checks locations
-      System.out.println("You found a found a door that is locked.");
+      userinterface.displayFoundLockedDoor();
     } else { //if player makes a valid move
       currentRoom.setIsVisited(true);
       currentRoom = room;
       if (!currentRoom.getIsVisited()) {
-        System.out.println(currentRoom.getDescription());
+        userinterface.displayRoomDiscription(currentRoom);
       } else {
-        System.out.println(currentRoom.getShortDescription());
+        userinterface.displayShortRoomDiscription(currentRoom);
       }
     }
   }
@@ -73,26 +76,26 @@ public class Player {
     return a || b;
   }
 
-  public void pickupItem(String name){
+  public void pickupItem(String name) {
     for (int i = 0; i < getCurrentRoom().getLootTable().size(); i++) {
-      if (getCurrentRoom().getLootTable().get(i).getName().equals(name)){
+      if (getCurrentRoom().getLootTable().get(i).getName().equals(name)) {
         this.inventory.add(getCurrentRoom().getLootTable().get(i));
         currentRoom.removeItem(getCurrentRoom().getLootTable().get(i));
       }
     }
   }
 
-  public void dropItem(String name){
+  public void dropItem(String name) {
     for (int i = 0; i < this.inventory.size(); i++) {
-      if (inventory.get(i).getName().equals(name)){
+      if (inventory.get(i).getName().equals(name)) {
         currentRoom.getLootTable().add(inventory.get(i));
         this.inventory.remove(inventory.get(i));
       }
     }
   }
-  public void checkInventory(){
-    System.out.println("In your inventory is:");
-    inventory.forEach((n)-> System.out.println(n));
+
+  public void checkInventory() {
+    userinterface.displayPlayerInventory(inventory);
   }
 
 

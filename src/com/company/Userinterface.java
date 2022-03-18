@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Userinterface {
 
   public Userinterface() {
@@ -25,6 +27,16 @@ public class Userinterface {
   public void displayRoomDiscription (Room room){
     System.out.println(room.getDescription());
   }
+ public void displayShortRoomDiscription (Room room){
+    System.out.println(room.getShortDescription());
+  }
+  public void displayYouHaveOptionsDirections () {
+    System.out.println("You have these options:");
+  }
+  public void displayAvailableDirections (int directionNumber) {
+    String[] directions = {"north", "east", "south", "west"};
+    System.out.println(directions[directionNumber] + " is available");
+  }
 
   public void displayItems (Room room) {
     System.out.println();
@@ -37,4 +49,18 @@ public class Userinterface {
     System.out.println();
   }
 
+  public void displayWalkedIntoWall (){
+    System.out.println("you walked into a wall, ouch");
+  }
+  public void displayOpendDoor () {
+    System.out.println("You open the door.");
+  }
+  public void displayFoundLockedDoor () {
+    System.out.println("You found a found a door that is locked.");
+  }
+
+  public void displayPlayerInventory (ArrayList<Item> inventory) {
+    System.out.println("In your inventory is:");
+    inventory.forEach((n) -> System.out.println(n));
+  }
 }

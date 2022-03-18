@@ -24,16 +24,14 @@ public class Adventure {
     }
     // the following code checks to see if player has tried going all directions, if yes, the available moves are displayed
     Room[] options = {room.getNorth(), room.getEast(), room.getSouth(), room.getWest()};
-    String[] directions = {"north", "east", "south", "west"};
-    if (triedRooms(room)) {
-      System.out.println("You have these options:");
+        if (triedRooms(room)) {
+      userinterface.displayYouHaveOptionsDirections();
       for (int i = 0; i < options.length; i++) {
         if (options[i] != null) {
-          System.out.println(directions[i] + " is available");
+          userinterface.displayAvailableDirections(i);
         }
       }
       userinterface.newline();
-
     }
   }
 
