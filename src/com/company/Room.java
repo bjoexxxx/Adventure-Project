@@ -137,12 +137,15 @@ public class Room {
   public void setTriedWest(boolean triedWest) {
     this.triedWest = triedWest;
   }
+
   public void setLootTable(Item loot){
     this.lootTable.add(loot);
   }
+
   public ArrayList<Item> getLootTable(){
     return this.lootTable;
   }
+
   public void removeItem(Item loot){
     this.lootTable.remove(loot);
   }
