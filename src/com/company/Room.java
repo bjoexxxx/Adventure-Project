@@ -16,7 +16,10 @@ public class Room {
   private Room north;
   private Room east;
   private Room west;
-  private Door door;
+  private Door doorNorth;
+  private Door doorSouth;
+  private Door doorEast;
+  private Door doorWest;
 
 
   public Room(String name, String description, String shortDescription) {
@@ -32,17 +35,53 @@ public class Room {
     this.triedSouth = false;
     this.triedWest = false;
     this.shortDescription = shortDescription;
-    this.door = null;
+    this.doorSouth = null;
+    this.doorNorth = null;
+    this.doorWest = null;
+    this.doorEast = null;
     this.lootTable = new ArrayList<>();
 
   }
 
-  public Door getDoor() {
-    return door;
+  public Door getDoorEast() {
+    return doorEast;
   }
 
-  public void setDoor(Door door) {
-    this.door = door;
+  public Door getDoorWest() {
+    return doorWest;
+  }
+
+  public Door getDoorNorth() {
+    return doorNorth;
+  }
+
+  public Door getDoorSouth() {
+    return doorSouth;
+  }
+
+  public void setDoorNorth(Door door) {
+    this.doorNorth = door;
+    if (getNorth().doorSouth == null) {
+      getNorth().setDoorSouth(this.doorNorth);
+    }
+  }
+
+  public void setDoorSouth(Door door) {
+    this.doorSouth = door;
+    if (getSouth().doorNorth == null) {
+      getSouth().setDoorNorth(this.doorSouth);
+    }
+  }
+
+  public void setDoorEast(Door doorEast) {
+    this.doorEast = doorEast;
+    if (getSouth().doorNorth == null) {
+      getSouth().setDoorNorth(this.doorSouth);
+    }
+  }
+
+  public void setDoorWest(Door doorWest) {
+    this.doorWest = doorWest;
   }
 
   public String getShortDescription() {

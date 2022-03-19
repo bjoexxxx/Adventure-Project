@@ -28,9 +28,7 @@ public class WorldCreator {
 //   | room7 = room8  = room9 |
 //    ------------------------
 
-    // added a door & true means open, false means closed
-    room8.setDoor(new Door(false, room8, room9));
-    room9.setDoor(room8.getDoor());
+
 
 
     //connecting the rooms
@@ -45,6 +43,12 @@ public class WorldCreator {
     room8.setEast(room9);
     room9.setWest(room8);
     playerPosition = room1;
+
+    // added a door & true means open, false means closed
+    room1.setDoorSouth(new Door(false));
+//    room8.setDoor(new Door(false, room8, room9));
+//    room9.setDoor(room8.getDoor());
+
 
     room1.setLootTable(generateLoot("sword"));
     room1.setLootTable(generateLoot("lambas"));
@@ -69,11 +73,12 @@ public class WorldCreator {
       case "flute" -> {
         return new Item("Boneflute", "Can make a eerie high pitch tone");
       }
-      default ->{
+      default -> {
         return null;
-    }
+      }
 
     }
-  }}
+  }
+}
 
 

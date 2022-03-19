@@ -22,10 +22,10 @@ public class Player {
     return currentRoom;
   }
 
-  public void open(String type) {
-    switch (type) {
-      case "door" -> {
-        currentRoom.getDoor().setOpen(true);
+  public void open(String direction) {
+    switch (direction) {
+      case "south" -> {
+        currentRoom.getDoorSouth().setOpen(true);
         userinterface.displayOpendDoor();
       }
     }
@@ -56,7 +56,7 @@ public class Player {
 
     if (room == null) { //checks if the next room is a wall
       userinterface.displayWalkedIntoWall();
-    } else if (currentRoom.getDoor() != null && !currentRoom.getDoor().isOpen() && checkdoor(room)) { //checks if there is a looked door and checks locations
+    } else if (checkdoor(room)) { //checks if there is a looked door and checks locations
       userinterface.displayFoundLockedDoor();
     } else { //if player makes a valid move
       currentRoom.setIsVisited(true);
@@ -69,11 +69,19 @@ public class Player {
     }
   }
 
-  private boolean checkdoor(Room room) {
-    //comparing to see if the current room and the next room has a door between them
-    boolean a = currentRoom == currentRoom.getDoor().getStartRoom() && room == currentRoom.getDoor().getEndRoom();
-    boolean b = currentRoom == currentRoom.getDoor().getEndRoom() && room == currentRoom.getDoor().getStartRoom();
-    return a || b;
+  private boolean checkdoor (Room room) {
+    if (room == room.getNorth()) {
+      return room.getNorth() != null && room.getDoorNorth().isOpen();
+    } else if (room == room.getSouth()){
+      return room.getSouth() != null && room.getDoorSouth().isOpen();
+    } else if (room == room.getEast()) {
+      return room.getEast() != null && room.getDoorEast().isOpen();
+    } else if (room == room.getWest()) {
+      return room.getDoorWest() != null && room.getDoorWest().isOpen();
+    } else {
+      return false;
+    }
+
   }
 
   public void pickupItem(String name) {

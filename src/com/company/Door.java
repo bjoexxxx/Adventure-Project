@@ -3,23 +3,10 @@ package com.company;
 public class Door {
 
   private boolean isOpen;
-  private Room startRoom;
-  private Room endRoom;
 
-  Door(boolean isOpen, Room startRoom, Room endRoom) {
+  Door(boolean isOpen) {
     this.isOpen = isOpen;
-    this.startRoom = startRoom;
-    this.endRoom = endRoom;
 
-
-  }
-
-  public Room getStartRoom() {
-    return startRoom;
-  }
-
-  public Room getEndRoom() {
-    return endRoom;
   }
 
   public boolean isOpen() {
