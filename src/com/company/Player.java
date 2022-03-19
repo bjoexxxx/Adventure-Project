@@ -69,7 +69,7 @@ public class Player {
     }
   }
 
-  public boolean checkdoor(Room room) {
+  private boolean checkdoor(Room room) {
     //comparing to see if the current room and the next room has a door between them
     boolean a = currentRoom == currentRoom.getDoor().getStartRoom() && room == currentRoom.getDoor().getEndRoom();
     boolean b = currentRoom == currentRoom.getDoor().getEndRoom() && room == currentRoom.getDoor().getStartRoom();
@@ -98,5 +98,28 @@ public class Player {
     userinterface.displayPlayerInventory(inventory);
   }
 
+  public void look() {
+    Room room = currentRoom;
 
+    userinterface.displayRoomDiscription(currentRoom);
+
+    if (!currentRoom.getLootTable().isEmpty()) {
+      userinterface.displayItems(currentRoom);
+    }
+    // the following code checks to see if player has tried going all directions, if yes, the available moves are displayed
+    Room[] options = {room.getNorth(), room.getEast(), room.getSouth(), room.getWest()};
+    if (triedRooms(room)) {
+      userinterface.displayYouHaveOptionsDirections();
+      for (int i = 0; i < options.length; i++) {
+        if (options[i] != null) {
+          userinterface.displayAvailableDirections(i);
+        }
+      }
+      userinterface.newline();
+    }
+  }
+
+  private boolean triedRooms(Room room) {
+    return room.getTriedNorth() && room.getTriedEast() && room.getTriedSouth() && room.getTriedWest();
+  }
 }

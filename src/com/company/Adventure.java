@@ -10,32 +10,7 @@ public class Adventure {
   public WorldCreator creator;
   public Userinterface userinterface = new Userinterface();
 
-  public boolean triedRooms(Room room) {
-    return room.getTriedNorth() && room.getTriedEast() && room.getTriedSouth() && room.getTriedWest();
-  }
-
-  private void look() {
-    Room room = player.getCurrentRoom();
-
-    userinterface.displayRoomDiscription(player.getCurrentRoom());
-
-    if (!player.getCurrentRoom().getLootTable().isEmpty()) {
-      userinterface.displayItems(player.getCurrentRoom());
-    }
-    // the following code checks to see if player has tried going all directions, if yes, the available moves are displayed
-    Room[] options = {room.getNorth(), room.getEast(), room.getSouth(), room.getWest()};
-        if (triedRooms(room)) {
-      userinterface.displayYouHaveOptionsDirections();
-      for (int i = 0; i < options.length; i++) {
-        if (options[i] != null) {
-          userinterface.displayAvailableDirections(i);
-        }
-      }
-      userinterface.newline();
-    }
-  }
-
-  public String firstWord(String fullCommand) {
+  private String firstWord(String fullCommand) {
     if (fullCommand.contains(" ")) {
       return fullCommand.substring(0, fullCommand.indexOf(' '));
     } else {
@@ -43,7 +18,7 @@ public class Adventure {
     }
   }
 
-  public String secondWord(String fullCommand) {
+  private String secondWord(String fullCommand) {
     if (fullCommand.contains(" ")) {
       return fullCommand.substring(fullCommand.indexOf(' ') + 1);
     } else {
@@ -73,7 +48,7 @@ public class Adventure {
 
         case ("help") -> userinterface.help();
         case ("exit") -> loop = false;
-        case ("look") -> look();
+        case ("look") -> player.look();
         case ("go") -> player.move(secondWord);
         case ("open") -> player.open(secondWord);
         case ("take") -> player.pickupItem(secondWord);
@@ -82,14 +57,9 @@ public class Adventure {
 
       }
     }
-
   }
 
   public static void main(String[] args) {
-    // write your code here
-
-    new Adventure().mainMenu();
-
-
+      new Adventure().mainMenu();
   }
 }
