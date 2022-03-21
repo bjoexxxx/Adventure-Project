@@ -28,6 +28,18 @@ public class Player {
         currentRoom.getDoorSouth().setOpen(true);
         userinterface.displayOpendDoor();
       }
+      case "north" -> {
+        currentRoom.getDoorNorth().setOpen(true);
+        userinterface.displayOpendDoor();
+      }
+      case "west" -> {
+        currentRoom.getDoorWest().setOpen(true);
+        userinterface.displayOpendDoor();
+      }
+      case "east" -> {
+        currentRoom.getDoorEast().setOpen(true);
+        userinterface.displayOpendDoor();
+      }
     }
   }
 
@@ -56,7 +68,7 @@ public class Player {
 
     if (room == null) { //checks if the next room is a wall
       userinterface.displayWalkedIntoWall();
-    } else if (checkdoor(room)) { //checks if there is a looked door and checks locations
+    } else if (!checkdoor(room)) { //checks if there is a looked door and checks locations
       userinterface.displayFoundLockedDoor();
     } else { //if player makes a valid move
       currentRoom.setIsVisited(true);
@@ -70,18 +82,17 @@ public class Player {
   }
 
   private boolean checkdoor (Room room) {
-    if (room == room.getNorth()) {
-      return room.getNorth() != null && room.getDoorNorth().isOpen();
-    } else if (room == room.getSouth()){
-      return room.getSouth() != null && room.getDoorSouth().isOpen();
-    } else if (room == room.getEast()) {
-      return room.getEast() != null && room.getDoorEast().isOpen();
-    } else if (room == room.getWest()) {
-      return room.getDoorWest() != null && room.getDoorWest().isOpen();
+    if (room == this.currentRoom.getNorth() && this.currentRoom.getDoorNorth() != null ) {
+      return this.getCurrentRoom().getDoorNorth().isOpen();
+    } else if (room == this.currentRoom.getSouth() && this.currentRoom.getDoorSouth() != null){
+      return this.getCurrentRoom().getDoorSouth().isOpen();
+    } else if (room == this.currentRoom.getEast() && this.currentRoom.getDoorEast() != null) {
+      return this.getCurrentRoom().getDoorEast().isOpen();
+    } else if (room == this.currentRoom.getWest() && this.currentRoom.getDoorWest() != null) {
+      return this.getCurrentRoom().getDoorWest().isOpen();
     } else {
-      return false;
+      return true;
     }
-
   }
 
   public void pickupItem(String name) {

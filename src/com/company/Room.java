@@ -62,26 +62,29 @@ public class Room {
   public void setDoorNorth(Door door) {
     this.doorNorth = door;
     if (getNorth().doorSouth == null) {
-      getNorth().setDoorSouth(this.doorNorth);
+      getNorth().setDoorSouth(door);
     }
   }
 
   public void setDoorSouth(Door door) {
     this.doorSouth = door;
     if (getSouth().doorNorth == null) {
-      getSouth().setDoorNorth(this.doorSouth);
+      getSouth().setDoorNorth(door);
     }
   }
 
-  public void setDoorEast(Door doorEast) {
-    this.doorEast = doorEast;
-    if (getSouth().doorNorth == null) {
-      getSouth().setDoorNorth(this.doorSouth);
+  public void setDoorEast(Door door) {
+    this.doorEast = door;
+    if (getEast().doorWest == null) {
+      getEast().setDoorWest(door);
     }
   }
 
-  public void setDoorWest(Door doorWest) {
-    this.doorWest = doorWest;
+  public void setDoorWest(Door door) {
+    this.doorWest = door;
+    if (getWest().doorEast == null) {
+      getWest().setDoorEast(door);
+    }
   }
 
   public String getShortDescription() {
