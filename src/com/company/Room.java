@@ -209,5 +209,14 @@ public class Room {
       return true;
     }
   }
-}
 
+  public Item findItem (String itemName) {
+    for (int i = 0; i < lootTable.size(); i++) {
+      Item temp = lootTable.get(i);
+      if (temp.getName().equals(itemName)) {
+        return temp;
+      }
+    }
+    return null;
+  }
+}

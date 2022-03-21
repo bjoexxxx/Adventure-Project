@@ -81,21 +81,27 @@ public class Player {
   }
 
   public void takeItem(String itemName) {
-    for (int i = 0; i < getCurrentRoom().getLootTable().size(); i++) {
-      if (getCurrentRoom().getLootTable().get(i).getName().equals(itemName)) {
-        Item item = getCurrentRoom().getLootTable().get(i);
-        this.inventory.add(item);
-        currentRoom.removeItem(item);
-      }
+    Item foundItem = currentRoom.findItem(itemName);
+    if (foundItem != null) {
+      this.inventory.add(foundItem);
+      currentRoom.removeItem(foundItem);
+    } else {
+      userinterface.displayItemNotFound();
     }
   }
 
+
   public void dropItem(String itemName) {
-    for (int i = 0; i < this.inventory.size(); i++) {
-      if (inventory.get(i).getName().equals(itemName)) {
-        Item item = inventory.get(i);
-        currentRoom.setLootTable(item);
-        this.inventory.remove(item);
+    if (inventory.isEmpty()) {
+      userinterface.displayItemNotFound();
+    } else {
+      for (int i = 0; i < inventory.size(); i++) {
+        Item temp = inventory.get(i);
+        if (temp.getName().equals(itemName)) {
+          Item foundItem = inventory.get(i);
+          this.inventory.remove(foundItem);
+          currentRoom.setLootTable(foundItem);
+        }
       }
     }
   }

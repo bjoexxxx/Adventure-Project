@@ -68,4 +68,8 @@ public class Userinterface {
     System.out.println("In your inventory is:");
     inventory.forEach((n) -> System.out.println(n));
   }
+
+  public void displayItemNotFound () {
+    System.out.println("Item not found");
+  }
 }
