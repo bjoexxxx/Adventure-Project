@@ -83,8 +83,9 @@ public class Player {
   public void takeItem(String itemName) {
     for (int i = 0; i < getCurrentRoom().getLootTable().size(); i++) {
       if (getCurrentRoom().getLootTable().get(i).getName().equals(itemName)) {
-        this.inventory.add(getCurrentRoom().getLootTable().get(i));
-        currentRoom.removeItem(getCurrentRoom().getLootTable().get(i));
+        Item item = getCurrentRoom().getLootTable().get(i);
+        this.inventory.add(item);
+        currentRoom.removeItem(item);
       }
     }
   }
@@ -92,8 +93,9 @@ public class Player {
   public void dropItem(String itemName) {
     for (int i = 0; i < this.inventory.size(); i++) {
       if (inventory.get(i).getName().equals(itemName)) {
-        currentRoom.getLootTable().add(inventory.get(i));
-        this.inventory.remove(inventory.get(i));
+        Item item = inventory.get(i);
+        currentRoom.setLootTable(item);
+        this.inventory.remove(item);
       }
     }
   }
