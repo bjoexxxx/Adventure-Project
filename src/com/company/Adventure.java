@@ -51,7 +51,7 @@ public class Adventure {
         case ("look") -> player.look();
         case ("go") -> player.move(secondWord);
         case ("open") -> player.open(secondWord);
-        case ("take") -> player.pickupItem(secondWord);
+        case ("take") -> player.takeItem(secondWord);
         case ("inventory") -> player.checkInventory();
         case ("drop") -> player.dropItem(secondWord);
 
