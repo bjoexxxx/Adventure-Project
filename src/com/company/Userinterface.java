@@ -26,6 +26,10 @@ public class Userinterface {
 
   }
 
+  public void displayItemTaken () {
+    System.out.println("You took the item.");
+  }
+
   public void displayRoomDiscription (Room room){
     System.out.println(room.getDescription());
   }
@@ -74,4 +78,8 @@ public class Userinterface {
   public void displayItemNotFound () {
     System.out.println("Item not found");
   }
+
+public void displayYouNeedToUseAKey (){
+  System.out.println("You need to use a key first.");
+}
 }

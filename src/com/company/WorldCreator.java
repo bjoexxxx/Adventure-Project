@@ -10,11 +10,15 @@ public class WorldCreator {
   public void createRooms() {
     Room room1 = new Room("Staging Grounds", "you find yourself at the entrance of a dungeon. " +
         "This is where heroes pick up their arms and venture forth", "Staging area at the start of the dungeon.");
-    Room room2 = new Room("Forsaken Chapel", "A room of holy congregation long abandoned", "Forsaken chapel");
-    Room room3 = new Room("Inner Sanctum", "Where priests keep their secrets", "Inner sanctum ");
+    Room room2 = new Room("Forsaken Chapel", "A room of holy congregation long abandoned.\n" +
+        "Books and half torn pages lie on the floor, written in a language that you do not understand.", "Forsaken chapel");
+    Room room3 = new Room("Inner Sanctum", "In the back of the chapel, you find a small shrine,where the priests likely kept their secrets.\n" +
+        "Whatever was kept here has long since been moved, and now this place seems a abandoned as the rest of the chapel", "Inner sanctum ");
     Room room4 = new Room("Dank Cave", "A dark narrow cavern", "A dank cave");
     Room room5 = new Room("Boss Room", "A great ornate hall, with a massive figure towering over you", "Great ornate hall");
-    Room room6 = new Room("Room Of Forbidden Idols", "Odd trinkets adorn this room, you have never seen their like before", " Room of forbidden Idols");
+    Room room6 = new Room("Room Of Forbidden Idols", "Odd trinkets adorn this room, you have never seen their like " +
+        "before.\n Small statures of demons and miniatures of grotesque are placed around a central podium." +
+        " On the podium lies a magical item.", " Room of forbidden Idols");
     Room room7 = new Room("Dark Portal", "A grouping of stone, crackling with power that gives an ominous feeling ", "A dark portal");
     Room room8 = new Room("Blood Grounds", "A great carnage has been committed here", "Blood soaked grounds");
     Room room9 = new Room("Torture Room", "Blood racks and chains litter the room, some even have human remains on them", "the torture room");
@@ -46,9 +50,9 @@ public class WorldCreator {
     playerPosition = room1;
 
     // skriv rummets navn, den retning den skal sidde, lav new door, false means closed
-    room8.setDoorEast(new Door(false));
-    room8.setDoorNorth(new Door(false));
-    room1.setDoorSouth(new Door(false));
+    room3.setDoorSouth(new Door(false,""));
+    room8.setDoorNorth(new Door(false,"Gold"));
+    room9.setDoorNorth(new Door(false,""));
 
 
 

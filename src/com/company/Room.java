@@ -20,7 +20,6 @@ public class Room {
   private Door doorSouth;
   private Door doorEast;
   private Door doorWest;
-  private Userinterface userinterface;
 
 
   public Room(String name, String description, String shortDescription) {
@@ -221,16 +220,8 @@ public class Room {
     return null;
   }
 
-  public void availableDirections (Room room) {
-    Room[] options = {getNorth(), getEast(), getSouth(), getWest()};
-    if (triedRooms(room)) {
-      userinterface.displayYouHaveOptionsDirections();
-      for (int i = 0; i < options.length; i++) {
-        if (options[i] != null) {
-          userinterface.displayAvailableDirections(i);
-        }
-      }
-    }
-
+  public Room[] getAllDirections() {
+    Room[] options = {north, east, south, west};
+    return options;
   }
 }

@@ -26,13 +26,118 @@ public class Adventure {
       return "";
     }
   }
-  private String capitalize (String word){
-    return word.substring(0,1).toUpperCase()+word.substring(1);
+
+  private String capitalize(String word) {
+    return word.substring(0, 1).toUpperCase() + word.substring(1);
+  }
+
+  public void look() {
+    Room room = player.getCurrentRoom();
+
+    userinterface.displayRoomDiscription(room);
+
+    if (!player.getCurrentRoom().getLootTable().isEmpty()) { // loot table must contain something
+      userinterface.displayItems(room);
+    }
+    // the following code checks to see if player has tried going all directions, if yes, the available moves are displayed
+    if (player.getCurrentRoom().triedRooms(room)) {
+      userinterface.displayYouHaveOptionsDirections();
+      Room[] options = player.getCurrentRoom().getAllDirections();
+      for (int i = 0; i < options.length; i++) {
+        if (options[i] != null) {
+          userinterface.displayAvailableDirections(i);
+        }
+      }
+    }
+
+    userinterface.newline();
+  }
+
+  public void dropItem(String secondWord) {
+    if (player.getInventory().isEmpty()) {
+      userinterface.displayItemNotFound();
+    } else {
+      player.dropItem(secondWord);
+    }
+  }
+
+  public void move(String direction) {
+
+    Room room = null;
+    userinterface.newline();
+
+    switch (direction) {
+      case "North", "N" -> {
+        player.getCurrentRoom().setTriedNorth(true);
+        room = player.getCurrentRoom().getNorth();
+      }
+      case "South", "S" -> {
+        player.getCurrentRoom().setTriedSouth(true);
+        room = player.getCurrentRoom().getSouth();
+      }
+      case "East", "E" -> {
+        player.getCurrentRoom().setTriedEast(true);
+        room = player.getCurrentRoom().getEast();
+      }
+      case "West", "W" -> {
+        player.getCurrentRoom().setTriedWest(true);
+        room = player.getCurrentRoom().getWest();
+      }
+    }
+    // the steps to make a move
+    if (room == null) { //checks if the next room is a wall
+      userinterface.displayWalkedIntoWall();
+    } else if (!player.getCurrentRoom().checkdoors(room)) { //checks if there is a looked door and checks locations
+      userinterface.displayFoundLockedDoor();
+    } else { //if player makes a valid move
+      player.playerMove(room);
+
+      //Display long description only on first time visit
+      if (!player.getCurrentRoom().getIsVisited()) {
+        userinterface.displayRoomDiscription(player.getCurrentRoom());
+      } else {
+        userinterface.displayShortRoomDiscription(player.getCurrentRoom());
+      }
+    }
+  }
+
+  public void takeItem(String itemName) {
+
+    if (player.takeItem(itemName)) {
+      userinterface.displayItemTaken();
+    } else {
+      userinterface.displayItemNotFound();
+    }
+    userinterface.newline();
+  }
+
+  public void open(String direction) {
+    Door door = null;
+    Room room = player.getCurrentRoom();
+
+    switch (direction) {
+      case "South" -> door = room.getDoorSouth();
+      case "North" -> door = room.getDoorNorth();
+      case "West" -> door = room.getDoorWest();
+      case "East" -> door = room.getDoorEast();
+    }
+
+    //hvis der ikke er en lås på døren
+    if (door.getKey().isEmpty()) {
+      door.setOpen(true);
+      userinterface.displayOpendDoor();
+    } else { // hvis der er en lås på døren
+      userinterface.displayYouNeedToUseAKey();
+    }
+  }
+
+  public void checkInventory() {
+    userinterface.displayPlayerInventory(player.getInventory());
   }
 
   public void mainMenu() {
 
-    //creator.setPlayerPosition(null);
+    // create the world
     creator = new WorldCreator();
     creator.createRooms();
 
@@ -52,18 +157,18 @@ public class Adventure {
 
         case ("help") -> userinterface.help();
         case ("exit") -> loop = false;
-        case ("look") -> player.look();
-        case ("go") -> player.move(secondWord);
-        case ("open") -> player.open(secondWord);
-        case ("take") -> player.takeItem(secondWord);
-        case ("inventory") -> player.checkInventory();
-        case ("drop") -> player.dropItem(secondWord);
+        case ("look") -> look();
+        case ("go") -> move(secondWord);
+        case ("open") -> open(secondWord);
+        case ("take") -> takeItem(secondWord);
+        case ("inventory") -> checkInventory();
+        case ("drop") -> dropItem(secondWord);
 
       }
     }
   }
 
   public static void main(String[] args) {
-      new Adventure().mainMenu();
+    new Adventure().mainMenu();
   }
 }
