@@ -20,6 +20,7 @@ public class Room {
   private Door doorSouth;
   private Door doorEast;
   private Door doorWest;
+  private Userinterface userinterface;
 
 
   public Room(String name, String description, String shortDescription) {
@@ -180,15 +181,15 @@ public class Room {
     this.triedWest = triedWest;
   }
 
-  public void setLootTable(Item loot){
+  public void setLootTable(Item loot) {
     this.lootTable.add(loot);
   }
 
-  public ArrayList<Item> getLootTable(){
+  public ArrayList<Item> getLootTable() {
     return this.lootTable;
   }
 
-  public void removeItem(Item loot){
+  public void removeItem(Item loot) {
     this.lootTable.remove(loot);
   }
 
@@ -210,7 +211,7 @@ public class Room {
     }
   }
 
-  public Item findItem (String itemName) {
+  public Item findItem(String itemName) {
     for (int i = 0; i < lootTable.size(); i++) {
       Item temp = lootTable.get(i);
       if (temp.getName().equals(itemName)) {
@@ -218,5 +219,18 @@ public class Room {
       }
     }
     return null;
+  }
+
+  public void availableDirections (Room room) {
+    Room[] options = {getNorth(), getEast(), getSouth(), getWest()};
+    if (triedRooms(room)) {
+      userinterface.displayYouHaveOptionsDirections();
+      for (int i = 0; i < options.length; i++) {
+        if (options[i] != null) {
+          userinterface.displayAvailableDirections(i);
+        }
+      }
+    }
+
   }
 }

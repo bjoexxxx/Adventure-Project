@@ -23,19 +23,19 @@ public class Player {
 
   public void open(String direction) {
     switch (direction) {
-      case "south" -> {
+      case "South" -> {
         currentRoom.getDoorSouth().setOpen(true);
         userinterface.displayOpendDoor();
       }
-      case "north" -> {
+      case "North" -> {
         currentRoom.getDoorNorth().setOpen(true);
         userinterface.displayOpendDoor();
       }
-      case "west" -> {
+      case "West" -> {
         currentRoom.getDoorWest().setOpen(true);
         userinterface.displayOpendDoor();
       }
-      case "east" -> {
+      case "East" -> {
         currentRoom.getDoorEast().setOpen(true);
         userinterface.displayOpendDoor();
       }
@@ -45,21 +45,22 @@ public class Player {
   public void move(String direction) {
 
     Room room = null;
+    userinterface.newline();
 
     switch (direction) {
-      case "north", "n" -> {
+      case "North", "N" -> {
         currentRoom.setTriedNorth(true);
         room = currentRoom.getNorth();
       }
-      case "south", "s" -> {
+      case "South", "S" -> {
         currentRoom.setTriedSouth(true);
         room = currentRoom.getSouth();
       }
-      case "east", "e" -> {
+      case "East", "E" -> {
         currentRoom.setTriedEast(true);
         room = currentRoom.getEast();
       }
-      case "west", "w" -> {
+      case "West", "W" -> {
         currentRoom.setTriedWest(true);
         room = currentRoom.getWest();
       }
@@ -83,13 +84,12 @@ public class Player {
   public void takeItem(String itemName) {
     Item foundItem = currentRoom.findItem(itemName);
     if (foundItem != null) {
-      this.inventory.add(foundItem);
+      inventory.add(foundItem);
       currentRoom.removeItem(foundItem);
     } else {
       userinterface.displayItemNotFound();
     }
   }
-
 
   public void dropItem(String itemName) {
     if (inventory.isEmpty()) {
@@ -99,7 +99,7 @@ public class Player {
         Item temp = inventory.get(i);
         if (temp.getName().equals(itemName)) {
           Item foundItem = inventory.get(i);
-          this.inventory.remove(foundItem);
+          inventory.remove(foundItem);
           currentRoom.setLootTable(foundItem);
         }
       }
@@ -115,20 +115,14 @@ public class Player {
 
     userinterface.displayRoomDiscription(currentRoom);
 
-    if (!currentRoom.getLootTable().isEmpty()) {
+    if (!currentRoom.getLootTable().isEmpty()) { // loot table must contain something
       userinterface.displayItems(currentRoom);
     }
     // the following code checks to see if player has tried going all directions, if yes, the available moves are displayed
-    Room[] options = {room.getNorth(), room.getEast(), room.getSouth(), room.getWest()};
-    if (currentRoom.triedRooms(room)) {
-      userinterface.displayYouHaveOptionsDirections();
-      for (int i = 0; i < options.length; i++) {
-        if (options[i] != null) {
-          userinterface.displayAvailableDirections(i);
-        }
-      }
-      userinterface.newline();
+    currentRoom.availableDirections(room);
+    userinterface.newline();
     }
-  }
+
 }
+
 

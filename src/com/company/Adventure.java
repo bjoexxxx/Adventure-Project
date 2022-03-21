@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Adventure {
@@ -12,18 +13,21 @@ public class Adventure {
 
   private String firstWord(String fullCommand) {
     if (fullCommand.contains(" ")) {
-      return fullCommand.substring(0, fullCommand.indexOf(' '));
+      return fullCommand.substring(0, fullCommand.indexOf(' ')).toLowerCase();
     } else {
-      return fullCommand;
+      return fullCommand.toLowerCase();
     }
   }
 
   private String secondWord(String fullCommand) {
     if (fullCommand.contains(" ")) {
-      return fullCommand.substring(fullCommand.indexOf(' ') + 1);
+      return capitalize(fullCommand.substring(fullCommand.indexOf(' ') + 1));
     } else {
       return "";
     }
+  }
+  private String capitalize (String word){
+    return word.substring(0,1).toUpperCase()+word.substring(1);
   }
 
   public void mainMenu() {

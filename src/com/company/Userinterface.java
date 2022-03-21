@@ -15,11 +15,13 @@ public class Userinterface {
 
   public void help() {
     System.out.println(); // all the help funktions listed below
+    System.out.println("Its always a good idea to check for spelling errors, if a command doesn't work.");
     System.out.println("You have the following options in the game:");
     System.out.println("-\"exit\" will end the game. ");
     System.out.println("-\"look\" will display the description of the room you're in. ");
     System.out.println("-\"go north\" will move you north, if that direction is clear." +
         " The same applies for go \"south\", \"go east\" and \"go west\".");
+    System.out.println("- If there seems to be more than one door in a room, you need to type \"open south\" or \"open north\" ect.");
     System.out.println();
 
   }
