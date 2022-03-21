@@ -191,4 +191,23 @@ public class Room {
   public void removeItem(Item loot){
     this.lootTable.remove(loot);
   }
+
+  public boolean triedRooms(Room room) {
+    return room.getTriedNorth() && room.getTriedEast() && room.getTriedSouth() && room.getTriedWest();
+  }
+
+  public boolean checkdoors(Room room) {
+    if (room == this.getNorth() && this.getDoorNorth() != null) {
+      return this.getDoorNorth().isOpen();
+    } else if (room == this.getSouth() && this.getDoorSouth() != null) {
+      return this.getDoorSouth().isOpen();
+    } else if (room == this.getEast() && this.getDoorEast() != null) {
+      return this.getDoorEast().isOpen();
+    } else if (room == this.getWest() && this.getDoorWest() != null) {
+      return this.getDoorWest().isOpen();
+    } else {
+      return true;
+    }
+  }
 }
+

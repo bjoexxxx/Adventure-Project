@@ -30,7 +30,7 @@ public class Adventure {
 
     //creator.setPlayerPosition(null);
     creator = new WorldCreator();
-    creator.buildRooms();
+    creator.createRooms();
 
     player = new Player(creator.playerPosition, new ArrayList<>());
     player.setCurrentRoom(creator.getPlayerPosition());

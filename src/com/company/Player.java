@@ -1,6 +1,5 @@
 package com.company;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Player {
@@ -68,7 +67,7 @@ public class Player {
 
     if (room == null) { //checks if the next room is a wall
       userinterface.displayWalkedIntoWall();
-    } else if (!checkdoor(room)) { //checks if there is a looked door and checks locations
+    } else if (!currentRoom.checkdoors(room)) { //checks if there is a looked door and checks locations
       userinterface.displayFoundLockedDoor();
     } else { //if player makes a valid move
       currentRoom.setIsVisited(true);
@@ -78,20 +77,6 @@ public class Player {
       } else {
         userinterface.displayShortRoomDiscription(currentRoom);
       }
-    }
-  }
-
-  private boolean checkdoor (Room room) {
-    if (room == this.currentRoom.getNorth() && this.currentRoom.getDoorNorth() != null ) {
-      return this.getCurrentRoom().getDoorNorth().isOpen();
-    } else if (room == this.currentRoom.getSouth() && this.currentRoom.getDoorSouth() != null){
-      return this.getCurrentRoom().getDoorSouth().isOpen();
-    } else if (room == this.currentRoom.getEast() && this.currentRoom.getDoorEast() != null) {
-      return this.getCurrentRoom().getDoorEast().isOpen();
-    } else if (room == this.currentRoom.getWest() && this.currentRoom.getDoorWest() != null) {
-      return this.getCurrentRoom().getDoorWest().isOpen();
-    } else {
-      return true;
     }
   }
 
@@ -127,7 +112,7 @@ public class Player {
     }
     // the following code checks to see if player has tried going all directions, if yes, the available moves are displayed
     Room[] options = {room.getNorth(), room.getEast(), room.getSouth(), room.getWest()};
-    if (triedRooms(room)) {
+    if (currentRoom.triedRooms(room)) {
       userinterface.displayYouHaveOptionsDirections();
       for (int i = 0; i < options.length; i++) {
         if (options[i] != null) {
@@ -137,8 +122,5 @@ public class Player {
       userinterface.newline();
     }
   }
-
-  private boolean triedRooms(Room room) {
-    return room.getTriedNorth() && room.getTriedEast() && room.getTriedSouth() && room.getTriedWest();
-  }
 }
+

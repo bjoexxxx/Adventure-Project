@@ -7,7 +7,7 @@ public class WorldCreator {
     this.playerPosition = null;
   }
 
-  public void buildRooms() {
+  public void createRooms() {
     Room room1 = new Room("Staging Grounds", "you find yourself at the entrance of a dungeon. " +
         "This is where heroes pick up their arms and venture forth", "Staging area at the start of the dungeon.");
     Room room2 = new Room("Forsaken Chapel", "A room of holy congregation long abandoned", "Forsaken chapel");
@@ -43,18 +43,19 @@ public class WorldCreator {
     room8.setEast(room9);
     room8.setWest(room7);
     room9.setWest(room8);
-    playerPosition = room8;
+    playerPosition = room1;
 
     // skriv rummets navn, den retning den skal sidde, lav new door, false means closed
     room8.setDoorEast(new Door(false));
     room8.setDoorNorth(new Door(false));
+    room1.setDoorSouth(new Door(false));
 
 
 
     // Make items
-    room1.setLootTable(generateLoot("sword"));
-    room1.setLootTable(generateLoot("lambas"));
-    room3.setLootTable(generateLoot("flute"));
+    room1.setLootTable(createLoot("sword"));
+    room1.setLootTable(createLoot("lambas"));
+    room3.setLootTable(createLoot("flute"));
 
 
   }
@@ -63,7 +64,7 @@ public class WorldCreator {
     return this.playerPosition;
   }
 
-  public Item generateLoot(String name) {
+  public Item createLoot(String name) {
 
     switch (name) {
       case "sword" -> {
