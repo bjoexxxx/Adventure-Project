@@ -22,6 +22,7 @@ public class Userinterface {
     System.out.println("-\"go north\" will move you north, if that direction is clear." +
         " The same applies for go \"south\", \"go east\" and \"go west\".");
     System.out.println("- If there seems to be more than one door in a room, you need to type \"open south\" or \"open north\" ect.");
+    System.out.println("-\"health\" will display your health. ");
     System.out.println();
 
   }
@@ -75,9 +76,25 @@ public class Userinterface {
     inventory.forEach((n) -> System.out.println(n));
   }
 
+  public void displayHealth (int health) {
+    System.out.print("You have "+health + " health - ");
+    if (health < 25) {
+      System.out.print("You are close to death");
+    } else if (health > 25 && health < 50 ) {
+      System.out.print("Be careful going forward");
+    } else if (health > 50 && health < 75) {
+      System.out.print("Consider getting some more health");
+    } else {
+      System.out.print("Go forth and explore!");
+    }
+
+
+  }
+
   public void displayItemNotFound () {
     System.out.println("Item not found");
   }
+
   public void displayItemDropped (){
     System.out.println("You dropped the item");
   }

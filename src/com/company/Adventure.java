@@ -31,7 +31,7 @@ public class Adventure {
     return word.substring(0, 1).toUpperCase() + word.substring(1);
   }
 
-  public void look() {
+  private void look() {
     Room room = player.getCurrentRoom();
 
     userinterface.displayRoomDiscription(room);
@@ -53,7 +53,7 @@ public class Adventure {
     userinterface.newline();
   }
 
-  public void dropItem(String secondWord) {
+  private void dropItem(String secondWord) {
     if (player.getInventory().isEmpty()) {
       userinterface.displayItemNotFound();
     } else {
@@ -62,7 +62,7 @@ public class Adventure {
     }
   }
 
-  public void move(String direction) {
+  private void move(String direction) {
 
     Room room = null;
     userinterface.newline();
@@ -102,7 +102,7 @@ public class Adventure {
     }
   }
 
-  public void takeItem(String itemName) {
+  private void takeItem(String itemName) {
 
     if (player.takeItem(itemName)) {
       userinterface.displayItemTaken();
@@ -112,7 +112,7 @@ public class Adventure {
     userinterface.newline();
   }
 
-  public void open(String direction) {
+  private void open(String direction) {
     Door door = null;
     Room room = player.getCurrentRoom();
 
@@ -132,8 +132,14 @@ public class Adventure {
     }
   }
 
-  public void checkInventory() {
+  private void checkInventory() {
     userinterface.displayPlayerInventory(player.getInventory());
+  }
+
+  private void health () {
+    int health = player.getHealth();
+    userinterface.displayHealth(health);
+
   }
 
   public void mainMenu() {
@@ -142,7 +148,7 @@ public class Adventure {
     creator = new WorldCreator();
     creator.createRooms();
 
-    player = new Player(creator.playerPosition, new ArrayList<>());
+    player = new Player(creator.playerPosition, new ArrayList<>(),100);
     player.setCurrentRoom(creator.getPlayerPosition());
 
     userinterface.displayWelcome(player.getCurrentRoom());
@@ -164,6 +170,7 @@ public class Adventure {
         case ("take") -> takeItem(secondWord);
         case ("inventory") -> checkInventory();
         case ("drop") -> dropItem(secondWord);
+        case ("health") -> health();
 
       }
     }

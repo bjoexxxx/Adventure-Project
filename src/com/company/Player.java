@@ -5,10 +5,12 @@ import java.util.ArrayList;
 public class Player {
   private Room currentRoom;
   private ArrayList<Item> inventory;
+  private int health;
 
-  public Player(Room currentRoom, ArrayList<Item> inventory) {
+  public Player(Room currentRoom, ArrayList<Item> inventory, int health) {
     this.currentRoom = currentRoom;
     this.inventory = inventory;
+    this.health = health;
   }
 
   public void setCurrentRoom(Room currentRoom) {
@@ -50,6 +52,14 @@ public class Player {
 
   public ArrayList<Item> getInventory() {
     return inventory;
+  }
+
+  public void setHealth (int health) {
+    this.health = health;
+  }
+
+  public int getHealth () {
+    return this.health;
   }
 
 }
