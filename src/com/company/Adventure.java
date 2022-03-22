@@ -58,6 +58,7 @@ public class Adventure {
       userinterface.displayItemNotFound();
     } else {
       player.dropItem(secondWord);
+      userinterface.displayItemDropped();
     }
   }
 

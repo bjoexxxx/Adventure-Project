@@ -78,6 +78,9 @@ public class Userinterface {
   public void displayItemNotFound () {
     System.out.println("Item not found");
   }
+  public void displayItemDropped (){
+    System.out.println("You dropped the item");
+  }
 
 public void displayYouNeedToUseAKey (){
   System.out.println("You need to use a key first.");
