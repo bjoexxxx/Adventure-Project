@@ -87,6 +87,7 @@ public class Userinterface {
     } else {
       System.out.print("Go forth and explore!");
     }
+    newline();
 
 
   }

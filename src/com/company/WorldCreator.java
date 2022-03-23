@@ -80,13 +80,13 @@ public class WorldCreator {
         return new Item("Sword", "Its very pointy");
       }
       case "lambras" -> {
-        return new Food("Lambras", "An elvish flatbred", Consume.EDIBLE);
+        return new Food("Lambras", "An elvish flatbred", Consume.EDIBLE,20);
       }
       case "ham" -> {
-        return new Food("Ham", "Smells bad", Consume.POISONOUS);
+        return new Food("Ham", "Smells bad", Consume.POISONOUS,25);
       }
       case "water" -> {
-        return new Food("Water", "Feeling thirsty?", Consume.INVALID);
+        return new Food("Water", "Feeling thirsty?", Consume.EDIBLE,5);
       }
       case "flute" -> {
         return new Item("Boneflute", "Can make a eerie high pitch tone");

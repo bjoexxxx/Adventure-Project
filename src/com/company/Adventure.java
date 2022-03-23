@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
+import static com.company.Consume.*;
+
 public class Adventure {
 
   public final Scanner keyboard = new Scanner(System.in);
@@ -171,16 +173,22 @@ public class Adventure {
         case ("inventory") -> checkInventory();
         case ("drop") -> dropItem(secondWord);
         case ("health") -> health();
+        case ("eat") -> eat(secondWord);
 
       }
     }
   }
-  public void eat(String secondWord){
+
+  public void eat(String secondWord) {
     if (player.getInventory().isEmpty()) {
       userinterface.displayItemNotFound();
     } else {
-      player.dropItem(secondWord);
-      userinterface.displayItemDropped();
+      Consume status = player.eatFood(secondWord);
+      switch (status) {
+        case EDIBLE -> System.out.println("Edible");
+        case INVALID -> System.out.println("invalid");
+        case POISONOUS -> System.out.println("poisonous");
+      }
     }
   }
 

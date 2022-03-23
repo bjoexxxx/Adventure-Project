@@ -61,20 +61,38 @@ public class Player {
   public int getHealth () {
     return this.health;
   }
+
   public Consume eatFood(String itemName){
     for (int i = 0; i < inventory.size(); i++) {
       Item temp = inventory.get(i);
       if (temp.getName().equals(itemName)) {
         Item foundItem = inventory.get(i);
-        inventory.remove(foundItem);
-        currentRoom.setLootTable(foundItem);
-        if (foundItem instanceof Food){
 
+
+        if (foundItem instanceof Food) {
+          inventory.remove(foundItem);
+          setHealth(getHealth()+((Food) foundItem).getNutrition());
+          maxHealth(getHealth());
+          return ((Food) foundItem).getConsume();
         }
       }
+    }
+    return Consume.INVALID;
+  }
+
+  public void maxHealth (int health) {
+    if (health > 99) {
+      setHealth(100);
+   }
+  }
+
+  public void digestingFood (Consume consume) {
+
+    switch (consume) {
+      case EDIBLE -> setHealth(100);
+      case POISONOUS -> setHealth(100);
 
     }
-    return null;
   }
 
 }
