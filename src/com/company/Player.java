@@ -61,6 +61,21 @@ public class Player {
   public int getHealth () {
     return this.health;
   }
+  public Consume eatFood(String itemName){
+    for (int i = 0; i < inventory.size(); i++) {
+      Item temp = inventory.get(i);
+      if (temp.getName().equals(itemName)) {
+        Item foundItem = inventory.get(i);
+        inventory.remove(foundItem);
+        currentRoom.setLootTable(foundItem);
+        if (foundItem instanceof Food){
+
+        }
+      }
+
+    }
+    return null;
+  }
 
 }
 

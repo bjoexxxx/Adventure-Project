@@ -1,5 +1,8 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class WorldCreator {
   public Room playerPosition;
 
@@ -58,8 +61,10 @@ public class WorldCreator {
 
     // Make items
     room1.setLootTable(createLoot("sword"));
-    room1.setLootTable(createLoot("lambas"));
+    room1.setLootTable(createLoot("lambras"));
     room3.setLootTable(createLoot("flute"));
+    room1.setLootTable(createLoot("ham"));
+    room1.setLootTable(createLoot("water"));
 
 
   }
@@ -74,8 +79,14 @@ public class WorldCreator {
       case "sword" -> {
         return new Item("Sword", "Its very pointy");
       }
-      case "lambas" -> {
-        return new Item("Lambras", "An elvish flatbred");
+      case "lambras" -> {
+        return new Food("Lambras", "An elvish flatbred", Consume.EDIBLE);
+      }
+      case "ham" -> {
+        return new Food("Ham", "Smells bad", Consume.POISONOUS);
+      }
+      case "water" -> {
+        return new Food("Water", "Feeling thirsty?", Consume.INVALID);
       }
       case "flute" -> {
         return new Item("Boneflute", "Can make a eerie high pitch tone");

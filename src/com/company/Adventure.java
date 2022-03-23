@@ -175,6 +175,14 @@ public class Adventure {
       }
     }
   }
+  public void eat(String secondWord){
+    if (player.getInventory().isEmpty()) {
+      userinterface.displayItemNotFound();
+    } else {
+      player.dropItem(secondWord);
+      userinterface.displayItemDropped();
+    }
+  }
 
   public static void main(String[] args) {
     new Adventure().mainMenu();
