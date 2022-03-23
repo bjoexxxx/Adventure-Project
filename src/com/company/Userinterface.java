@@ -27,6 +27,14 @@ public class Userinterface {
 
   }
 
+  public void displayFoodStatus (Consume status) {
+    switch (status) {
+      case EDIBLE -> System.out.println("Edible");
+      case INVALID -> System.out.println("invalid");
+      case POISONOUS -> System.out.println("poisonous");
+    }
+  }
+
   public void displayItemTaken () {
     System.out.println("You took the item.");
   }

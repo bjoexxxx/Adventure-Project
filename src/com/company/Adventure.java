@@ -184,11 +184,7 @@ public class Adventure {
       userinterface.displayItemNotFound();
     } else {
       Consume status = player.eatFood(secondWord);
-      switch (status) {
-        case EDIBLE -> System.out.println("Edible");
-        case INVALID -> System.out.println("invalid");
-        case POISONOUS -> System.out.println("poisonous");
-      }
+      userinterface.displayFoodStatus(status);
     }
   }
 
