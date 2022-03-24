@@ -51,7 +51,6 @@ public class Adventure {
         }
       }
     }
-    userinterface.newline();
   }
 
   private void dropItem(String searchWord) {
@@ -111,7 +110,6 @@ public class Adventure {
       }
     }
   }
-
 
   private void open(String direction) {
     Door door = null;

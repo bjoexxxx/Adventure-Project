@@ -10,7 +10,7 @@ public class Userinterface {
   public Userinterface() {
   }
 
-  public void displayWelcome (Room room) {
+  public void displayWelcome(Room room) {
     System.out.println("Welcome to the game!");
     System.out.println("In case of confusion input \"help\".");
     System.out.println("\n" + room.getDescription());
@@ -30,7 +30,7 @@ public class Userinterface {
 
   }
 
-  public void displayFoodStatus (Consume status) {
+  public void displayFoodStatus(Consume status) {
     switch (status) {
       case EDIBLE -> System.out.println("Edible");
       case INVALID -> System.out.println("invalid");
@@ -38,60 +38,60 @@ public class Userinterface {
     }
   }
 
-  public void displayItemTaken () {
+  public void displayItemTaken() {
     System.out.println("You took the item.");
   }
 
-  public void displayRoomDiscription (Room room){
+  public void displayRoomDiscription(Room room) {
     System.out.println(room.getDescription());
   }
 
-  public void displayShortRoomDiscription (Room room){
+  public void displayShortRoomDiscription(Room room) {
     System.out.println(room.getShortDescription());
   }
 
-  public void displayYouHaveOptionsDirections () {
+  public void displayYouHaveOptionsDirections() {
     System.out.println("You have these options:");
   }
 
-  public void displayAvailableDirections (int directionNumber) {
+  public void displayAvailableDirections(int directionNumber) {
     String[] directions = {"north", "east", "south", "west"};
     System.out.println(directions[directionNumber] + " is available");
   }
 
-  public void displayItems (Room room) {
+  public void displayItems(Room room) {
     System.out.println();
     System.out.print("Around you there is: ");
     System.out.print(room.getLootTable());
     System.out.println();
   }
 
-  public void newline(){
+  public void newline() {
     System.out.println();
   }
 
-  public void displayWalkedIntoWall (){
+  public void displayWalkedIntoWall() {
     System.out.println("you walked into a wall, ouch");
   }
 
-  public void displayOpendDoor () {
+  public void displayOpendDoor() {
     System.out.println("You open the door.");
   }
 
-  public void displayFoundLockedDoor () {
+  public void displayFoundLockedDoor() {
     System.out.println("You found a found a door that is locked.");
   }
 
-  public void displayPlayerInventory (ArrayList<Item> inventory) {
+  public void displayPlayerInventory(ArrayList<Item> inventory) {
     System.out.println("In your inventory is:");
     inventory.forEach((n) -> System.out.println(n));
   }
 
-  public void displayHealth (int health) {
-    System.out.print("You have "+health + " health - ");
+  public void displayHealth(int health) {
+    System.out.print("You have " + health + " health - ");
     if (health < 25) {
       System.out.print("You are close to death");
-    } else if (health > 25 && health < 50 ) {
+    } else if (health > 25 && health < 50) {
       System.out.print("Be careful going forward");
     } else if (health > 50 && health < 75) {
       System.out.print("Consider getting some more health");
@@ -103,15 +103,15 @@ public class Userinterface {
 
   }
 
-  public void displayItemNotFound () {
+  public void displayItemNotFound() {
     System.out.println("Item not found");
   }
 
-  public void displayItemDropped (){
+  public void displayItemDropped() {
     System.out.println("You dropped the item");
   }
 
-public void displayYouNeedToUseAKey (){
-  System.out.println("You need to use a key first.");
-}
+  public void displayYouNeedToUseAKey() {
+    System.out.println("You need to use a key first.");
+  }
 }

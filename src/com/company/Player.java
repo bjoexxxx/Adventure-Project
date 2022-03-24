@@ -66,7 +66,6 @@ public class Player {
     return null;
   }
 
-
   public ArrayList<Item> getInventory() {
     return inventory;
   }
@@ -83,17 +82,15 @@ public class Player {
     Item itemFromInventory = searchItemsInInventory(itemName);
 
     if (itemFromInventory != null) {
-            if (itemFromInventory instanceof Food food) {
-          inventory.remove(food);
-          digestingFood(food.getConsume());
-          checkMaxHealth(getHealth());
-          return food.getConsume();
-        }
+      if (itemFromInventory instanceof Food food) {
+        inventory.remove(food);
+        digestingFood(food.getConsume());
+        checkMaxHealth(getHealth());
+        return food.getConsume();
       }
+    }
     return Consume.INVALID;
   }
-
-
 
   private void checkMaxHealth(int health) {
     if (health > 99) {
