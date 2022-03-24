@@ -57,6 +57,7 @@ public class WorldCreator {
     room3.setDoorSouth(new Door(false,""));
     room8.setDoorNorth(new Door(false,"Gold"));
     room9.setDoorNorth(new Door(false,""));
+    room1.setDoorSouth(new Door(false,""));
 
 
 

@@ -82,36 +82,36 @@ public class Adventure {
 
   private void move(String direction) {
 
-    Room room = null;
+    Room room = player.getCurrentRoom();
 
     switch (direction) {
       case "North", "N" -> {
-        player.getCurrentRoom().setTriedNorth(true);
-        room = player.getCurrentRoom().getNorth();
+        room.setTriedNorth(true);
+        room = room.getNorth();
       }
       case "South", "S" -> {
-        player.getCurrentRoom().setTriedSouth(true);
-        room = player.getCurrentRoom().getSouth();
+        room.setTriedSouth(true);
+        room = room.getSouth();
       }
       case "East", "E" -> {
-        player.getCurrentRoom().setTriedEast(true);
-        room = player.getCurrentRoom().getEast();
+        room.setTriedEast(true);
+        room = room.getEast();
       }
       case "West", "W" -> {
-        player.getCurrentRoom().setTriedWest(true);
-        room = player.getCurrentRoom().getWest();
+        room.setTriedWest(true);
+        room = room.getWest();
       }
     }
     // the steps to make a move
     if (room == null) { //checks if the next room is a wall
       userinterface.displayWalkedIntoWall();
-    } else if (!player.getCurrentRoom().checkdoors(room)) { //checks if there is a looked door and checks locations
+    } else if (!room.checkdoors(room)) { //checks if there is a looked door and checks locations
       userinterface.displayFoundLockedDoor();
     } else { //if player makes a valid move
       player.playerMove(room);
 
       //Display long description only on first time visit
-      if (!player.getCurrentRoom().getIsVisited()) {
+      if (!room.getIsVisited()) {
         userinterface.displayRoomDiscription(player.getCurrentRoom());
       } else {
         userinterface.displayShortRoomDiscription(player.getCurrentRoom());
