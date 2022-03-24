@@ -212,7 +212,7 @@ public class Room {
     }
   }
 
-  public Item findItem(String itemName) {
+  public Item searchItemsInRoom(String itemName) {
     for (int i = 0; i < lootTable.size(); i++) {
       Item temp = lootTable.get(i);
       if (temp.getName().equals(itemName)) {

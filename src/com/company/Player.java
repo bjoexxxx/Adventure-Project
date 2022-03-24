@@ -31,70 +31,81 @@ public class Player {
   }
 
   public boolean takeItem(String itemName) {
-    Item foundItem = currentRoom.findItem(itemName);
-    if (foundItem != null) {
-      inventory.add(foundItem);
-      currentRoom.removeItem(foundItem);
+    Item itemFromRoom = currentRoom.searchItemsInRoom(itemName);
+    if (itemFromRoom != null) {
+      inventory.add(itemFromRoom);
+      currentRoom.removeItem(itemFromRoom);
       return true;
     } else {
       return false;
     }
   }
 
-  public void dropItem(String itemName) {
+  public boolean dropItem(String itemName) {
+    Item itemFromInventory = searchItemsInInventory(itemName);
+    if (itemFromInventory != null) {
+      inventory.remove(itemFromInventory);
+      currentRoom.setLootTable(itemFromInventory);
+      return true;
+    } else {
+      return false;
+    }
+  }
 
+  private Item searchItemsInInventory(String itemName) {
+    if (inventory == null) {
+      return null;
+    } else {
       for (int i = 0; i < inventory.size(); i++) {
         Item temp = inventory.get(i);
         if (temp.getName().equals(itemName)) {
-          Item foundItem = inventory.get(i);
-          inventory.remove(foundItem);
-          currentRoom.setLootTable(foundItem);
+          return temp;
         }
       }
     }
+    return null;
+  }
 
 
   public ArrayList<Item> getInventory() {
     return inventory;
   }
 
-  public void setHealth (int health) {
-    this.health = health;
+  public void setHealth(int adjustHealth) {
+    this.health += adjustHealth;
   }
 
-  public int getHealth () {
+  public int getHealth() {
     return this.health;
   }
 
-  public Consume eatFood(String itemName){
-    for (int i = 0; i < inventory.size(); i++) {
-      Item temp = inventory.get(i);
-      if (temp.getName().equals(itemName)) {
-        Item foundItem = inventory.get(i);
+  public Consume eatFood(String itemName) {
+    Item itemFromInventory = searchItemsInInventory(itemName);
 
-
-        if (foundItem instanceof Food) {
-          inventory.remove(foundItem);
-          setHealth(getHealth()+((Food) foundItem).getNutrition());
-          maxHealth(getHealth());
-          return ((Food) foundItem).getConsume();
+    if (itemFromInventory != null) {
+            if (itemFromInventory instanceof Food food) {
+          inventory.remove(food);
+          digestingFood(food.getConsume());
+          checkMaxHealth(getHealth());
+          return food.getConsume();
         }
       }
-    }
     return Consume.INVALID;
   }
 
-  public void maxHealth (int health) {
+
+
+  private void checkMaxHealth(int health) {
     if (health > 99) {
-      setHealth(100);
-   }
+      this.health = 100;
+    }
   }
 
-  public void digestingFood (Consume consume) {
+  private void digestingFood(Consume consume) {
 
     switch (consume) {
-      case EDIBLE -> setHealth(100);
-      case POISONOUS -> setHealth(100);
+      case EDIBLE -> setHealth(20);
+      case POISONOUS -> setHealth(-25);
 
     }
   }

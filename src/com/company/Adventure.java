@@ -1,6 +1,7 @@
 package com.company;
 
 import Items.Consume;
+import Items.Item;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -50,16 +51,24 @@ public class Adventure {
         }
       }
     }
-
     userinterface.newline();
   }
 
-  private void dropItem(String secondWord) {
-    if (player.getInventory().isEmpty()) {
-      userinterface.displayItemNotFound();
-    } else {
-      player.dropItem(secondWord);
+  private void dropItem(String searchWord) {
+
+    if (player.dropItem(searchWord)) {
       userinterface.displayItemDropped();
+    } else {
+      userinterface.displayItemNotFound();
+    }
+  }
+
+  private void takeItem(String searchWord) {
+
+    if (player.takeItem(searchWord)) {
+      userinterface.displayItemTaken();
+    } else {
+      userinterface.displayItemNotFound();
     }
   }
 
@@ -103,15 +112,6 @@ public class Adventure {
     }
   }
 
-  private void takeItem(String itemName) {
-
-    if (player.takeItem(itemName)) {
-      userinterface.displayItemTaken();
-    } else {
-      userinterface.displayItemNotFound();
-    }
-    userinterface.newline();
-  }
 
   private void open(String direction) {
     Door door = null;
@@ -137,7 +137,7 @@ public class Adventure {
     userinterface.displayPlayerInventory(player.getInventory());
   }
 
-  private void health () {
+  private void health() {
     int health = player.getHealth();
     userinterface.displayHealth(health);
 
@@ -149,14 +149,14 @@ public class Adventure {
     creator = new WorldCreator();
     creator.createRooms();
 
-    player = new Player(creator.playerPosition, new ArrayList<>(),100);
+    player = new Player(creator.playerPosition, new ArrayList<>(), 100);
     player.setCurrentRoom(creator.getPlayerPosition());
 
     userinterface.displayWelcome(player.getCurrentRoom());
 
     boolean loop = true;
     while (loop) {
-
+      userinterface.newline();
       String playerCommand = keyboard.nextLine();
       String firstWord = firstWord(playerCommand);
       String secondWord = secondWord(playerCommand);
