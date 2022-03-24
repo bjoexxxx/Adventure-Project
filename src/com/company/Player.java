@@ -1,5 +1,9 @@
 package com.company;
 
+import Items.Consume;
+import Items.Food;
+import Items.Item;
+
 import java.util.ArrayList;
 
 public class Player {

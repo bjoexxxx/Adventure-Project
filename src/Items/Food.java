@@ -1,6 +1,6 @@
-package com.company;
+package Items;
 
-  public class Food extends Item {
+public class Food extends Item {
     private Consume consume;
     private int nutrition;
 

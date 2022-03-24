@@ -1,4 +1,4 @@
-package com.company;
+package Items;
 
 public enum Consume {
   EDIBLE,POISONOUS,INVALID

@@ -1,5 +1,8 @@
 package com.company;
 
+import Items.Consume;
+import Items.Item;
+
 import java.util.ArrayList;
 
 public class Userinterface {

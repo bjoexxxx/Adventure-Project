@@ -1,10 +1,9 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.Scanner;
+import Items.Consume;
 
-import static com.company.Consume.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Adventure {
 
