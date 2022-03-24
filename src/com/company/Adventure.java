@@ -112,7 +112,6 @@ public class Adventure {
     }
   }
 
-
   private void open(String direction) {
     Door door = null;
     Room room = player.getCurrentRoom();
