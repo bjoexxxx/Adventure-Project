@@ -194,8 +194,8 @@ public class Room {
     this.lootTable.remove(loot);
   }
 
-  public boolean triedRooms(Room room) {
-    return room.getTriedNorth() && room.getTriedEast() && room.getTriedSouth() && room.getTriedWest();
+  public boolean triedRooms() {
+    return this.getTriedNorth() && this.getTriedEast() && this.getTriedSouth() && this.getTriedWest();
   }
 
   public boolean checkdoors(Room room) {

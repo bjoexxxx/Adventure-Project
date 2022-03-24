@@ -42,9 +42,9 @@ public class Adventure {
       userinterface.displayItems(room);
     }
     // the following code checks to see if player has tried going all directions, if yes, the available moves are displayed
-    if (player.getCurrentRoom().triedRooms(room)) {
+    if (room.triedRooms()) {
       userinterface.displayYouHaveOptionsDirections();
-      Room[] options = player.getCurrentRoom().getAllDirections();
+      Room[] options = room.getAllDirections();
       for (int i = 0; i < options.length; i++) {
         if (options[i] != null) {
           userinterface.displayAvailableDirections(i);
@@ -71,10 +71,18 @@ public class Adventure {
     }
   }
 
+  public void eat(String secondWord) {
+    if (player.getInventory().isEmpty()) {
+      userinterface.displayItemNotFound();
+    } else {
+      Consume status = player.eatFood(secondWord);
+      userinterface.displayFoodStatus(status);
+    }
+  }
+
   private void move(String direction) {
 
     Room room = null;
-    userinterface.newline();
 
     switch (direction) {
       case "North", "N" -> {
@@ -173,15 +181,6 @@ public class Adventure {
         case ("eat") -> eat(secondWord);
 
       }
-    }
-  }
-
-  public void eat(String secondWord) {
-    if (player.getInventory().isEmpty()) {
-      userinterface.displayItemNotFound();
-    } else {
-      Consume status = player.eatFood(secondWord);
-      userinterface.displayFoodStatus(status);
     }
   }
 
