@@ -1,8 +1,6 @@
 package com.company;
 
-import Items.Consume;
-import Items.Food;
-import Items.Item;
+import Items.*;
 
 public class WorldCreator {
   public Room playerPosition;
@@ -71,8 +69,14 @@ public class WorldCreator {
   public Item createLoot(String name) {
 
     switch (name) {
+      case "handgun" -> {
+        return new Ranged("Handgun", "pew pew",10,0);
+      }
+      case "ammo" -> {
+        return new Ranged("ammonition", "Reloading",10,1);
+      }
       case "sword" -> {
-        return new Item("Sword", "Its very pointy");
+        return new Melee("Sword", "Its very pointy",3,100);
       }
       case "lambras" -> {
         return new Food("Lambras", "An elvish flatbred", Consume.EDIBLE,20);
