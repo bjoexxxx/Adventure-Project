@@ -70,19 +70,22 @@ public class Player {
     }
     return null;
   }
-  public void setRightHand(String weaponname){
-    Item stab = searchItemsInInventory(weaponname);
-    if (stab != null && this.rightHand == null ){
 
-      if (stab instanceof Weapon weapon){
-        incaseEquipped();
+  public boolean setRightHandWeapon(String weaponname){
+    Item weaponFromInventory = searchItemsInInventory(weaponname);
+
+    if (weaponFromInventory != null && this.rightHand == null ){
+      if (weaponFromInventory instanceof Weapon weapon){
+        inCaseHandIsEquipped();
         inventory.remove(weapon);
         this.rightHand = weapon;
+        return true;
       }
     }
-
+return false;
   }
-  public void incaseEquipped(){
+
+  private void inCaseHandIsEquipped(){
     if (this.rightHand != null){
       inventory.add(this.rightHand);
     }
@@ -91,6 +94,7 @@ public class Player {
   public Weapon getRightHand() {
     return rightHand;
   }
+
   public void attack(){
    if (this.rightHand != null){
 

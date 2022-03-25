@@ -31,8 +31,12 @@ public class Userinterface {
 
   }
 
-  public void displayUnknownCommand(){
+  public void displayItemEquipped(){
+    System.out.println("Item equipped");
+  }
 
+  public void displayInvalid(){
+    System.out.println("Invalid");
   }
 
   public void displayFoodStatus(Consume status) {
@@ -89,8 +93,10 @@ public class Userinterface {
 
   public void displayPlayerInventory(ArrayList<Item> inventory, Weapon weapon) {
     System.out.println("In your inventory is:");
-    inventory.forEach((n) -> System.out.println(n));
-    System.out.println("You are holding "+weapon.getName());
+    inventory.forEach((n) -> System.out.println("- " +n));
+    if (weapon != null) {
+      System.out.println("You are holding "+weapon.getName());
+    }
   }
 
   public void displayHealth(int health) {

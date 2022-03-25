@@ -151,7 +151,12 @@ public class Adventure {
 
   }
   public void equip(String itemName){
-    player.setRightHand(itemName);
+    if (player.setRightHandWeapon(itemName)) {
+      userinterface.displayItemEquipped();
+    } else {
+      userinterface.displayInvalid();
+    }
+
   }
 
   public void mainMenu() {
