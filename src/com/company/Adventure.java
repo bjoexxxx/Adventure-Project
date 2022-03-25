@@ -101,6 +101,7 @@ public class Adventure {
         room.setTriedWest(true);
         room = room.getWest();
       }
+      default -> room = null;
     }
     // the steps to make a move
     if (room == null) { //checks if the next room is a wall

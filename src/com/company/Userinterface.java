@@ -31,6 +31,10 @@ public class Userinterface {
 
   }
 
+  public void displayUnknownCommand(){
+
+  }
+
   public void displayFoodStatus(Consume status) {
     switch (status) {
       case EDIBLE -> System.out.println("Edible");
