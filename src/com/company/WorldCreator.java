@@ -59,6 +59,7 @@ public class WorldCreator {
     room3.setLootTable(createLoot("flute"));
     room1.setLootTable(createLoot("ham"));
     room1.setLootTable(createLoot("water"));
+    room1.setLootTable(createLoot("handgun"));
 
   }
 

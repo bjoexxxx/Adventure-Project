@@ -140,13 +140,17 @@ public class Adventure {
   }
 
   private void checkInventory() {
-    userinterface.displayPlayerInventory(player.getInventory());
+    userinterface.displayPlayerInventory(player.getInventory(), player.getRightHand());
+
   }
 
   private void health() {
     int health = player.getHealth();
     userinterface.displayHealth(health);
 
+  }
+  public void equip(String itemName){
+    player.setRightHand(itemName);
   }
 
   public void mainMenu() {
@@ -179,6 +183,7 @@ public class Adventure {
         case ("drop") -> dropItem(secondWord);
         case ("health") -> health();
         case ("eat") -> eat(secondWord);
+        case ("equip") -> equip(secondWord);
 
       }
     }

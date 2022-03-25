@@ -2,6 +2,7 @@ package com.company;
 
 import Items.Consume;
 import Items.Item;
+import Items.Weapon;
 
 import java.util.ArrayList;
 
@@ -82,9 +83,10 @@ public class Userinterface {
     System.out.println("You found a found a door that is locked.");
   }
 
-  public void displayPlayerInventory(ArrayList<Item> inventory) {
+  public void displayPlayerInventory(ArrayList<Item> inventory, Weapon weapon) {
     System.out.println("In your inventory is:");
     inventory.forEach((n) -> System.out.println(n));
+    System.out.println("You are holding "+weapon.getName());
   }
 
   public void displayHealth(int health) {

@@ -3,6 +3,7 @@ package com.company;
 import Items.Consume;
 import Items.Food;
 import Items.Item;
+import Items.Weapon;
 
 import java.util.ArrayList;
 
@@ -10,11 +11,15 @@ public class Player {
   private Room currentRoom;
   private ArrayList<Item> inventory;
   private int health;
+  private Weapon rightHand;
+  private Weapon leftHand;
 
   public Player(Room currentRoom, ArrayList<Item> inventory, int health) {
     this.currentRoom = currentRoom;
     this.inventory = inventory;
     this.health = health;
+    this.leftHand = null;
+    this.rightHand = null;
   }
 
   public void setCurrentRoom(Room currentRoom) {
@@ -64,6 +69,32 @@ public class Player {
       }
     }
     return null;
+  }
+  public void setRightHand(String weaponname){
+    Item stab = searchItemsInInventory(weaponname);
+    if (stab != null && this.rightHand == null ){
+
+      if (stab instanceof Weapon weapon){
+        incaseEquipped();
+        inventory.remove(weapon);
+        this.rightHand = weapon;
+      }
+    }
+
+  }
+  public void incaseEquipped(){
+    if (this.rightHand != null){
+      inventory.add(this.rightHand);
+    }
+  }
+
+  public Weapon getRightHand() {
+    return rightHand;
+  }
+  public void attack(){
+   if (this.rightHand != null){
+
+   }
   }
 
   public ArrayList<Item> getInventory() {
