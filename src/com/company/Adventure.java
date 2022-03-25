@@ -105,7 +105,7 @@ public class Adventure {
     // the steps to make a move
     if (room == null) { //checks if the next room is a wall
       userinterface.displayWalkedIntoWall();
-    } else if (!room.checkdoors(room)) { //checks if there is a looked door and checks locations
+    } else if (!player.getCurrentRoom().checkdoors(room)) { //checks if there is a looked door and checks locations
       userinterface.displayFoundLockedDoor();
     } else { //if player makes a valid move
       player.playerMove(room);

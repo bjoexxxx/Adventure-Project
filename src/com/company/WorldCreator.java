@@ -36,9 +36,6 @@ public class WorldCreator {
 //   | room7 = room8  = room9 |
 //    ------------------------
 
-
-
-
     //connecting the rooms
     room1.setEast(room2);
     room1.setSouth(room4);
@@ -57,9 +54,6 @@ public class WorldCreator {
     room3.setDoorSouth(new Door(false,""));
     room8.setDoorNorth(new Door(false,"Gold"));
     room9.setDoorNorth(new Door(false,""));
-    room1.setDoorSouth(new Door(false,""));
-
-
 
     // Make items
     room1.setLootTable(createLoot("sword"));
@@ -67,7 +61,6 @@ public class WorldCreator {
     room3.setLootTable(createLoot("flute"));
     room1.setLootTable(createLoot("ham"));
     room1.setLootTable(createLoot("water"));
-
 
   }
 
