@@ -3,6 +3,7 @@ package com.company;
 import Items.Consume;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Adventure {
@@ -149,6 +150,7 @@ public class Adventure {
     userinterface.displayHealth(health);
 
   }
+
   public void equip(String itemName){
     if (player.setRightHandWeapon(itemName)) {
       userinterface.displayItemEquipped();
@@ -156,6 +158,17 @@ public class Adventure {
       userinterface.displayInvalid();
     }
 
+  }
+
+  public void attack(String target){
+
+    if (player.canPlayerAttack()) {
+      userinterface.displayMustHaveWeapon();
+    } else if(player.attackTarget(target)) {
+      userinterface.displayHittingEnemy();
+    } else {
+      userinterface.dispalyHittingOnlyAir();
+    }
   }
 
   public void mainMenu() {
@@ -189,6 +202,7 @@ public class Adventure {
         case ("health") -> health();
         case ("eat") -> eat(secondWord);
         case ("equip") -> equip(secondWord);
+        case ("attack") -> attack(secondWord);
 
       }
     }

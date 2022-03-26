@@ -8,7 +8,13 @@ super(name,description);
 this.damage = damage;
 this.remainingUses = remainingUses;
   }
+
   public void setRemainingUses(){
-    this.remainingUses = remainingUses;
+    this.remainingUses -= 1;
   }
+
+  public int getRemainingUses(){
+    return remainingUses;
+  }
+
 }

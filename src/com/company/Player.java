@@ -22,6 +22,28 @@ public class Player {
     this.rightHand = null;
   }
 
+  public boolean canPlayerAttack () {
+    if (this.rightHand == null) {
+      return true;
+    } else if (this.rightHand.getRemainingUses() > 0) {
+     return false;
+    } else {
+      return true;
+    }
+  }
+
+
+  public boolean attackTarget (String nameOfTarget) {
+
+    if (nameOfTarget.isEmpty()) {
+      rightHand.setRemainingUses();
+      return false;
+    } else {
+      rightHand.setRemainingUses();
+      return true;
+    }
+  }
+
   public void setCurrentRoom(Room currentRoom) {
     this.currentRoom = currentRoom;
   }
@@ -93,12 +115,6 @@ return false;
 
   public Weapon getRightHand() {
     return this.rightHand;
-  }
-
-  public void attack(){
-   if (this.rightHand != null){
-
-   }
   }
 
   public ArrayList<Item> getPlayerInventory() {

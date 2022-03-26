@@ -31,11 +31,11 @@ public class Userinterface {
 
   }
 
-  public void displayItemEquipped(){
+  public void displayItemEquipped() {
     System.out.println("Item equipped");
   }
 
-  public void displayInvalid(){
+  public void displayInvalid() {
     System.out.println("Invalid");
   }
 
@@ -91,11 +91,31 @@ public class Userinterface {
     System.out.println("You found a found a door that is locked.");
   }
 
-  public void displayPlayerInventory(ArrayList<Item> inventory, Weapon weapon) {
+  public void displayHittingEnemy() {
+    System.out.println("Hitting the enemy");
+  }
+
+  public void dispalyHittingOnlyAir() {
+    System.out.println("You attack the air");
+  }
+
+  public void displayMustHaveWeapon() {
+    System.out.println("You can only attack when a functioning weapon is equipped");
+  }
+
+  public void displayPlayerInventory(ArrayList<Item> inventory, Weapon rightHandWeapon) {
     System.out.println("In your inventory is:");
-    inventory.forEach((n) -> System.out.println("- " +n));
-    if (weapon != null) {
-      System.out.println("You are holding " + weapon.getName());
+    for (int i = 0; i < inventory.size(); i++) {
+
+      Item inventoryItem = inventory.get(i);
+      System.out.print("- " + inventoryItem.getName() + " : " + inventoryItem.getDescription());
+      if (inventoryItem instanceof Weapon weapon) {
+        System.out.print(" , remaining uses: " + weapon.getRemainingUses());
+      }
+      newline();
+    }
+    if (rightHandWeapon != null) {
+      System.out.println("\nYou are holding " + rightHandWeapon.getName() + " , with remaining uses: " + rightHandWeapon.getRemainingUses());
     }
   }
 
