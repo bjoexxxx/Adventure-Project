@@ -1,7 +1,6 @@
 package com.company;
 
 import Items.Consume;
-import Items.Item;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -72,7 +71,7 @@ public class Adventure {
   }
 
   public void eat(String secondWord) {
-    if (player.getInventory().isEmpty()) {
+    if (player.getPlayerInventory().isEmpty()) {
       userinterface.displayItemNotFound();
     } else {
       Consume status = player.eatFood(secondWord);
@@ -112,7 +111,7 @@ public class Adventure {
       player.playerMove(room);
 
       //Display long description only on first time visit
-      if (!room.getIsVisited()) {
+      if (!room.getRoomIsVisited()) {
         userinterface.displayRoomDiscription(player.getCurrentRoom());
       } else {
         userinterface.displayShortRoomDiscription(player.getCurrentRoom());
@@ -141,7 +140,7 @@ public class Adventure {
   }
 
   private void checkInventory() {
-    userinterface.displayPlayerInventory(player.getInventory(), player.getRightHand());
+    userinterface.displayPlayerInventory(player.getPlayerInventory(), player.getRightHand());
 
   }
 

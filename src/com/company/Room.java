@@ -9,7 +9,7 @@ public class Room {
   private final String name;
   private final String description;
   private final String shortDescription;
-  private boolean isVisted;
+  private boolean roomIsVisted;
   private boolean triedNorth;
   private boolean triedEast;
   private boolean triedSouth;
@@ -31,7 +31,7 @@ public class Room {
     this.east = null;
     this.south = null;
     this.west = null;
-    this.isVisted = false;
+    this.roomIsVisted = false;
     this.triedNorth = false;
     this.triedEast = false;
     this.triedSouth = false;
@@ -93,12 +93,12 @@ public class Room {
     return shortDescription;
   }
 
-  public boolean getIsVisited() {
-    return this.isVisted;
+  public boolean getRoomIsVisited() {
+    return this.roomIsVisted;
   }
 
-  public void setIsVisited(boolean visited) {
-    this.isVisted = visited;
+  public void setRoomIsVisted(boolean visited) {
+    this.roomIsVisted = visited;
   }
 
   public String getDescription() {
