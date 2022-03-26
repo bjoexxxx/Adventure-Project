@@ -23,11 +23,11 @@ public class Player {
   }
 
   public boolean canPlayerAttack () {
-    if (this.rightHand == null) {
+    if (this.rightHand == null) { //must have weapon
       return true;
-    } else if (this.rightHand.getRemainingUses() > 0) {
+    } else if (this.rightHand.getRemainingUses() > 0) { //must be a useable weapon
      return false;
-    } else {
+    } else { // else its not an option
       return true;
     }
   }
@@ -35,10 +35,10 @@ public class Player {
 
   public boolean attackTarget (String nameOfTarget) {
 
-    if (nameOfTarget.isEmpty()) {
+    if (nameOfTarget.isEmpty()) { //non specified target
       rightHand.setRemainingUses();
       return false;
-    } else {
+    } else { // TODO add something with enemy here as condition
       rightHand.setRemainingUses();
       return true;
     }

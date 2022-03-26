@@ -162,9 +162,9 @@ public class Adventure {
 
   public void attack(String target){
 
-    if (player.canPlayerAttack()) {
+    if (player.canPlayerAttack()) { // checks if player i able to attack
       userinterface.displayMustHaveWeapon();
-    } else if(player.attackTarget(target)) {
+    } else if(player.attackTarget(target)) { // attacks taget or moves on to air in case of non specified target
       userinterface.displayHittingEnemy();
     } else {
       userinterface.dispalyHittingOnlyAir();
