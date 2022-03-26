@@ -95,7 +95,7 @@ public class Userinterface {
     System.out.println("In your inventory is:");
     inventory.forEach((n) -> System.out.println("- " +n));
     if (weapon != null) {
-      System.out.println("You are holding "+weapon.getName());
+      System.out.println("You are holding " + weapon.getName());
     }
   }
 

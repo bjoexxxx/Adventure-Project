@@ -71,12 +71,12 @@ public class Player {
     return null;
   }
 
-  public boolean setRightHandWeapon(String weaponname){
-    Item weaponFromInventory = searchItemsInInventory(weaponname);
+  public boolean setRightHandWeapon(String weaponName){
+    Item weaponFromInventory = searchItemsInInventory(weaponName);
 
-    if (weaponFromInventory != null && this.rightHand == null ){
+    if (weaponFromInventory != null || this.rightHand == null ){
       if (weaponFromInventory instanceof Weapon weapon){
-        inCaseHandIsEquipped();
+        inCaseRightHandIsEquipped();
         inventory.remove(weapon);
         this.rightHand = weapon;
         return true;
@@ -85,14 +85,14 @@ public class Player {
 return false;
   }
 
-  private void inCaseHandIsEquipped(){
+  private void inCaseRightHandIsEquipped(){
     if (this.rightHand != null){
       inventory.add(this.rightHand);
     }
   }
 
   public Weapon getRightHand() {
-    return rightHand;
+    return this.rightHand;
   }
 
   public void attack(){
