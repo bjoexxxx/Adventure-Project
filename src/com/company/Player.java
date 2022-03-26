@@ -143,15 +143,15 @@ return false;
     return Consume.INVALID;
   }
 
-  private void checkMaxHealth(int health) {
-    if (health > 99) {
+  private void checkMaxHealth(int currentHealth) {
+    if (currentHealth > 99) {
       this.health = 100;
     }
   }
 
-  private void digestingFood(Consume consume) {
+  private void digestingFood(Consume consumeFood) {
 
-    switch (consume) {
+    switch (consumeFood) {
       case EDIBLE -> setHealth(20);
       case POISONOUS -> setHealth(-25);
 

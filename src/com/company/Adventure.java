@@ -53,29 +53,29 @@ public class Adventure {
     }
   }
 
-  private void dropItem(String searchWord) {
+  private void dropItem(String itemName) {
 
-    if (player.dropItem(searchWord)) {
+    if (player.dropItem(itemName)) {
       userinterface.displayItemDropped();
     } else {
       userinterface.displayItemNotFound();
     }
   }
 
-  private void takeItem(String searchWord) {
+  private void takeItem(String itemName) {
 
-    if (player.takeItem(searchWord)) {
+    if (player.takeItem(itemName)) {
       userinterface.displayItemTaken();
     } else {
       userinterface.displayItemNotFound();
     }
   }
 
-  public void eat(String secondWord) {
+  public void eat(String itemName) {
     if (player.getPlayerInventory().isEmpty()) {
       userinterface.displayItemNotFound();
     } else {
-      Consume status = player.eatFood(secondWord);
+      Consume status = player.eatFood(itemName);
       userinterface.displayFoodStatus(status);
     }
   }
