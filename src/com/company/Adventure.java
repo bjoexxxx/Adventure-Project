@@ -38,20 +38,17 @@ public class Adventure {
 
     userinterface.displayRoomDiscription(room);
 
-    if (!player.getCurrentRoom().getLootTable().isEmpty()) { // loot table must contain something
+    if (!room.getLootTable().isEmpty()) { // loot table must contain something
       userinterface.displayItems(room);
     }
     // the following code checks to see if player has tried going all directions, if yes, the available moves are displayed
     if (room.triedRooms()) {
-      userinterface.displayYouHaveOptionsDirections();
-      Room[] options = room.getAllDirections();
-      for (int i = 0; i < options.length; i++) {
-        if (options[i] != null) {
-          userinterface.displayAvailableDirections(i);
+      ArrayList <Directions> availbleRooms = room.getAllAvailbleDirections();
+      userinterface.displayAvailableDirections(availbleRooms);
         }
       }
-    }
-  }
+
+
 
   private void dropItem(String itemName) {
 

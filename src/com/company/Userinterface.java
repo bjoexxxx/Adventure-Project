@@ -59,13 +59,15 @@ public class Userinterface {
     System.out.println(room.getShortDescription());
   }
 
-  public void displayYouHaveOptionsDirections() {
-    System.out.println("You have these options:");
-  }
+//  public void displayYouHaveOptionsDirections() {
+//
+//  }
 
-  public void displayAvailableDirections(int directionNumber) {
-    String[] directions = {"north", "east", "south", "west"};
-    System.out.println(directions[directionNumber] + " is available");
+  public void displayAvailableDirections(ArrayList<Directions> availableDirections) {
+    newline();
+    System.out.println("You can go in these directions:");
+    System.out.println(availableDirections.toString());
+
   }
 
   public void displayItems(Room room) {

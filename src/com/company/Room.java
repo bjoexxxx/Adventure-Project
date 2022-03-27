@@ -222,8 +222,22 @@ public class Room {
     return null;
   }
 
-  public Room[] getAllDirections() {
-    Room[] options = {north, east, south, west};
-    return options;
+  public ArrayList<Directions> getAllAvailbleDirections() {
+
+    ArrayList<Directions> availbleDirections = new ArrayList<>();
+    if (north != null) {
+      availbleDirections.add(Directions.NORTH);
+    }
+    if (east != null) {
+      availbleDirections.add(Directions.EAST);
+    }
+    if (west != null) {
+      availbleDirections.add(Directions.WEST);
+    }
+    if (south != null) {
+      availbleDirections.add(Directions.SOUTH);
+    }
+    return availbleDirections;
   }
 }
+
