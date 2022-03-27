@@ -70,10 +70,10 @@ public class Userinterface {
 
   }
 
-  public void displayItems(Room room) {
+  public void displayItems(ArrayList<Item> itemsInRoom) {
     System.out.println();
     System.out.print("Around you there is: ");
-    System.out.print(room.getLootTable());
+    System.out.print(itemsInRoom);
     System.out.println();
   }
 

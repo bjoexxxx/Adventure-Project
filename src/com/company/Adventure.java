@@ -1,6 +1,7 @@
 package com.company;
 
 import Items.Consume;
+import Items.Item;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -38,17 +39,17 @@ public class Adventure {
 
     userinterface.displayRoomDiscription(room);
 
-    if (!room.getLootTable().isEmpty()) { // loot table must contain something
-      userinterface.displayItems(room);
+    //Prints out items in the room, if any.
+    ArrayList<Item> lootableItemsInTheRoom = room.getLootTable();
+    if (!lootableItemsInTheRoom.isEmpty()) { // loot table must contain something
+      userinterface.displayItems(lootableItemsInTheRoom);
     }
-    // the following code checks to see if player has tried going all directions, if yes, the available moves are displayed
+    //Checks to see if player has tried going all directions, if yes, the available moves are displayed
     if (room.triedRooms()) {
-      ArrayList <Directions> availbleRooms = room.getAllAvailbleDirections();
+      ArrayList<Directions> availbleRooms = room.getAllAvailbleDirections();
       userinterface.displayAvailableDirections(availbleRooms);
-        }
-      }
-
-
+    }
+  }
 
   private void dropItem(String itemName) {
 
