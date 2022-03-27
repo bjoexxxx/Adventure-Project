@@ -77,13 +77,12 @@ public class Adventure {
     }
   }
 
-
-  private void move(String goTo) {
+  private void move(String whereTo) {
 
     Room currentRoom = player.getCurrentRoom();
     Room nextRoom = null;
 
-    Direction directionOfNextRoom = currentRoom.getRoom(goTo);
+    Direction directionOfNextRoom = currentRoom.giveDirectionFromString(whereTo);
 
     switch (directionOfNextRoom) {
       case NORTH -> nextRoom = currentRoom.getNorth();
@@ -95,7 +94,7 @@ public class Adventure {
     // Now player tries to move to the next room
     if (nextRoom == null) {
       userinterface.displayWalkedIntoWall();
-    } else if (currentRoom.checkIfDoorAreLocked(directionOfNextRoom)) {
+    } else if (currentRoom.checkIfDoorIsLocked(directionOfNextRoom)) {
       userinterface.displayFoundLockedDoor();
     } else {
       player.playerMoveToRoom(nextRoom);
@@ -112,12 +111,13 @@ public class Adventure {
   private void open(String direction) {
     Door door = null;
     Room room = player.getCurrentRoom();
+    Direction doorDirection = room.giveDirectionFromString(direction);
 
-    switch (direction) {
-      case "South" -> door = room.getDoorSouth();
-      case "North" -> door = room.getDoorNorth();
-      case "West" -> door = room.getDoorWest();
-      case "East" -> door = room.getDoorEast();
+    switch (doorDirection) {
+      case SOUTH -> door = room.getDoorSouth();
+      case NORTH -> door = room.getDoorNorth();
+      case WEST -> door = room.getDoorWest();
+      case EAST -> door = room.getDoorEast();
     }
 
     //hvis der ikke er en lås på døren

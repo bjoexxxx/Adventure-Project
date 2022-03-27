@@ -198,7 +198,7 @@ public class Room {
     return this.getTriedNorth() && this.getTriedEast() && this.getTriedSouth() && this.getTriedWest();
   }
 
-  public boolean checkIfDoorAreLocked(Direction direction) {
+  public boolean checkIfDoorIsLocked(Direction direction) {
 
     switch (direction) {
 
@@ -254,7 +254,7 @@ public class Room {
     return availbleDirections;
   }
 
-  public Direction getRoom(String direction) {
+  public Direction giveDirectionFromString(String direction) {
 
     if (direction.equals("North") || direction.equals("N")) {
       setTriedNorth(true);
