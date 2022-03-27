@@ -52,7 +52,7 @@ public class Player {
     return currentRoom;
   }
 
-  public void playerMove(Room newRoom) {
+  public void playerMoveToRoom(Room newRoom) {
     currentRoom.setRoomIsVisted(true);
     currentRoom = newRoom;
   }

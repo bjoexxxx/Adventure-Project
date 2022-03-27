@@ -48,10 +48,11 @@ public class WorldCreator {
     room9.setWest(room8);
     playerPosition = room1;
 
-    // skriv rummets navn, den retning den skal sidde, lav new door, false means closed
-    room3.setDoorSouth(new Door(false,""));
-    room8.setDoorNorth(new Door(false,"Gold"));
-    room9.setDoorNorth(new Door(false,""));
+    // skriv rummets navn, den retning den skal sidde, lav new door, true means closed
+    room4.setDoorNorth(new Door(true,""));
+    room2.setDoorWest(new Door(true,""));
+    room8.setDoorNorth(new Door(true,"Gold"));
+    room9.setDoorNorth(new Door(true,""));
 
     // Make items
     room1.setLootTable(createLoot("sword"));

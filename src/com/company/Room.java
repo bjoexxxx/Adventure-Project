@@ -198,18 +198,32 @@ public class Room {
     return this.getTriedNorth() && this.getTriedEast() && this.getTriedSouth() && this.getTriedWest();
   }
 
-  public boolean checkIfDoorsAreLocked(Room room) {
-    if (room == this.getNorth() && this.getDoorNorth() != null) {
-      return this.getDoorNorth().isOpen();
-    } else if (room == this.getSouth() && this.getDoorSouth() != null) {
-      return this.getDoorSouth().isOpen();
-    } else if (room == this.getEast() && this.getDoorEast() != null) {
-      return this.getDoorEast().isOpen();
-    } else if (room == this.getWest() && this.getDoorWest() != null) {
-      return this.getDoorWest().isOpen();
-    } else {
-      return true;
+  public boolean checkIfDoorAreLocked(Direction direction) {
+
+    switch (direction) {
+
+      case NORTH -> {
+        if (this.getDoorNorth() != null) {
+          return this.getDoorNorth().isOpen();
+        }
+      }
+      case SOUTH -> {
+        if (this.getDoorSouth() != null) {
+          return this.getDoorSouth().isOpen();
+        }
+      }
+      case EAST -> {
+        if (this.getDoorEast() != null) {
+          return this.getDoorEast().isOpen();
+        }
+      }
+      case WEST -> {
+        if (this.getDoorWest() != null) {
+          return this.getDoorWest().isOpen();
+        }
+      }
     }
+    return true;
   }
 
   public Item searchItemsInRoom(String itemName) {

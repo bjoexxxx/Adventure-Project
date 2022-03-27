@@ -92,18 +92,18 @@ public class Adventure {
       case WEST -> nextRoom = currentRoom.getWest();
     }
 
-
+    // Now player tries to move to the next room
     if (nextRoom == null) {
       userinterface.displayWalkedIntoWall();
-    } else if (!currentRoom.checkIfDoorsAreLocked(nextRoom)) { //checks if there is a looked door and checks locations
+    } else if (currentRoom.checkIfDoorAreLocked(directionOfNextRoom)) {
       userinterface.displayFoundLockedDoor();
-    } else { //if player makes a valid move
-      player.playerMove(nextRoom);
+    } else {
+      player.playerMoveToRoom(nextRoom);
       //Display long description only on first time visit
-      if (!currentRoom.getRoomIsVisited()) {
-        userinterface.displayRoomDiscription(player.getCurrentRoom());
+      if (!nextRoom.getRoomIsVisited()) {
+        userinterface.displayRoomDiscription(nextRoom);
       } else {
-        userinterface.displayShortRoomDiscription(player.getCurrentRoom());
+        userinterface.displayShortRoomDiscription(nextRoom);
       }
     }
 
@@ -122,7 +122,7 @@ public class Adventure {
 
     //hvis der ikke er en lås på døren
     if (door.getKey().isEmpty()) {
-      door.setOpen(true);
+      door.setOpen(false);
       userinterface.displayOpendDoor();
     } else { // hvis der er en lås på døren
       userinterface.displayYouNeedToUseAKey();
