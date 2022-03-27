@@ -32,7 +32,6 @@ public class Player {
     }
   }
 
-
   public boolean attackTarget (String nameOfTarget) {
 
     if (nameOfTarget.isEmpty()) { //non specified target

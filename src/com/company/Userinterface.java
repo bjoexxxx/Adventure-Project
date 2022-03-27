@@ -121,7 +121,7 @@ public class Userinterface {
     }
   }
 
-  public void displayHealth(int health) {
+  public void displayPlayerHealth(int health) {
     System.out.print("You have " + health + " health - ");
     if (health < 25) {
       System.out.print("You are close to death");

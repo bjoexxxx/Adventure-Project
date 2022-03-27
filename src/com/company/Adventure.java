@@ -109,20 +109,20 @@ public class Adventure {
   }
 
   private void open(String direction) {
-    Door door = null;
-    Room room = player.getCurrentRoom();
-    Direction doorDirection = room.giveDirectionFromString(direction);
+    Door doorToOpen = null;
+    Room currentRoom = player.getCurrentRoom();
+    Direction doorDirection = currentRoom.giveDirectionFromString(direction);
 
     switch (doorDirection) {
-      case SOUTH -> door = room.getDoorSouth();
-      case NORTH -> door = room.getDoorNorth();
-      case WEST -> door = room.getDoorWest();
-      case EAST -> door = room.getDoorEast();
+      case SOUTH -> doorToOpen = currentRoom.getDoorSouth();
+      case NORTH -> doorToOpen = currentRoom.getDoorNorth();
+      case WEST -> doorToOpen = currentRoom.getDoorWest();
+      case EAST -> doorToOpen = currentRoom.getDoorEast();
     }
 
     //hvis der ikke er en lås på døren
-    if (door.getKey().isEmpty()) {
-      door.setOpen(false);
+    if (doorToOpen.getKey().isEmpty()) {
+      doorToOpen.setOpen(false);
       userinterface.displayOpendDoor();
     } else { // hvis der er en lås på døren
       userinterface.displayYouNeedToUseAKey();
@@ -135,7 +135,7 @@ public class Adventure {
   }
 
   private void health() {
-    userinterface.displayHealth(player.getHealth());
+    userinterface.displayPlayerHealth(player.getHealth());
   }
 
   public void equip(String itemName){
