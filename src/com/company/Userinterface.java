@@ -63,7 +63,7 @@ public class Userinterface {
 //
 //  }
 
-  public void displayAvailableDirections(ArrayList<Directions> availableDirections) {
+  public void displayAvailableDirections(ArrayList<Direction> availableDirections) {
     newline();
     System.out.println("You can go in these directions:");
     System.out.println(availableDirections.toString());

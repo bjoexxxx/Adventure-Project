@@ -4,7 +4,6 @@ import Items.Consume;
 import Items.Item;
 
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Adventure {
@@ -46,7 +45,7 @@ public class Adventure {
     }
     //Checks to see if player has tried going all directions, if yes, the available moves are displayed
     if (room.triedRooms()) {
-      ArrayList<Directions> availbleRooms = room.getAllAvailbleDirections();
+      ArrayList<Direction> availbleRooms = room.getAllAvailbleDirections();
       userinterface.displayAvailableDirections(availbleRooms);
     }
   }
@@ -78,44 +77,36 @@ public class Adventure {
     }
   }
 
-  private void move(String direction) {
 
-    Room room = player.getCurrentRoom();
+  private void move(String goTo) {
 
-    switch (direction) {
-      case "North", "N" -> {
-        room.setTriedNorth(true);
-        room = room.getNorth();
-      }
-      case "South", "S" -> {
-        room.setTriedSouth(true);
-        room = room.getSouth();
-      }
-      case "East", "E" -> {
-        room.setTriedEast(true);
-        room = room.getEast();
-      }
-      case "West", "W" -> {
-        room.setTriedWest(true);
-        room = room.getWest();
-      }
-      default -> room = null;
+    Room currentRoom = player.getCurrentRoom();
+    Room nextRoom = null;
+
+    Direction directionOfNextRoom = currentRoom.getRoom(goTo);
+
+    switch (directionOfNextRoom) {
+      case NORTH -> nextRoom = currentRoom.getNorth();
+      case SOUTH -> nextRoom = currentRoom.getSouth();
+      case EAST -> nextRoom = currentRoom.getEast();
+      case WEST -> nextRoom = currentRoom.getWest();
     }
-    // the steps to make a move
-    if (room == null) { //checks if the next room is a wall
+
+
+    if (nextRoom == null) {
       userinterface.displayWalkedIntoWall();
-    } else if (!player.getCurrentRoom().checkdoors(room)) { //checks if there is a looked door and checks locations
+    } else if (!currentRoom.checkIfDoorsAreLocked(nextRoom)) { //checks if there is a looked door and checks locations
       userinterface.displayFoundLockedDoor();
     } else { //if player makes a valid move
-      player.playerMove(room);
-
+      player.playerMove(nextRoom);
       //Display long description only on first time visit
-      if (!room.getRoomIsVisited()) {
+      if (!currentRoom.getRoomIsVisited()) {
         userinterface.displayRoomDiscription(player.getCurrentRoom());
       } else {
         userinterface.displayShortRoomDiscription(player.getCurrentRoom());
       }
     }
+
   }
 
   private void open(String direction) {
@@ -144,9 +135,7 @@ public class Adventure {
   }
 
   private void health() {
-    int health = player.getHealth();
-    userinterface.displayHealth(health);
-
+    userinterface.displayHealth(player.getHealth());
   }
 
   public void equip(String itemName){

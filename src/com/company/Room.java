@@ -198,7 +198,7 @@ public class Room {
     return this.getTriedNorth() && this.getTriedEast() && this.getTriedSouth() && this.getTriedWest();
   }
 
-  public boolean checkdoors(Room room) {
+  public boolean checkIfDoorsAreLocked(Room room) {
     if (room == this.getNorth() && this.getDoorNorth() != null) {
       return this.getDoorNorth().isOpen();
     } else if (room == this.getSouth() && this.getDoorSouth() != null) {
@@ -222,22 +222,40 @@ public class Room {
     return null;
   }
 
-  public ArrayList<Directions> getAllAvailbleDirections() {
+  public ArrayList<Direction> getAllAvailbleDirections() {
 
-    ArrayList<Directions> availbleDirections = new ArrayList<>();
+    ArrayList<Direction> availbleDirections = new ArrayList<>();
     if (north != null) {
-      availbleDirections.add(Directions.NORTH);
+      availbleDirections.add(Direction.NORTH);
     }
     if (east != null) {
-      availbleDirections.add(Directions.EAST);
+      availbleDirections.add(Direction.EAST);
     }
     if (west != null) {
-      availbleDirections.add(Directions.WEST);
+      availbleDirections.add(Direction.WEST);
     }
     if (south != null) {
-      availbleDirections.add(Directions.SOUTH);
+      availbleDirections.add(Direction.SOUTH);
     }
     return availbleDirections;
+  }
+
+  public Direction getRoom(String direction) {
+
+    if (direction.equals("North") || direction.equals("N")) {
+      setTriedNorth(true);
+      return Direction.NORTH;
+    } else if (direction.equals("South") || direction.equals("S")) {
+      setTriedSouth(true);
+      return Direction.SOUTH;
+    } else if (direction.equals("East") || direction.equals("E")) {
+      setTriedEast(true);
+      return Direction.EAST;
+    } else if(direction.equals("West") || direction.equals("W")) {
+      setTriedWest(true);
+      return Direction.WEST;
+    }
+    return null;
   }
 }
 
