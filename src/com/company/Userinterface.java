@@ -31,7 +31,8 @@ public class Userinterface {
 
   }
   public void displayEnemies(Room currentRoom){
-    System.out.println(currentRoom.getAllMonstersInRoom());
+    System.out.print("This room has the following enemies: ");
+    System.out.print(currentRoom.getAllMonstersInRoom());
 
   }
 
@@ -65,8 +66,9 @@ public class Userinterface {
 
   public void displayAvailableDirections(ArrayList<Direction> availableDirections) {
     newline();
-    System.out.println("You can go in these directions:");
-    System.out.println(availableDirections.toString());
+    System.out.print("You can go in these directions: ");
+    System.out.print(availableDirections.toString());
+    newline();
 
   }
 
