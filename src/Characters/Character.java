@@ -20,7 +20,4 @@ public abstract class Character {
   public abstract boolean attackTarget(String nameOfTarget);
 
   public abstract void setCurrentRoom(Room currentRoom);
-
-  public abstract Room getCurrentRoom();
-
 }

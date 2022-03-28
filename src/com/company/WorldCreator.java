@@ -1,6 +1,9 @@
 package com.company;
 
+import Characters.Enemy;
 import Items.*;
+
+import java.util.ArrayList;
 
 public class WorldCreator {
   public Room playerPosition;
@@ -61,6 +64,12 @@ public class WorldCreator {
     room1.setLootTable(createLoot("ham"));
     room1.setLootTable(createLoot("water"));
     room1.setLootTable(createLoot("handgun"));
+
+    //Spawn enemies
+    Enemy targetDummy = new Enemy(room1,new ArrayList<Item>(),20,"Hit me!",null);
+    room1.setAllMonstersInRoom(targetDummy);
+    Enemy skeleton = new Enemy(room1,new ArrayList<Item>(),20,"skeleton",null);
+    room1.setAllMonstersInRoom(skeleton);
 
   }
 

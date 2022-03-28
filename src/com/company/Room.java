@@ -1,10 +1,13 @@
 package com.company;
 
+import Characters.Enemy;
 import Items.Item;
 
 import java.util.ArrayList;
 
 public class Room {
+  private Enemy monsterInRoom;
+  private ArrayList<Enemy> allMonstersInRoom;
   private ArrayList<Item> lootTable;
   private final String name;
   private final String description;
@@ -42,7 +45,16 @@ public class Room {
     this.doorWest = null;
     this.doorEast = null;
     this.lootTable = new ArrayList<>();
+    this.monsterInRoom = null;
+    this.allMonstersInRoom = new ArrayList<>();
 
+  }
+  public void setAllMonstersInRoom(Enemy monsterInRoom){
+    this.allMonstersInRoom.add(monsterInRoom);
+  }
+
+  public ArrayList<Enemy> getAllMonstersInRoom() {
+    return allMonstersInRoom;
   }
 
   public Door getDoorEast() {

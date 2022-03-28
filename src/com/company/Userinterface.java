@@ -30,6 +30,10 @@ public class Userinterface {
     System.out.println();
 
   }
+  public void displayEnemies(Room currentRoom){
+    System.out.println(currentRoom.getAllMonstersInRoom());
+
+  }
 
   public void displayItemEquipped() {
     System.out.println("Item equipped");
@@ -58,10 +62,6 @@ public class Userinterface {
   public void displayShortRoomDiscription(Room room) {
     System.out.println(room.getShortDescription());
   }
-
-//  public void displayYouHaveOptionsDirections() {
-//
-//  }
 
   public void displayAvailableDirections(ArrayList<Direction> availableDirections) {
     newline();

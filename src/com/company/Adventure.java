@@ -49,6 +49,9 @@ public class Adventure {
       ArrayList<Direction> availbleRooms = room.getAllAvailbleDirections();
       userinterface.displayAvailableDirections(availbleRooms);
     }
+    if (room.getAllMonstersInRoom()!= null){
+      userinterface.displayEnemies(room);
+    }
   }
 
   private void dropItem(String itemName) {
