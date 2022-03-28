@@ -22,14 +22,16 @@ public class Adventure {
   }
 
   private String secondWord(String fullCommand) {
+    String actionWord = "";
     if (fullCommand.contains(" ")) {
-      return capitalize(fullCommand.substring(fullCommand.indexOf(' ') + 1));
+      actionWord = capitalizeWord(fullCommand.substring(fullCommand.indexOf(' ') + 1));
+      return actionWord;
     } else {
-      return "";
+      return actionWord;
     }
   }
 
-  private String capitalize(String word) {
+  private String capitalizeWord(String word) {
     return word.substring(0, 1).toUpperCase() + word.substring(1);
   }
 
@@ -164,8 +166,8 @@ public class Adventure {
     creator = new WorldCreator();
     creator.createRooms();
 
-    player = new Player(creator.playerPosition, new ArrayList<>(), 100);
-    player.setCurrentRoom(creator.getPlayerPosition());
+    player = new Player(creator.getPlayerStartposition(), new ArrayList<>(), 100);
+    player.setCurrentRoom(creator.getPlayerStartposition());
 
     userinterface.displayWelcome(player.getCurrentRoom());
 

@@ -3,10 +3,10 @@ package com.company;
 import Items.*;
 
 public class WorldCreator {
-  public Room playerPosition;
+  private Room playerStartposition;
 
   public WorldCreator() {
-    this.playerPosition = null;
+    this.playerStartposition = null;
   }
 
   public void createRooms() {
@@ -46,7 +46,7 @@ public class WorldCreator {
     room8.setEast(room9);
     room8.setWest(room7);
     room9.setWest(room8);
-    playerPosition = room1;
+    playerStartposition = room1;
 
     // skriv rummets navn, den retning den skal sidde, lav new door, true means closed
     room4.setDoorNorth(new Door(true,""));
@@ -64,8 +64,8 @@ public class WorldCreator {
 
   }
 
-  public Room getPlayerPosition() {
-    return this.playerPosition;
+  public Room getPlayerStartposition() {
+    return this.playerStartposition;
   }
 
   public Item createLoot(String name) {
