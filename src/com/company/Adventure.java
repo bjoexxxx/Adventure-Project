@@ -1,5 +1,6 @@
 package com.company;
 
+import Characters.Player;
 import Items.Consume;
 import Items.Item;
 
@@ -49,6 +50,9 @@ public class Adventure {
     if (room.triedRooms()) {
       ArrayList<Direction> availbleRooms = room.getAllAvailbleDirections();
       userinterface.displayAvailableDirections(availbleRooms);
+    }
+    if (room.getAllMonstersInRoom()!= null){
+      userinterface.displayEnemies(room);
     }
   }
 

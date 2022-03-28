@@ -9,7 +9,7 @@ this.damage = damage;
 this.remainingUses = remainingUses;
   }
 
-  public void setRemainingUses(){
+  public void itemUsed(){
     this.remainingUses -= 1;
   }
 
