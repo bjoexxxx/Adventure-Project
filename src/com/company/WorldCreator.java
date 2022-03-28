@@ -66,6 +66,8 @@ public class WorldCreator {
     room1.setLootTable(createLoot("handgun"));
 
     //Spawn enemies
+    //todo how to add items to mob inventory
+    //todo how give mobs weapons
     Enemy targetDummy = new Enemy(room1,new ArrayList<Item>(),20,"Hit me!",null);
     room1.setAllMonstersInRoom(targetDummy);
     Enemy skeleton = new Enemy(room1,new ArrayList<Item>(),20,"skeleton",null);
