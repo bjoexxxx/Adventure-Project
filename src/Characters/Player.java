@@ -1,25 +1,20 @@
-package com.company;
+package Characters;
 
 import Items.Consume;
 import Items.Food;
 import Items.Item;
 import Items.Weapon;
+import com.company.Room;
 
 import java.util.ArrayList;
 
-public class Player {
-  private Room currentRoom;
-  private ArrayList<Item> playerInventory;
-  private int health;
-  private Weapon rightHand;
+public class Player extends Character {
   private Weapon leftHand;
 
   public Player(Room currentRoom, ArrayList<Item> inventory, int health) {
-    this.currentRoom = currentRoom;
-    this.playerInventory = inventory;
-    this.health = health;
+    super(currentRoom,inventory,health);
     this.leftHand = null;
-    this.rightHand = null;
+
   }
 
   public boolean canPlayerAttack () {
@@ -35,10 +30,10 @@ public class Player {
   public boolean attackTarget (String nameOfTarget) {
 
     if (nameOfTarget.isEmpty()) { //non specified target
-      rightHand.setRemainingUses();
+      rightHand.itemUsed();
       return false;
     } else { // TODO add something with enemy here as condition
-      rightHand.setRemainingUses();
+      rightHand.itemUsed();
       return true;
     }
   }
@@ -59,7 +54,7 @@ public class Player {
   public boolean takeItem(String itemName) {
     Item itemFromRoom = currentRoom.searchItemsInRoom(itemName);
     if (itemFromRoom != null) {
-      playerInventory.add(itemFromRoom);
+      inventory.add(itemFromRoom);
       currentRoom.removeItem(itemFromRoom);
       return true;
     } else {
@@ -70,7 +65,7 @@ public class Player {
   public boolean dropItem(String itemName) {
     Item itemFromInventory = searchItemsInInventory(itemName);
     if (itemFromInventory != null) {
-      playerInventory.remove(itemFromInventory);
+      inventory.remove(itemFromInventory);
       currentRoom.setLootTable(itemFromInventory);
       return true;
     } else {
@@ -79,11 +74,11 @@ public class Player {
   }
 
   private Item searchItemsInInventory(String itemName) {
-    if (playerInventory == null) {
+    if (inventory == null) {
       return null;
     } else {
-      for (int i = 0; i < playerInventory.size(); i++) {
-        Item temp = playerInventory.get(i);
+      for (int i = 0; i < inventory.size(); i++) {
+        Item temp = inventory.get(i);
         if (temp.getName().equals(itemName)) {
           return temp;
         }
@@ -98,7 +93,7 @@ public class Player {
     if (weaponFromInventory != null || this.rightHand == null ){
       if (weaponFromInventory instanceof Weapon weapon){
         inCaseRightHandIsEquipped();
-        playerInventory.remove(weapon);
+        inventory.remove(weapon);
         this.rightHand = weapon;
         return true;
       }
@@ -108,7 +103,7 @@ return false;
 
   private void inCaseRightHandIsEquipped(){
     if (this.rightHand != null){
-      playerInventory.add(this.rightHand);
+      inventory.add(this.rightHand);
     }
   }
 
@@ -117,7 +112,7 @@ return false;
   }
 
   public ArrayList<Item> getPlayerInventory() {
-    return playerInventory;
+    return inventory;
   }
 
   public void setHealth(int adjustHealth) {
@@ -133,7 +128,7 @@ return false;
 
     if (itemFromInventory != null) {
       if (itemFromInventory instanceof Food food) {
-        playerInventory.remove(food);
+        inventory.remove(food);
         digestingFood(food.getConsume());
         checkMaxHealth(getHealth());
         return food.getConsume();

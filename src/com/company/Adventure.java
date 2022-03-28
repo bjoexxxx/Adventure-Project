@@ -1,5 +1,6 @@
 package com.company;
 
+import Characters.Player;
 import Items.Consume;
 import Items.Item;
 
