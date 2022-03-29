@@ -17,7 +17,11 @@ public abstract class Character {
     this.health = health;
     this.rightHand = null;
   }
-  public abstract boolean attackTarget(String nameOfTarget);
+  public abstract void attackTarget(Enemy nameOfTarget);
 
   public abstract void setCurrentRoom(Room currentRoom);
+
+  public int getHealth(){
+    return this.health;
+  }
 }

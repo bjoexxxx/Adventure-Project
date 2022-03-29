@@ -18,23 +18,20 @@ public class Player extends Character {
   }
 
   public boolean canPlayerAttack () {
-    if (this.rightHand == null) { //must have weapon
+    if (this.rightHand == null||this.rightHand.getRemainingUses()==0) { //must have weapon
       return true;
-    } else if (this.rightHand.getRemainingUses() > 0) { //must be a useable weapon
+    } else {
      return false;
-    } else { // else its not an option
-      return true;
     }
   }
 
-  public boolean attackTarget (String nameOfTarget) {
+  public void attackTarget (Enemy nameOfTarget) {
 
-    if (nameOfTarget.isEmpty()) { //non specified target
+    if (nameOfTarget == null) { //non specified target
       rightHand.itemUsed();
-      return false;
     } else { // TODO add something with enemy here as condition
       rightHand.itemUsed();
-      return true;
+      nameOfTarget.isAttacked(rightHand.getDamage());
     }
   }
 

@@ -16,8 +16,10 @@ public class Enemy extends Character{
   public String toString(){
     return this.name;
   }
-  public boolean attackTarget(String nameOfTarget) {
-    return false;
+  public void isAttacked(int damage){
+    this.health -= damage;
+  }
+  public void attackTarget(Enemy nameOfTarget) {
   }
   public void setCurrentRoom(Room currentRoom) {
     this.currentRoom = currentRoom;

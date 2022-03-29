@@ -17,4 +17,7 @@ this.remainingUses = remainingUses;
     return remainingUses;
   }
 
+  public int getDamage() {
+    return damage;
+  }
 }

@@ -1,5 +1,6 @@
 package com.company;
 
+import Characters.Enemy;
 import Items.Consume;
 import Items.Item;
 import Items.Weapon;
@@ -95,8 +96,9 @@ public class Userinterface {
     System.out.println("You found a found a door that is locked.");
   }
 
-  public void displayHittingEnemy() {
+  public void displayHittingEnemy(Enemy enemy) {
     System.out.println("Hitting the enemy");
+    System.out.println(enemy.getName()+": "+enemy.getHealth() + " remaining health");
   }
 
   public void dispalyHittingOnlyAir() {

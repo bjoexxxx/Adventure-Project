@@ -247,6 +247,16 @@ public class Room {
     }
     return null;
   }
+  public Enemy searchAllMonstersInRoom(String enemyName) {
+    for (int i = 0; i < allMonstersInRoom.size(); i++) {
+      Enemy temp = allMonstersInRoom.get(i);
+      if (temp.getName().equals(enemyName)) {
+        return temp;
+      }
+    }
+    return null;
+  }
+
 
   public ArrayList<Direction> getAllAvailbleDirections() {
 

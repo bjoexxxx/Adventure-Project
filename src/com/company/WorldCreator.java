@@ -69,9 +69,12 @@ public class WorldCreator {
     //todo how to add items to mob inventory
     //todo how give mobs weapons
     Enemy targetDummy = new Enemy(room1,new ArrayList<Item>(),20,"Hit me!",null);
-    room1.setAllMonstersInRoom(targetDummy);
-    Enemy skeleton = new Enemy(room1,new ArrayList<Item>(),20,"skeleton",null);
+    Enemy skeleton = new Enemy(room1,new ArrayList<Item>(),20,"Skeleton",null);
+    Enemy test = new Enemy(room1,new ArrayList<Item>(),30,"Test",null);
+    room1.setAllMonstersInRoom(test);
     room1.setAllMonstersInRoom(skeleton);
+    room1.setAllMonstersInRoom(targetDummy);
+    room1.setAllMonstersInRoom(targetDummy);
 
   }
 

@@ -1,5 +1,6 @@
 package com.company;
 
+import Characters.Enemy;
 import Characters.Player;
 import Items.Consume;
 import Items.Item;
@@ -154,11 +155,13 @@ public class Adventure {
   }
 
   public void attack(String target){
+    Enemy mark = player.getCurrentRoom().searchAllMonstersInRoom(target);
 
     if (player.canPlayerAttack()) { // checks if player i able to attack
       userinterface.displayMustHaveWeapon();
-    } else if(player.attackTarget(target)) { // attacks taget or moves on to air in case of non specified target
-      userinterface.displayHittingEnemy();
+    } else if(mark != null) { // attacks taget or moves on to air in case of non specified target
+      player.attackTarget(mark);
+      userinterface.displayHittingEnemy(mark);
     } else {
       userinterface.dispalyHittingOnlyAir();
     }
