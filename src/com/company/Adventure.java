@@ -184,6 +184,7 @@ public class Adventure {
       String playerCommand = keyboard.nextLine();
       String firstWord = firstWord(playerCommand);
       String secondWord = secondWord(playerCommand);
+      //todo make second int and make it work with allMonstersInRoom
 
       switch (firstWord) {
 

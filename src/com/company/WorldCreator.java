@@ -68,6 +68,8 @@ public class WorldCreator {
     //Spawn enemies
     //todo how to add items to mob inventory
     //todo how give mobs weapons
+    //todo make enemies hit back
+    //todo make monsters die when they die
     Enemy targetDummy = new Enemy(room1,new ArrayList<Item>(),20,"Hit me!",null);
     Enemy skeleton = new Enemy(room1,new ArrayList<Item>(),20,"Skeleton",null);
     Enemy test = new Enemy(room1,new ArrayList<Item>(),30,"Test",null);
