@@ -16,8 +16,20 @@ public class Enemy extends Character{
   public String toString(){
     return this.name;
   }
-  public void isAttacked(int damage){
+  public void isAttacked(int damage, Player you){
     this.health -= damage;
+    if (killedTarget()){
+      currentRoom.removeMonster(this);
+    } else {
+      attackPlayer(you);
+    }
+
+  }
+  public void attackPlayer(Player player){
+    player.tookDamage(this.rightHand.getDamage());
+  }
+  public boolean killedTarget(){
+      return health<=0;
   }
   public void attackTarget(Enemy nameOfTarget) {
   }

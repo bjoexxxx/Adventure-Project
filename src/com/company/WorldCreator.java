@@ -67,11 +67,10 @@ public class WorldCreator {
 
     //Spawn enemies
     //todo how to add items to mob inventory
-    //todo how give mobs weapons
-    //todo make enemies hit back
-    Enemy targetDummy = new Enemy(room1,new ArrayList<Item>(),20,"Hit me!",null);
-    Enemy skeleton = new Enemy(room1,new ArrayList<Item>(),20,"Skeleton",null);
-    Enemy test = new Enemy(room1,new ArrayList<Item>(),5,"Test",null);
+    //todo how give mobs weapons (without making new items)
+    Enemy targetDummy = new Enemy(room1,new ArrayList<Item>(),20,"Hit me!", null);
+    Enemy skeleton = new Enemy(room1,new ArrayList<Item>(),20,"Skeleton",(Melee) createLoot("Sword"));
+    Enemy test = new Enemy(room1, new ArrayList<Item>(), 5, "Test", new Melee("blade","sharp",5,100));
     room1.setAllMonstersInRoom(test);
     room1.setAllMonstersInRoom(skeleton);
     room1.setAllMonstersInRoom(targetDummy);
@@ -103,9 +102,6 @@ public class WorldCreator {
       }
       case "water" -> {
         return new Food("Water", "Feeling thirsty?", Consume.EDIBLE,5);
-      }
-      case "flute" -> {
-        return new Item("Boneflute", "Can make a eerie high pitch tone");
       }
       default -> {
         return null;

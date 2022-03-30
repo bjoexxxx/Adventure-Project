@@ -56,7 +56,7 @@ public class Room {
     this.monsterInRoom = monsterInRoom;
   }
   public void removeMonster(Enemy deadMonster){
-    this.allMonstersInRoom.remove(monsterInRoom);
+    this.allMonstersInRoom.remove(deadMonster);
   }
 
   public ArrayList<Enemy> getAllMonstersInRoom() {

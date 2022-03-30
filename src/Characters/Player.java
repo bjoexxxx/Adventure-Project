@@ -32,15 +32,13 @@ public class Player extends Character {
       rightHand.itemUsed();
     } else {//todo monster hit back here
       rightHand.itemUsed();
-      nameOfTarget.isAttacked(rightHand.getDamage());
-      killedTarget(nameOfTarget);
+      nameOfTarget.isAttacked(rightHand.getDamage(), this);
+      //enemy.rightHand.getdamage
+      //set.playerhealth = playerhealth-enemydamage
     }
   }
-  public void killedTarget(Enemy nameOfTarget){
-    if(nameOfTarget.getHealth()<=0){
-      nameOfTarget.currentRoom.setMonsterInRoom(nameOfTarget);
-      nameOfTarget.currentRoom.removeMonster(nameOfTarget);
-    }
+  public void tookDamage(int damage){
+    this.health -= damage;
   }
 
   public void setCurrentRoom(Room currentRoom) {
