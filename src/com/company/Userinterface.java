@@ -96,9 +96,10 @@ public class Userinterface {
     System.out.println("You found a found a door that is locked.");
   }
 
-  public void displayHittingEnemy(Enemy enemy) {
+  public void displayCombatOutcome(Enemy enemy, int healt) {
     System.out.println("Hitting the enemy");
     System.out.println(enemy.getName()+": "+enemy.getHealth() + " remaining health");
+    displayPlayerHealth(healt);
   }
 
   public void dispalyHittingOnlyAir() {
@@ -134,7 +135,7 @@ public class Userinterface {
     } else if (health > 50 && health < 75) {
       System.out.print("Consider getting some more health");
     } else {
-      System.out.print("Go forth and explore!");
+      System.out.print("Go forth and fight!");
     }
     newline();
 

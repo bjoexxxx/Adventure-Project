@@ -24,4 +24,13 @@ public abstract class Character {
   public int getHealth(){
     return this.health;
   }
+
+  public boolean ischarecterAlive(){
+    return health<=0;
+  }
+
+  public void tookDamage(int damage){
+    this.health -= damage;
+  }
+
 }

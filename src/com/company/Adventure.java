@@ -161,7 +161,7 @@ public class Adventure {
       userinterface.displayMustHaveWeapon();
     } else if(mark != null) { // attacks taget or moves on to air in case of non specified target
       player.attackTarget(mark);
-      userinterface.displayHittingEnemy(mark);
+      userinterface.displayCombatOutcome(mark, player.getHealth());
     } else {
       userinterface.dispalyHittingOnlyAir();
     }

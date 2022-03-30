@@ -68,8 +68,9 @@ public class WorldCreator {
     //Spawn enemies
     //todo how to add items to mob inventory
     //todo how give mobs weapons (without making new items)
+    Melee blade = new Melee("Sword", "Its very pointy",3,100);
     Enemy targetDummy = new Enemy(room1,new ArrayList<Item>(),20,"Hit me!", null);
-    Enemy skeleton = new Enemy(room1,new ArrayList<Item>(),20,"Skeleton",(Melee) createLoot("Sword"));
+    Enemy skeleton = new Enemy(room1,new ArrayList<Item>(),20,"Skeleton", (Weapon) createLoot("sword"));
     Enemy test = new Enemy(room1, new ArrayList<Item>(), 5, "Test", new Melee("blade","sharp",5,100));
     room1.setAllMonstersInRoom(test);
     room1.setAllMonstersInRoom(skeleton);
@@ -98,7 +99,7 @@ public class WorldCreator {
         return new Food("Lambras", "An elvish flatbred", Consume.EDIBLE,20);
       }
       case "ham" -> {
-        return new Food("Ham", "Smells bad", Consume.POISONOUS,25);
+        return new Food("Ham", "Smells bad", Consume.POISONOUS,-25);
       }
       case "water" -> {
         return new Food("Water", "Feeling thirsty?", Consume.EDIBLE,5);

@@ -30,15 +30,10 @@ public class Player extends Character {
 
     if (nameOfTarget == null) { //non specified target
       rightHand.itemUsed();
-    } else {//todo monster hit back here
+    } else {
       rightHand.itemUsed();
       nameOfTarget.isAttacked(rightHand.getDamage(), this);
-      //enemy.rightHand.getdamage
-      //set.playerhealth = playerhealth-enemydamage
-    }
-  }
-  public void tookDamage(int damage){
-    this.health -= damage;
+       }
   }
 
   public void setCurrentRoom(Room currentRoom) {
@@ -132,7 +127,7 @@ return false;
     if (itemFromInventory != null) {
       if (itemFromInventory instanceof Food food) {
         inventory.remove(food);
-        digestingFood(food.getConsume());
+        setHealth(food.getNutrition());
         checkMaxHealth(getHealth());
         return food.getConsume();
       }
@@ -143,15 +138,6 @@ return false;
   private void checkMaxHealth(int currentHealth) {
     if (currentHealth > 99) {
       this.health = 100;
-    }
-  }
-
-  private void digestingFood(Consume consumeFood) {
-
-    switch (consumeFood) {
-      case EDIBLE -> setHealth(20);
-      case POISONOUS -> setHealth(-25);
-
     }
   }
 
