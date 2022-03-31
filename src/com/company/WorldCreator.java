@@ -66,8 +66,6 @@ public class WorldCreator {
     room1.setLootTable(createWeapon("handgun"));
 
     //Spawn enemies
-    //todo how to add items to mob inventory
-    //todo how give mobs weapons (without making new items)
     Melee blade = new Melee("Sword", "Its very pointy", 3, 100);
     Enemy targetDummy = new Enemy(room1, new ArrayList<Item>(), 20, "Hit me!", null);
     Enemy skeleton = new Enemy(room1, new ArrayList<Item>(), 20, "Skeleton", (Weapon) createWeapon("sword"));

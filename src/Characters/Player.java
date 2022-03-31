@@ -16,7 +16,6 @@ public class Player extends Character {
     this.leftHand = null;
 
   }
-  //todo method that makes players die when they die
 
   public boolean canPlayerAttack() {
     if (this.rightHand == null || this.rightHand.getRemainingUses() == 0) { //must have weapon

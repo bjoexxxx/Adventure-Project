@@ -129,7 +129,7 @@ public class Adventure {
     }
 
     //hvis der ikke er en lås på døren
-    if (doorToOpen.getKey().isEmpty()) {
+    if (doorToOpen != null && doorToOpen.getKey().isEmpty()) {
       doorToOpen.setOpen(false);
       userinterface.displayOpendDoor();
     } else { // hvis der er en lås på døren
