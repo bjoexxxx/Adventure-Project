@@ -204,6 +204,10 @@ public class Room {
     this.lootTable.add(loot);
   }
 
+  public void addMonsterInventoryToLoottable (ArrayList<Item> inventory) {
+    this.lootTable.addAll(inventory);
+  }
+
   public ArrayList<Item> getLootTable() {
     return this.lootTable;
   }

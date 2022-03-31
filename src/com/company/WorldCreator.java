@@ -59,20 +59,19 @@ public class WorldCreator {
     room9.setDoorNorth(new Door(true,""));
 
     // Make items
-    room1.setLootTable(createLoot("sword"));
-    room1.setLootTable(createLoot("lambras"));
-    room3.setLootTable(createLoot("flute"));
-    room1.setLootTable(createLoot("ham"));
-    room1.setLootTable(createLoot("water"));
-    room1.setLootTable(createLoot("handgun"));
+    room1.setLootTable(createWeapon("sword"));
+    room1.setLootTable(createItem("lambras"));
+    room1.setLootTable(createItem("ham"));
+    room1.setLootTable(createItem("water"));
+    room1.setLootTable(createWeapon("handgun"));
 
     //Spawn enemies
     //todo how to add items to mob inventory
     //todo how give mobs weapons (without making new items)
     Melee blade = new Melee("Sword", "Its very pointy",3,100);
     Enemy targetDummy = new Enemy(room1,new ArrayList<Item>(),20,"Hit me!", null);
-    Enemy skeleton = new Enemy(room1,new ArrayList<Item>(),20,"Skeleton", (Weapon) createLoot("sword"));
-    Enemy test = new Enemy(room1, new ArrayList<Item>(Arrays.asList(createLoot("sword"),createLoot("ham"))), 2, "Test", new Melee("blade","sharp",1,100));
+    Enemy skeleton = new Enemy(room1,new ArrayList<Item>(),20,"Skeleton", (Weapon) createWeapon("sword"));
+    Enemy test = new Enemy(room1, new ArrayList<Item>(Arrays.asList(createWeapon("sword"),createItem("ham"))), 2, "Test", createWeapon("sword"));
     room1.setAllMonstersInRoom(test);
     room1.setAllMonstersInRoom(skeleton);
     room1.setAllMonstersInRoom(targetDummy);
@@ -84,18 +83,26 @@ public class WorldCreator {
     return this.playerStartposition;
   }
 
-  public Item createLoot(String name) {
+  public Weapon createWeapon(String name) {
 
     switch (name) {
-      case "handgun" -> {
-        return new Ranged("Handgun", "pew pew",10,0);
-      }
-      case "ammo" -> {
-        return new Ranged("ammonition", "Reloading",10,1);
-      }
+
       case "sword" -> {
-        return new Melee("Sword", "Its very pointy",3,100);
+        return new Melee("Sword", "Its very pointy", 3, 100);
       }
+      case "handgun" -> {
+        return new Ranged("Handgun", "pew pew", 10, 0);
+      }
+      default -> {
+        return null;
+      }
+
+    }
+  }
+
+  public Item createItem(String name) {
+
+  switch (name){
       case "lambras" -> {
         return new Food("Lambras", "An elvish flatbred", Consume.EDIBLE,20);
       }
@@ -105,10 +112,12 @@ public class WorldCreator {
       case "water" -> {
         return new Food("Water", "Feeling thirsty?", Consume.EDIBLE,5);
       }
+    case "ammo" -> {
+      return new Ranged("ammonition", "Reloading", 10, 1);
+    }
       default -> {
         return null;
       }
-
     }
   }
 }

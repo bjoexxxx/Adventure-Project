@@ -21,6 +21,7 @@ public class Enemy extends Character{
     if (ischarecterAlive()){
       currentRoom.removeMonster(this);
       currentRoom.setLootTable(rightHand);
+      currentRoom.addMonsterInventoryToLoottable(inventory);
     } else {
       youThePlayer.tookDamage(this.rightHand.getDamage());
     }
