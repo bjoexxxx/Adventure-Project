@@ -144,15 +144,6 @@ public class Player extends Character {
     }
   }
 
-  private void digestingFood(Consume consumeFood) {
-
-    switch (consumeFood) {
-      case EDIBLE -> setHealth(20);
-      case POISONOUS -> setHealth(-25);
-
-    }
-  }
-
   public Equipable reloadWeapon() {
     Ammo ammo = (Ammo) searchItemsInInventory("Ammo");
 
