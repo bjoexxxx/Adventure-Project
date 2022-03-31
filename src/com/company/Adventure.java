@@ -155,14 +155,14 @@ public class Adventure {
 
   }
 
-  public void attack(String target) {
-    Enemy mark = player.getCurrentRoom().searchAllMonstersInRoom(target);
+  public void attack(String nameOfTarget) {
+    Enemy enemyTaget = player.getCurrentRoom().searchAllMonstersInRoom(nameOfTarget);
 
     if (player.canPlayerAttack()) { // checks if player i able to attack
       userinterface.displayMustHaveWeapon();
-    } else if (mark != null) { // attacks taget or moves on to air in case of non specified target
-      player.attackTarget(mark);
-      userinterface.displayCombatOutcome(mark, player.getHealth());
+    } else if (enemyTaget != null) { // attacks taget or moves on to air in case of non specified target
+      player.attackTarget(enemyTaget);
+      userinterface.displayCombatOutcome(enemyTaget, player.getHealth());
     } else {
       userinterface.dispalyHittingOnlyAir();
     }

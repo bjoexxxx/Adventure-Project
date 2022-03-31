@@ -263,9 +263,9 @@ public class Room {
 
   public Enemy searchAllMonstersInRoom(String enemyName) {
     for (int i = 0; i < allMonstersInRoom.size(); i++) {
-      Enemy temp = allMonstersInRoom.get(i);
-      if (temp.getName().equals(enemyName)) {
-        return temp;
+      Enemy tagetEnemy = allMonstersInRoom.get(i);
+      if (tagetEnemy.getName().equals(enemyName)) {
+        return tagetEnemy;
       }
     }
     return null;

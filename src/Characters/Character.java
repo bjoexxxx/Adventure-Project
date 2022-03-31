@@ -19,7 +19,7 @@ public abstract class Character {
     this.currentRoom = currentRoom;
   }
 
-  public abstract void attackTarget(Enemy nameOfTarget);
+   public abstract void setCurrentRoom(Room currentRoom);
 
   public int getHealth() {
     return this.health;
