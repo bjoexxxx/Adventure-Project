@@ -63,11 +63,24 @@ public class WorldCreator {
     // Make items
     room1.setLootTable(randomizeLoot(room1));
     room1.setLootTable(createMelee());
-    room5.setAllMonstersInRoom(new Enemy(room5,new ArrayList<Item>(),500,"Grim Reaper",
-        new Melee("Scythe","Favorite tool of the reaper",50,1000)));
+    room3.setLootTable(randomizeLoot(room3));
+    room4.setLootTable(randomizeLoot(room4));
+    room6.setLootTable(randomizeLoot(room6));
+    room7.setLootTable(randomizeLoot(room7));
+    room8.setLootTable(randomizeLoot(room8));
+    room9.setLootTable(randomizeLoot(room9));
 
     //Spawn enemies
     room1.setAllMonstersInRoom(randomizeEnemies(room1));
+    room2.setAllMonstersInRoom(randomizeEnemies(room2));
+    room3.setAllMonstersInRoom(randomizeEnemies(room3));
+    room4.setAllMonstersInRoom(randomizeEnemies(room4));
+    room5.setAllMonstersInRoom(new Enemy(room5,new ArrayList<Item>(),500,"Grim Reaper",
+        new Melee("Scythe","Favorite tool of the reaper",50,1000)));
+    room6.setAllMonstersInRoom(randomizeEnemies(room6));
+    room7.setAllMonstersInRoom(randomizeEnemies(room7));
+    room8.setAllMonstersInRoom(randomizeEnemies(room8));
+    room9.setAllMonstersInRoom(randomizeEnemies(room9));
 
   }
 
