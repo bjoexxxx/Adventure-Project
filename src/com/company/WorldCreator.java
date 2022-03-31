@@ -63,6 +63,7 @@ public class WorldCreator {
     // Make items
     room1.setLootTable(randomizeLoot(room1));
     room1.setLootTable(createMelee());
+    room2.setLootTable(randomizeLoot(room2));
     room3.setLootTable(randomizeLoot(room3));
     room4.setLootTable(randomizeLoot(room4));
     room6.setLootTable(randomizeLoot(room6));
