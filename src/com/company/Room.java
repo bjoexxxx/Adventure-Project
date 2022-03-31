@@ -248,7 +248,7 @@ public class Room {
         }
       }
     }
-    return true;
+    return false;
   }
 
   public Item searchItemsInRoom(String itemName) {

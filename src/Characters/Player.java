@@ -16,7 +16,6 @@ public class Player extends Character {
     this.leftHand = null;
 
   }
-  //todo method that makes players die when they die
 
   public boolean canPlayerAttack() {
     if (this.rightHand == null || this.rightHand.getRemainingUses() == 0) { //must have weapon
@@ -28,12 +27,19 @@ public class Player extends Character {
 
   public void attackTarget(Enemy nameOfTarget) {
 
+    Weapon playerWeapon = rightHand;
+
     if (nameOfTarget == null) { //non specified target
-      rightHand.itemUsed();
+      playerWeapon.itemUsed(playerWeapon);
     } else {
-      rightHand.itemUsed();
-      nameOfTarget.isAttacked(rightHand, this);
+      playerWeapon.itemUsed(playerWeapon);
+      nameOfTarget.isAttacked(playerWeapon, this);
     }
+  }
+
+  public void isAttacked (Weapon enemyWeapon) {
+    int damageTakenFromEnemy = enemyWeapon.getDamage();
+    tookDamage(damageTakenFromEnemy);
   }
 
   public void setCurrentRoom(Room currentRoom) {
