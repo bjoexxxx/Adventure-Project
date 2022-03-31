@@ -54,9 +54,9 @@ public class Room {
     this.allMonstersInRoom.add(monsterInRoom);
   }
 
-  public void setMonsterInRoom(Enemy monsterInRoom) {
-    this.monsterInRoom = monsterInRoom;
-  }
+//  public void setMonsterInRoom(Enemy monsterInRoom) {
+//    this.monsterInRoom = monsterInRoom;
+//  }
 
   public void removeMonster(Enemy deadMonster) {
     this.allMonstersInRoom.remove(deadMonster);
@@ -304,8 +304,9 @@ public class Room {
     } else if (direction.equals("West") || direction.equals("W")) {
       setTriedWest(true);
       return Direction.WEST;
-    }
-    return null;
+    } else {
+    return Direction.INVALID;
   }
+}
 }
 

@@ -57,7 +57,7 @@ public class WorldCreator {
     // skriv rummets navn, den retning den skal sidde, lav new door, true means closed
     room4.setDoorNorth(new Door(true, ""));
     room2.setDoorWest(new Door(true, ""));
-    room8.setDoorNorth(new Door(true, "Gold"));
+    room8.setDoorNorth(new Door(true, ""));
     room9.setDoorNorth(new Door(true, ""));
 
     // Make items

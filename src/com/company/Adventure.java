@@ -97,6 +97,7 @@ public class Adventure {
       case SOUTH -> nextRoom = currentRoom.getSouth();
       case EAST -> nextRoom = currentRoom.getEast();
       case WEST -> nextRoom = currentRoom.getWest();
+      case INVALID -> nextRoom = null;
     }
 
     // Now player tries to move to the next room
