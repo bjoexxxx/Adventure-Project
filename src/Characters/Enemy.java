@@ -20,7 +20,8 @@ public class Enemy extends Character {
   }
 
   public void isAttacked(Weapon playerWeapon, Player youThePlayer) {
-    tookDamage(playerWeapon);
+    int damagetoEnemy = playerWeapon.getDamage();
+    tookDamage(damagetoEnemy);
     Weapon monsterWeapon = rightHand;
 
     if (ischarecterAlive()) {
@@ -28,7 +29,7 @@ public class Enemy extends Character {
       currentRoom.setLootTable(monsterWeapon);
       currentRoom.addMonsterInventoryToLoottable(inventory);
     } else {
-      youThePlayer.tookDamage(monsterWeapon);
+      youThePlayer.isAttacked(monsterWeapon);
     }
   }
 

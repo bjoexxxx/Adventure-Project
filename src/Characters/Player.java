@@ -35,6 +35,11 @@ public class Player extends Character {
     }
   }
 
+  public void isAttacked (Weapon enemyWeapon) {
+    int damageTakenFromEnemy = enemyWeapon.getDamage();
+    tookDamage(damageTakenFromEnemy);
+  }
+
   public void setCurrentRoom(Room currentRoom) {
     this.currentRoom = currentRoom;
   }

@@ -31,8 +31,7 @@ public abstract class Character {
     return health <= 0;
   }
 
-  public void tookDamage(Weapon enemyWeapon) {
-    int damageTaken = enemyWeapon.getDamage();
+  public void tookDamage(int damageTaken) {
     this.health -= damageTaken;
   }
 
