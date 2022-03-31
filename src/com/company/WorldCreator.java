@@ -61,23 +61,41 @@ public class WorldCreator {
     room9.setDoorNorth(new Door(true, ""));
 
     // Make items
-    room1.setLootTable(createMelee());
-    room1.setLootTable(createItem());
-    room1.setLootTable(createItem());
-    room1.setLootTable(createItem());
+    room1.setLootTable(randomizeLoot(room1));
     room1.setLootTable(createMelee());
 
     //Spawn enemies
-    room1.setAllMonstersInRoom(createEnemy(room1));
-    room1.setAllMonstersInRoom(createEnemy(room1));
-    room1.setAllMonstersInRoom(createEnemy(room1));
-    room1.setAllMonstersInRoom(createEnemy(room1));
+    room1.setAllMonstersInRoom(randomizeEnemies(room1));
 
   }
 
   public Room getPlayerStartposition() {
     return this.playerStartposition;
   }
+  public Item randomizeLoot(Room room){
+    int maxItems = roll.nextInt(0,4);
+    for (int i=0; i<= maxItems; i++) {
+
+      if (i == maxItems) {
+        return createItem();
+      }
+
+      room.setLootTable(createItem());
+    }
+    return null;
+  }public Enemy randomizeEnemies(Room room){
+    int maxItems = roll.nextInt(0,4);
+    for (int i=0; i<= maxItems; i++) {
+
+      if (i == maxItems) {
+        return createEnemy(room);
+      }
+
+      room.setAllMonstersInRoom(createEnemy(room));
+    }
+    return null;
+  }
+
   public Enemy createEnemy(Room room) {
     int number = roll.nextInt(1, 8);
     switch (number) {
