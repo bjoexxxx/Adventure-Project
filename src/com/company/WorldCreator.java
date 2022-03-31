@@ -82,6 +82,7 @@ public class WorldCreator {
     int number = roll.nextInt(1, 8);
     switch (number) {
 
+
       case 1 -> {
         return new Enemy(room,new ArrayList<Item>(),40,"Succubus",createRanged());
       }
