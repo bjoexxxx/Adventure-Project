@@ -141,7 +141,6 @@ public class Adventure {
 
   private void checkInventory() {
     userinterface.displayPlayerInventory(player.getPlayerInventory(), player.getRightHand());
-
   }
 
   private void health() {
@@ -149,12 +148,8 @@ public class Adventure {
   }
 
   private void equip(String itemName) {
-    if (player.setRightHandWeapon(itemName)) {
-      userinterface.displayItemEquipped();
-    } else {
-      userinterface.displayInvalid();
-    }
-
+    Equipable status = player.setRightHandWeapon(itemName);
+    userinterface.displayItemEquipped(status);
   }
 
   private void attack(String nameOfTarget) {

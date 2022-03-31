@@ -88,7 +88,7 @@ public class Player extends Character {
     return null;
   }
 
-  public boolean setRightHandWeapon(String weaponName) {
+  public Equipable setRightHandWeapon(String weaponName) {
     Item weaponFromInventory = searchItemsInInventory(weaponName);
 
     if (weaponFromInventory != null || this.rightHand == null) {
@@ -96,10 +96,10 @@ public class Player extends Character {
         inCaseRightHandIsEquipped();
         inventory.remove(weapon);
         this.rightHand = weapon;
-        return true;
+        return Equipable.EQUIPING;
       }
     }
-    return false;
+    return Equipable.INVALID;
   }
 
   private void inCaseRightHandIsEquipped() {

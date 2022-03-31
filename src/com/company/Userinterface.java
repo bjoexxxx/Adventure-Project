@@ -40,12 +40,16 @@ public class Userinterface {
 
   }
 
-  public void displayItemEquipped() {
-    System.out.println("Item equipped");
+  public void displayItemEquipped(Equipable status) {
+    if (status == Equipable.EQUIPING) {
+      System.out.println("Item equipped");
+    } else {
+      System.out.println("Invalid item");
+    }
   }
 
   public void displayInvalid() {
-    System.out.println("Invalid");
+
   }
 
   public void displayFoodStatus(Consume status) {
