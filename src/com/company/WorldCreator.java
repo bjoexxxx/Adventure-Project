@@ -198,20 +198,35 @@ public class WorldCreator {
   }
 
   public Item createItem() {
-    int number = roll.nextInt(1,5);
+    int number = roll.nextInt(1,10);
 
     switch (number) {
       case 1 -> {
         return new Food("Lambras", "An elvish flatbred", Consume.EDIBLE, 20);
       }
       case 2 -> {
-        return new Food("Ham", "Smells bad", Consume.POISONOUS, -25);
+        return new Food("Mushrooms", "Smells funky", Consume.POISONOUS, -25);
       }
       case 3 -> {
         return new Food("Water", "Feeling thirsty?", Consume.EDIBLE, 5);
       }
       case 4 -> {
-        return new Ranged("ammonition", "Reloading", 10, 1);
+        return new Ranged("Ammonition", "Reloading", 10, 1);
+      }
+      case 5 -> {
+        return new Food("Potion", "Full heal", Consume.EDIBLE, 100);
+      }
+      case 6 -> {
+        return new Food("Ham", "Honey roasted", Consume.EDIBLE, 30);
+      }
+      case 7 -> {
+        return new Food("Berries", "Mostly sweet", Consume.EDIBLE, 10);
+      }
+      case 8 -> {
+        return new Food("Cake", "This was not supposed to exsist", Consume.EDIBLE, 50);
+      }
+      case 9 -> {
+        return new Food("Ration", "Military issue", Consume.EDIBLE, 15);
       }
       default -> {
         return null;
