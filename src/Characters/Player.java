@@ -12,28 +12,28 @@ public class Player extends Character {
   private Weapon leftHand;
 
   public Player(Room currentRoom, ArrayList<Item> inventory, int health) {
-    super(currentRoom,inventory,health);
+    super(currentRoom, inventory, health);
     this.leftHand = null;
 
   }
   //todo method that makes players die when they die
 
-  public boolean canPlayerAttack () {
-    if (this.rightHand == null||this.rightHand.getRemainingUses()==0) { //must have weapon
+  public boolean canPlayerAttack() {
+    if (this.rightHand == null || this.rightHand.getRemainingUses() == 0) { //must have weapon
       return true;
     } else {
-     return false;
+      return false;
     }
   }
 
-  public void attackTarget (Enemy nameOfTarget) {
+  public void attackTarget(Enemy nameOfTarget) {
 
     if (nameOfTarget == null) { //non specified target
       rightHand.itemUsed();
     } else {
       rightHand.itemUsed();
-      nameOfTarget.isAttacked(rightHand.getDamage(), this);
-       }
+      nameOfTarget.isAttacked(rightHand, this);
+    }
   }
 
   public void setCurrentRoom(Room currentRoom) {
@@ -85,22 +85,22 @@ public class Player extends Character {
     return null;
   }
 
-  public boolean setRightHandWeapon(String weaponName){
+  public boolean setRightHandWeapon(String weaponName) {
     Item weaponFromInventory = searchItemsInInventory(weaponName);
 
-    if (weaponFromInventory != null || this.rightHand == null ){
-      if (weaponFromInventory instanceof Weapon weapon){
+    if (weaponFromInventory != null || this.rightHand == null) {
+      if (weaponFromInventory instanceof Weapon weapon) {
         inCaseRightHandIsEquipped();
         inventory.remove(weapon);
         this.rightHand = weapon;
         return true;
       }
     }
-return false;
+    return false;
   }
 
-  private void inCaseRightHandIsEquipped(){
-    if (this.rightHand != null){
+  private void inCaseRightHandIsEquipped() {
+    if (this.rightHand != null) {
       inventory.add(this.rightHand);
     }
   }

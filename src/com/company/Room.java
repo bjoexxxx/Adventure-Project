@@ -49,13 +49,16 @@ public class Room {
     this.allMonstersInRoom = new ArrayList<>();
 
   }
-  public void setAllMonstersInRoom(Enemy monsterInRoom){
+
+  public void setAllMonstersInRoom(Enemy monsterInRoom) {
     this.allMonstersInRoom.add(monsterInRoom);
   }
-  public void setMonsterInRoom(Enemy monsterInRoom){
+
+  public void setMonsterInRoom(Enemy monsterInRoom) {
     this.monsterInRoom = monsterInRoom;
   }
-  public void removeMonster(Enemy deadMonster){
+
+  public void removeMonster(Enemy deadMonster) {
     this.allMonstersInRoom.remove(deadMonster);
   }
 
@@ -204,7 +207,7 @@ public class Room {
     this.lootTable.add(loot);
   }
 
-  public void addMonsterInventoryToLoottable (ArrayList<Item> inventory) {
+  public void addMonsterInventoryToLoottable(ArrayList<Item> inventory) {
     this.lootTable.addAll(inventory);
   }
 
@@ -257,6 +260,7 @@ public class Room {
     }
     return null;
   }
+
   public Enemy searchAllMonstersInRoom(String enemyName) {
     for (int i = 0; i < allMonstersInRoom.size(); i++) {
       Enemy temp = allMonstersInRoom.get(i);
@@ -297,7 +301,7 @@ public class Room {
     } else if (direction.equals("East") || direction.equals("E")) {
       setTriedEast(true);
       return Direction.EAST;
-    } else if(direction.equals("West") || direction.equals("W")) {
+    } else if (direction.equals("West") || direction.equals("W")) {
       setTriedWest(true);
       return Direction.WEST;
     }

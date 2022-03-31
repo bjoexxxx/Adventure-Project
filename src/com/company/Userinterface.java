@@ -31,7 +31,8 @@ public class Userinterface {
     System.out.println();
 
   }
-  public void displayEnemies(Room currentRoom){
+
+  public void displayEnemies(Room currentRoom) {
     System.out.print("This room has the following enemies: ");
     System.out.print(currentRoom.getAllMonstersInRoom());
 
@@ -98,7 +99,7 @@ public class Userinterface {
 
   public void displayCombatOutcome(Enemy enemy, int healt) {
     System.out.println("Hitting the enemy");
-    System.out.println(enemy.getName()+": "+enemy.getHealth() + " remaining health");
+    System.out.println(enemy.getName() + ": " + enemy.getHealth() + " remaining health");
     displayPlayerHealth(healt);
   }
 
@@ -128,7 +129,7 @@ public class Userinterface {
 
   public void displayPlayerHealth(int health) {
     System.out.print("You have " + health + " health - ");
-    if(health <= 0) {
+    if (health <= 0) {
       System.out.println("R.I.P.");
     } else if (health < 25) {
       System.out.print("You are close to death");
@@ -144,7 +145,7 @@ public class Userinterface {
 
   }
 
-  public void displayGameOver () {
+  public void displayGameOver() {
     System.out.println("Game over!");
   }
 

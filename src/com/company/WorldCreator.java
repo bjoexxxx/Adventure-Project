@@ -53,10 +53,10 @@ public class WorldCreator {
     playerStartposition = room1;
 
     // skriv rummets navn, den retning den skal sidde, lav new door, true means closed
-    room4.setDoorNorth(new Door(true,""));
-    room2.setDoorWest(new Door(true,""));
-    room8.setDoorNorth(new Door(true,"Gold"));
-    room9.setDoorNorth(new Door(true,""));
+    room4.setDoorNorth(new Door(true, ""));
+    room2.setDoorWest(new Door(true, ""));
+    room8.setDoorNorth(new Door(true, "Gold"));
+    room9.setDoorNorth(new Door(true, ""));
 
     // Make items
     room1.setLootTable(createWeapon("sword"));
@@ -68,10 +68,10 @@ public class WorldCreator {
     //Spawn enemies
     //todo how to add items to mob inventory
     //todo how give mobs weapons (without making new items)
-    Melee blade = new Melee("Sword", "Its very pointy",3,100);
-    Enemy targetDummy = new Enemy(room1,new ArrayList<Item>(),20,"Hit me!", null);
-    Enemy skeleton = new Enemy(room1,new ArrayList<Item>(),20,"Skeleton", (Weapon) createWeapon("sword"));
-    Enemy test = new Enemy(room1, new ArrayList<Item>(Arrays.asList(createWeapon("sword"),createItem("ham"))), 2, "Test", createWeapon("sword"));
+    Melee blade = new Melee("Sword", "Its very pointy", 3, 100);
+    Enemy targetDummy = new Enemy(room1, new ArrayList<Item>(), 20, "Hit me!", null);
+    Enemy skeleton = new Enemy(room1, new ArrayList<Item>(), 20, "Skeleton", (Weapon) createWeapon("sword"));
+    Enemy test = new Enemy(room1, new ArrayList<Item>(Arrays.asList(createWeapon("sword"), createItem("ham"))), 2, "Test", createWeapon("sword"));
     room1.setAllMonstersInRoom(test);
     room1.setAllMonstersInRoom(skeleton);
     room1.setAllMonstersInRoom(targetDummy);
@@ -102,19 +102,19 @@ public class WorldCreator {
 
   public Item createItem(String name) {
 
-  switch (name){
+    switch (name) {
       case "lambras" -> {
-        return new Food("Lambras", "An elvish flatbred", Consume.EDIBLE,20);
+        return new Food("Lambras", "An elvish flatbred", Consume.EDIBLE, 20);
       }
       case "ham" -> {
-        return new Food("Ham", "Smells bad", Consume.POISONOUS,-25);
+        return new Food("Ham", "Smells bad", Consume.POISONOUS, -25);
       }
       case "water" -> {
-        return new Food("Water", "Feeling thirsty?", Consume.EDIBLE,5);
+        return new Food("Water", "Feeling thirsty?", Consume.EDIBLE, 5);
       }
-    case "ammo" -> {
-      return new Ranged("ammonition", "Reloading", 10, 1);
-    }
+      case "ammo" -> {
+        return new Ranged("ammonition", "Reloading", 10, 1);
+      }
       default -> {
         return null;
       }
