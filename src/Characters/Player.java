@@ -12,7 +12,7 @@ public class Player extends Character {
   private Weapon leftHand;
 
   public Player(Room currentRoom, ArrayList<Item> inventory, int health) {
-    super(currentRoom, inventory, health);
+    super(currentRoom,inventory, health);
     this.leftHand = null;
 
   }
@@ -138,6 +138,15 @@ public class Player extends Character {
   private void checkMaxHealth(int currentHealth) {
     if (currentHealth > 99) {
       this.health = 100;
+    }
+  }
+
+  private void digestingFood(Consume consumeFood) {
+
+    switch (consumeFood) {
+      case EDIBLE -> setHealth(20);
+      case POISONOUS -> setHealth(-25);
+
     }
   }
 

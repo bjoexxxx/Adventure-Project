@@ -5,9 +5,11 @@ import Items.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 public class WorldCreator {
   private Room playerStartposition;
+  Random roll = new Random();
 
   public WorldCreator() {
     this.playerStartposition = null;
@@ -59,39 +61,94 @@ public class WorldCreator {
     room9.setDoorNorth(new Door(true, ""));
 
     // Make items
-    room1.setLootTable(createWeapon("sword"));
-    room1.setLootTable(createItem("lambras"));
-    room1.setLootTable(createItem("ham"));
-    room1.setLootTable(createItem("water"));
-    room1.setLootTable(createWeapon("handgun"));
+    room1.setLootTable(createMelee());
+    room1.setLootTable(createItem());
+    room1.setLootTable(createItem());
+    room1.setLootTable(createItem());
+    room1.setLootTable(createMelee());
 
     //Spawn enemies
-    //todo how to add items to mob inventory
-    //todo how give mobs weapons (without making new items)
-    Melee blade = new Melee("Sword", "Its very pointy", 3, 100);
-    Enemy targetDummy = new Enemy(room1, new ArrayList<Item>(), 20, "Hit me!", null);
-    Enemy skeleton = new Enemy(room1, new ArrayList<Item>(), 20, "Skeleton", (Weapon) createWeapon("sword"));
-    Enemy test = new Enemy(room1, new ArrayList<Item>(Arrays.asList(createWeapon("sword"), createItem("ham"))), 2, "Test", createWeapon("sword"));
-    room1.setAllMonstersInRoom(test);
-    room1.setAllMonstersInRoom(skeleton);
-    room1.setAllMonstersInRoom(targetDummy);
-    room1.setAllMonstersInRoom(targetDummy);
+    room1.setAllMonstersInRoom(createEnemy(room1));
+    room1.setAllMonstersInRoom(createEnemy(room1));
+    room1.setAllMonstersInRoom(createEnemy(room1));
+    room1.setAllMonstersInRoom(createEnemy(room1));
 
   }
 
   public Room getPlayerStartposition() {
     return this.playerStartposition;
   }
+  public Enemy createEnemy(Room room) {
+    int number = roll.nextInt(1, 8);
+    switch (number) {
 
-  public Weapon createWeapon(String name) {
-
-    switch (name) {
-
-      case "sword" -> {
-        return new Melee("Sword", "Its very pointy", 3, 100);
+      case 1 -> {
+        return new Enemy(room,new ArrayList<Item>(),40,"Succubus",createRanged());
       }
-      case "handgun" -> {
-        return new Ranged("Handgun", "pew pew", 10, 0);
+      case 2 -> {
+        return new Enemy(room,new ArrayList<Item>(),30,"Ghoul",createMelee());
+      }
+      case 3 -> {
+        return new Enemy(room,new ArrayList<Item>(),20,"Skeleton",createMelee());
+      }
+      case 4 -> {
+        return new Enemy(room,new ArrayList<Item>(),10,"Goblin",createRanged());
+      }
+      case 5 -> {
+        return new Enemy(room,new ArrayList<Item>(),50,"Orc",createMelee());
+      }
+      case 6 -> {
+        return new Enemy(room,new ArrayList<Item>(),25,"Cultist",createRanged());
+      }
+      case 7 -> {
+        return new Enemy(room,new ArrayList<Item>(),60,"Fiend",createMelee());
+      }
+      default -> {
+        return null;
+      }
+    }
+  }
+
+  public Melee createMelee(){
+    int number = roll.nextInt(1,8);
+    switch (number) {
+
+      case 1 -> {
+        return new Melee("Sword", "Its very pointy", 5, 100);
+      }
+      case 2 -> {
+        return new Melee("Halberd", "Sharp and Pointy", 7, 50);
+      }
+      case 3 -> {
+        return new Melee("Axe", "Sharp", 9, 25);
+      }
+      case 4 -> {
+        return new Melee("Mace", "Heavy", 15, 70);
+      }
+      case 5 -> {
+        return new Melee("Dagger", "Light and dinky", 2, 200);
+      }
+      case 6 -> {
+        return new Melee("Spear", "Long and pointy", 10, 70);
+      }
+      case 7 -> {
+        return new Melee("Saber", "A one edged sword", 8, 90);
+      }
+      default -> {
+        return null;
+      }
+
+    }
+  }
+  public Ranged createRanged() {
+    int number = roll.nextInt(1,3);
+
+    switch (number) {
+      case 1 -> {
+        return new Ranged("Rifle", "Bigger pew", 20, 5);
+      }
+      case 2 -> {
+        return new Ranged("Handgun", "pew pew", 10, 10);
       }
       default -> {
         return null;
@@ -100,19 +157,20 @@ public class WorldCreator {
     }
   }
 
-  public Item createItem(String name) {
+  public Item createItem() {
+    int number = roll.nextInt(1,5);
 
-    switch (name) {
-      case "lambras" -> {
+    switch (number) {
+      case 1 -> {
         return new Food("Lambras", "An elvish flatbred", Consume.EDIBLE, 20);
       }
-      case "ham" -> {
+      case 2 -> {
         return new Food("Ham", "Smells bad", Consume.POISONOUS, -25);
       }
-      case "water" -> {
+      case 3 -> {
         return new Food("Water", "Feeling thirsty?", Consume.EDIBLE, 5);
       }
-      case "ammo" -> {
+      case 4 -> {
         return new Ranged("ammonition", "Reloading", 10, 1);
       }
       default -> {

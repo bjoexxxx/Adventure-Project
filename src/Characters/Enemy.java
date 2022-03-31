@@ -32,7 +32,6 @@ public class Enemy extends Character {
     }
   }
 
-
   public void attackTarget(Enemy nameOfTarget) {
   }
 

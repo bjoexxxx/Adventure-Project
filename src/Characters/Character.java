@@ -12,16 +12,14 @@ public abstract class Character {
   protected int health;
   protected Weapon rightHand;
 
-  public Character(Room currentRoom, ArrayList<Item> inventory, int health) {
-    this.currentRoom = currentRoom;
+  public Character(Room currentRoom,ArrayList<Item> inventory, int health) {
     this.inventory = inventory;
     this.health = health;
     this.rightHand = null;
+    this.currentRoom = currentRoom;
   }
 
   public abstract void attackTarget(Enemy nameOfTarget);
-
-  public abstract void setCurrentRoom(Room currentRoom);
 
   public int getHealth() {
     return this.health;
