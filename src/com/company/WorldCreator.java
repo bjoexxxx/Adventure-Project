@@ -23,7 +23,7 @@ public class WorldCreator {
     Room room3 = new Room("Inner Sanctum", "In the back of the chapel, you find a small shrine,where the priests likely kept their secrets.\n" +
         "Whatever was kept here has long since been moved, and now this place seems a abandoned as the rest of the chapel", "Inner sanctum ");
     Room room4 = new Room("Dank Cave", "A dark narrow cavern", "A dank cave");
-    Room room5 = new Room("Boss Room", "A great ornate hall, with a massive figure towering over you", "Great ornate hall");
+    Room room5 = buildBossroom();
     Room room6 = new Room("Room Of Forbidden Idols", "Odd trinkets adorn this room, you have never seen their like " +
         "before.\n Small statures of demons and miniatures of grotesque are placed around a central podium." +
         " On the podium lies a magical item.", " Room of forbidden Idols");
@@ -76,13 +76,18 @@ public class WorldCreator {
     room2.setAllMonstersInRoom(randomizeEnemies(room2));
     room3.setAllMonstersInRoom(randomizeEnemies(room3));
     room4.setAllMonstersInRoom(randomizeEnemies(room4));
-    room5.setAllMonstersInRoom(new Enemy(room5,new ArrayList<Item>(),500,"Grim Reaper",
+    room5.setAllMonstersInRoom(new Enemy(room5,new ArrayList<Item>(),500,"Grimreaper",
         new Melee("Scythe","Favorite tool of the reaper",50,1000)));
     room6.setAllMonstersInRoom(randomizeEnemies(room6));
     room7.setAllMonstersInRoom(randomizeEnemies(room7));
     room8.setAllMonstersInRoom(randomizeEnemies(room8));
     room9.setAllMonstersInRoom(randomizeEnemies(room9));
 
+  }
+  public Room buildBossroom(){
+    return new Room("Boss Room",
+        "A great ornate hall, with a massive figure towering over you",
+        "Great ornate hall");
   }
 
   public Room getPlayerStartposition() {

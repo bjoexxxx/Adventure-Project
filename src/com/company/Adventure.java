@@ -171,6 +171,10 @@ public class Adventure {
     if (player.ischarecterAlive()) {
       exitGame();
       userinterface.displayGameOver();
+    } else if (player.getCurrentRoom().getName().equals("Boss Room")&&
+        player.getCurrentRoom().getAllMonstersInRoom().isEmpty() ){
+      System.out.println("You Win");
+      exitGame();
     }
   }
 

@@ -307,6 +307,11 @@ public class Room {
     } else {
     return Direction.INVALID;
   }
+
 }
+
+  public String getName() {
+    return name;
+  }
 }
 
