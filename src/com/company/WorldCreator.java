@@ -63,6 +63,7 @@ public class WorldCreator {
     // Make items
     room1.setLootTable(randomizeLoot(room1));
     room1.setLootTable(createMelee());
+    room1.setLootTable(createRanged());
     room2.setLootTable(randomizeLoot(room2));
     room3.setLootTable(randomizeLoot(room3));
     room4.setLootTable(randomizeLoot(room4));
@@ -188,7 +189,7 @@ public class WorldCreator {
         return new Ranged("Rifle", "Bigger pew", 20, 5);
       }
       case 2 -> {
-        return new Ranged("Handgun", "pew pew", 10, 10);
+        return new Ranged("Gun", "pew pew", 10, 10);
       }
       default -> {
         return null;
@@ -211,7 +212,7 @@ public class WorldCreator {
         return new Food("Water", "Feeling thirsty?", Consume.EDIBLE, 5);
       }
       case 4 -> {
-        return new Ranged("Ammonition", "Reloading", 10, 1);
+        return new Ammo("Ammo", "1 clip with 10 bullets");
       }
       case 5 -> {
         return new Food("Potion", "Full heal", Consume.EDIBLE, 100);

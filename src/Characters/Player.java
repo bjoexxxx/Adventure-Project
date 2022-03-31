@@ -1,9 +1,6 @@
 package Characters;
 
-import Items.Consume;
-import Items.Food;
-import Items.Item;
-import Items.Weapon;
+import Items.*;
 import com.company.Room;
 
 import java.util.ArrayList;
@@ -154,6 +151,12 @@ public class Player extends Character {
       case POISONOUS -> setHealth(-25);
 
     }
+  }
+  public void Reload(){
+    Ammo ammo = (Ammo) searchItemsInInventory("Ammo");
+    if (this.rightHand instanceof Ranged && ammo != null)
+      this.rightHand.setRemainingUses(10);
+    inventory.remove(ammo);
   }
 
 }

@@ -13,6 +13,10 @@ this.remainingUses = remainingUses;
     equippedWeapon.remainingUses -= 1;
   }
 
+  public void setRemainingUses(int remainingUses) {
+    this.remainingUses = remainingUses;
+  }
+
   public int getRemainingUses(){
     return remainingUses;
   }

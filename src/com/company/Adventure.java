@@ -215,6 +215,7 @@ public class Adventure {
         case ("eat") -> eat(secondWord);
         case ("equip") -> equip(secondWord);
         case ("attack") -> attack(secondWord);
+        case ("reload") -> player.Reload();
 
       }
     }
