@@ -20,6 +20,7 @@ public class Enemy extends Character{
     tookDamage(damage);
     if (ischarecterAlive()){
       currentRoom.removeMonster(this);
+      currentRoom.setLootTable(rightHand);
     } else {
       youThePlayer.tookDamage(this.rightHand.getDamage());
     }

@@ -4,6 +4,7 @@ import Characters.Enemy;
 import Items.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class WorldCreator {
   private Room playerStartposition;
@@ -71,7 +72,7 @@ public class WorldCreator {
     Melee blade = new Melee("Sword", "Its very pointy",3,100);
     Enemy targetDummy = new Enemy(room1,new ArrayList<Item>(),20,"Hit me!", null);
     Enemy skeleton = new Enemy(room1,new ArrayList<Item>(),20,"Skeleton", (Weapon) createLoot("sword"));
-    Enemy test = new Enemy(room1, new ArrayList<Item>(), 5, "Test", new Melee("blade","sharp",5,100));
+    Enemy test = new Enemy(room1, new ArrayList<Item>(Arrays.asList(createLoot("sword"),createLoot("ham"))), 2, "Test", new Melee("blade","sharp",1,100));
     room1.setAllMonstersInRoom(test);
     room1.setAllMonstersInRoom(skeleton);
     room1.setAllMonstersInRoom(targetDummy);

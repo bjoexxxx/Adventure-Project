@@ -14,6 +14,7 @@ public class Adventure {
   private Player player;
   public WorldCreator creator;
   public Userinterface userinterface = new Userinterface();
+  public boolean loop;
 
   private String firstWord(String fullCommand) {
     if (fullCommand.contains(" ")) {
@@ -52,7 +53,7 @@ public class Adventure {
       ArrayList<Direction> availbleRooms = room.getAllAvailbleDirections();
       userinterface.displayAvailableDirections(availbleRooms);
     }
-    if (room.getAllMonstersInRoom()!= null){
+    if (room.getAllMonstersInRoom() != null) {
       userinterface.displayEnemies(room);
     }
   }
@@ -145,7 +146,7 @@ public class Adventure {
     userinterface.displayPlayerHealth(player.getHealth());
   }
 
-  public void equip(String itemName){
+  public void equip(String itemName) {
     if (player.setRightHandWeapon(itemName)) {
       userinterface.displayItemEquipped();
     } else {
@@ -154,17 +155,26 @@ public class Adventure {
 
   }
 
-  public void attack(String target){
+  public void attack(String target) {
     Enemy mark = player.getCurrentRoom().searchAllMonstersInRoom(target);
 
     if (player.canPlayerAttack()) { // checks if player i able to attack
       userinterface.displayMustHaveWeapon();
-    } else if(mark != null) { // attacks taget or moves on to air in case of non specified target
+    } else if (mark != null) { // attacks taget or moves on to air in case of non specified target
       player.attackTarget(mark);
       userinterface.displayCombatOutcome(mark, player.getHealth());
     } else {
       userinterface.dispalyHittingOnlyAir();
     }
+
+    if (player.ischarecterAlive()) {
+      exitGame();
+      userinterface.displayGameOver();
+    }
+  }
+
+  public void exitGame() {
+    loop = false;
   }
 
   public void mainMenu() {
@@ -178,7 +188,7 @@ public class Adventure {
 
     userinterface.displayWelcome(player.getCurrentRoom());
 
-    boolean loop = true;
+    loop = true;
     while (loop) {
       userinterface.newline();
       String playerCommand = keyboard.nextLine();
@@ -189,7 +199,7 @@ public class Adventure {
       switch (firstWord) {
 
         case ("help") -> userinterface.help();
-        case ("exit") -> loop = false;
+        case ("exit") -> exitGame();
         case ("look") -> look();
         case ("go") -> move(secondWord);
         case ("open") -> open(secondWord);

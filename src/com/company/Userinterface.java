@@ -128,7 +128,9 @@ public class Userinterface {
 
   public void displayPlayerHealth(int health) {
     System.out.print("You have " + health + " health - ");
-    if (health < 25) {
+    if(health <= 0) {
+      System.out.println("R.I.P.");
+    } else if (health < 25) {
       System.out.print("You are close to death");
     } else if (health > 25 && health < 50) {
       System.out.print("Be careful going forward");
@@ -140,6 +142,10 @@ public class Userinterface {
     newline();
 
 
+  }
+
+  public void displayGameOver () {
+    System.out.println("Game over!");
   }
 
   public void displayItemNotFound() {
