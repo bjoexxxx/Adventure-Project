@@ -19,6 +19,7 @@ public abstract class Character {
     this.currentRoom = currentRoom;
   }
 
+
    public abstract void setCurrentRoom(Room currentRoom);
 
   public int getHealth() {
