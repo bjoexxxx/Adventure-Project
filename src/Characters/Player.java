@@ -27,11 +27,13 @@ public class Player extends Character {
 
   public void attackTarget(Enemy nameOfTarget) {
 
+    Weapon playerWeapon = rightHand;
+
     if (nameOfTarget == null) { //non specified target
-      rightHand.itemUsed();
+      playerWeapon.itemUsed(playerWeapon);
     } else {
-      rightHand.itemUsed();
-      nameOfTarget.isAttacked(rightHand, this);
+      playerWeapon.itemUsed(playerWeapon);
+      nameOfTarget.isAttacked(playerWeapon, this);
     }
   }
 

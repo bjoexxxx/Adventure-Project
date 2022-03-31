@@ -9,8 +9,8 @@ this.damage = damage;
 this.remainingUses = remainingUses;
   }
 
-  public void itemUsed(){
-    this.remainingUses -= 1;
+  public void itemUsed(Weapon equippedWeapon){
+    equippedWeapon.remainingUses -= 1;
   }
 
   public int getRemainingUses(){
