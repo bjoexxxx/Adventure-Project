@@ -84,7 +84,8 @@ public class WorldCreator {
     room9.setAllMonstersInRoom(randomizeEnemies(room9));
 
   }
-  public Room buildBossroom(){
+
+  private Room buildBossroom(){
     return new Room("Boss Room",
         "A great ornate hall, with a massive figure towering over you",
         "Great ornate hall");
@@ -93,7 +94,8 @@ public class WorldCreator {
   public Room getPlayerStartposition() {
     return this.playerStartposition;
   }
-  public Item randomizeLoot(Room room){
+
+  private Item randomizeLoot(Room room){
     int maxItems = roll.nextInt(0,4);
     for (int i=0; i<= maxItems; i++) {
 
@@ -104,7 +106,9 @@ public class WorldCreator {
       room.setLootTable(createItem());
     }
     return null;
-  }public Enemy randomizeEnemies(Room room){
+  }
+
+  private Enemy randomizeEnemies(Room room){
     int maxItems = roll.nextInt(0,4);
     for (int i=0; i<= maxItems; i++) {
 
@@ -117,7 +121,7 @@ public class WorldCreator {
     return null;
   }
 
-  public Enemy createEnemy(Room room) {
+  private Enemy createEnemy(Room room) {
     int number = roll.nextInt(1, 8);
     switch (number) {
 
@@ -149,7 +153,7 @@ public class WorldCreator {
     }
   }
 
-  public Melee createMelee(){
+  private Melee createMelee(){
     int number = roll.nextInt(1,8);
     switch (number) {
 
@@ -180,7 +184,8 @@ public class WorldCreator {
 
     }
   }
-  public Ranged createRanged() {
+
+  private Ranged createRanged() {
     int number = roll.nextInt(1,3);
 
     switch (number) {
@@ -197,7 +202,7 @@ public class WorldCreator {
     }
   }
 
-  public Item createItem() {
+  private Item createItem() {
     int number = roll.nextInt(1,10);
 
     switch (number) {
