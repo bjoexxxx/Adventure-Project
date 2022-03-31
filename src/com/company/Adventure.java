@@ -76,7 +76,7 @@ public class Adventure {
     }
   }
 
-  public void eat(String itemName) {
+  private void eat(String itemName) {
     if (player.getPlayerInventory().isEmpty()) {
       userinterface.displayItemNotFound();
     } else {
@@ -147,7 +147,7 @@ public class Adventure {
     userinterface.displayPlayerHealth(player.getHealth());
   }
 
-  public void equip(String itemName) {
+  private void equip(String itemName) {
     if (player.setRightHandWeapon(itemName)) {
       userinterface.displayItemEquipped();
     } else {
@@ -156,7 +156,7 @@ public class Adventure {
 
   }
 
-  public void attack(String nameOfTarget) {
+  private void attack(String nameOfTarget) {
     Enemy enemyTaget = player.getCurrentRoom().searchAllMonstersInRoom(nameOfTarget);
 
     if (player.canPlayerAttack()) { // checks if player i able to attack
@@ -178,7 +178,7 @@ public class Adventure {
     }
   }
 
-  public void exitGame() {
+  private void exitGame() {
     loop = false;
   }
 
