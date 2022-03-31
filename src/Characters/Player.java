@@ -9,7 +9,7 @@ public class Player extends Character {
   private Weapon leftHand;
 
   public Player(Room currentRoom, ArrayList<Item> inventory, int health) {
-    super(currentRoom,inventory, health);
+    super(currentRoom, inventory, health);
     this.leftHand = null;
 
   }
@@ -34,7 +34,7 @@ public class Player extends Character {
     }
   }
 
-  public void isAttacked (Weapon enemyWeapon) {
+  public void isAttacked(Weapon enemyWeapon) {
     int damageTakenFromEnemy = enemyWeapon.getDamage();
     tookDamage(damageTakenFromEnemy);
   }
@@ -152,13 +152,17 @@ public class Player extends Character {
 
     }
   }
-  public void Reload(){
+
+  public Equipable reloadWeapon() {
     Ammo ammo = (Ammo) searchItemsInInventory("Ammo");
-    if (this.rightHand instanceof Ranged && ammo != null)
+
+    if (this.rightHand instanceof Ranged && ammo != null) {
       this.rightHand.setRemainingUses(10);
-    inventory.remove(ammo);
+      inventory.remove(ammo);
+      return Equipable.EQUIPING;
+    } else {
+      return Equipable.INVALID;
+    }
   }
-
 }
-
 

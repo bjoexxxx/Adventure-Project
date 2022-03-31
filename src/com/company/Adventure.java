@@ -3,6 +3,7 @@ package com.company;
 import Characters.Enemy;
 import Characters.Player;
 import Items.Consume;
+import Items.Equipable;
 import Items.Item;
 
 import java.util.ArrayList;
@@ -182,6 +183,11 @@ public class Adventure {
     loop = false;
   }
 
+  private void reload(){
+    Equipable status = player.reloadWeapon();
+    userinterface.displayAmmoSucces(status);
+  }
+
   public void mainMenu() {
 
     // create the world
@@ -215,7 +221,7 @@ public class Adventure {
         case ("eat") -> eat(secondWord);
         case ("equip") -> equip(secondWord);
         case ("attack") -> attack(secondWord);
-        case ("reload") -> player.Reload();
+        case ("reload") -> reload();
 
       }
     }

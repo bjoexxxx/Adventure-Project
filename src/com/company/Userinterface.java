@@ -2,6 +2,7 @@ package com.company;
 
 import Characters.Enemy;
 import Items.Consume;
+import Items.Equipable;
 import Items.Item;
 import Items.Weapon;
 
@@ -28,6 +29,7 @@ public class Userinterface {
         " The same applies for go \"south\", \"go east\" and \"go west\".");
     System.out.println("- If there seems to be more than one door in a room, you need to type \"open south\" or \"open north\" ect.");
     System.out.println("-\"health\" will display your health. ");
+    System.out.println("-\"reload\" will give your ranged weapon 10 new bullets. ");
     System.out.println();
 
   }
@@ -159,5 +161,12 @@ public class Userinterface {
 
   public void displayYouNeedToUseAKey() {
     System.out.println("You need to use a key first.");
+  }
+
+  public void displayAmmoSucces(Equipable status) {
+    switch (status){
+      case INVALID -> System.out.println("no vaild ammo found.");
+      case EQUIPING -> System.out.println("Reloading ammo into weapon");
+    }
   }
 }
