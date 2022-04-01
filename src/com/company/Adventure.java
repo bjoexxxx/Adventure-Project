@@ -217,6 +217,7 @@ public class Adventure {
         case ("equip") -> equip(secondWord);
         case ("attack") -> attack(secondWord);
         case ("reload") -> reload();
+        case ("backstory") -> userinterface.displayBackstory();
 
       }
     }

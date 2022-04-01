@@ -34,6 +34,7 @@ public class Userinterface {
     System.out.println("-\"equip (weapon name)\" will move a weapon from your inventory to your hand. ");
     System.out.println("-\"attack (enemy name)\" will use the weapon in your hand to strike an enemy. ");
     System.out.println("-\"reload\" will give your ranged weapon 10 new bullets. ");
+    System.out.println("-\"backstory\" will display the setting for the game. ");
     System.out.println();
 
   }
@@ -176,5 +177,24 @@ public class Userinterface {
       case INVALID -> System.out.println("no vaild ammo found.");
       case EQUIPING -> System.out.println("Reloading ammo into weapon");
     }
+  }
+  public void displayBackstory(){
+    System.out.println();
+    System.out.println("""
+        One day a man approached you.
+        He struck up a conversation.
+        He seemed kind yet the whole time you could not shake, how eerie you felt.
+        You attempted to leave, and when you did the whole world went dark.
+        There was only you and the man.
+        He had only these word for you.
+        "Mortal, you time has ended. I am the reaper and i have come for your soul.
+        Yet as i am bored, i will give you a chance!
+        If you can be beat me in a game of luck and wits i will give you a prize.
+        the prize is ten years of life.
+        Good luck and entertain me well!"
+        
+        Then you woke up in the dungeon, to begin your search.
+        """);
+    System.out.println();
   }
 }
