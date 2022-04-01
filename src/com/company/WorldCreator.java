@@ -62,8 +62,8 @@ public class WorldCreator {
 
     // Make items
     room1.setLootTable(randomizeLoot(room1));
-    room1.setLootTable(createMelee());
-    room1.setLootTable(createRanged());
+    room1.setLootTable(createSpecificMelee("dagger"));
+    room1.setLootTable(createSpecificRanged("gun"));
     room2.setLootTable(randomizeLoot(room2));
     room3.setLootTable(randomizeLoot(room3));
     room4.setLootTable(randomizeLoot(room4));
@@ -185,6 +185,36 @@ public class WorldCreator {
 
     }
   }
+  private Melee createSpecificMelee(String name){
+    switch (name) {
+
+      case "sword" -> {
+        return new Melee("Sword", "Its very pointy", 5, 100);
+      }
+      case "halberd" -> {
+        return new Melee("Halberd", "Sharp and Pointy", 7, 50);
+      }
+      case "axe" -> {
+        return new Melee("Axe", "Sharp", 9, 25);
+      }
+      case "mace" -> {
+        return new Melee("Mace", "Heavy", 15, 70);
+      }
+      case "dagger" -> {
+        return new Melee("Dagger", "Light and dinky", 2, 200);
+      }
+      case "spear" -> {
+        return new Melee("Spear", "Long and pointy", 10, 70);
+      }
+      case "saber" -> {
+        return new Melee("Saber", "A one edged sword", 8, 90);
+      }
+      default -> {
+        return null;
+      }
+
+    }
+  }
 
   private Ranged createRanged() {
     int number = roll.nextInt(1,3);
@@ -194,6 +224,21 @@ public class WorldCreator {
         return new Ranged("Rifle", "Bigger pew", 20, 5);
       }
       case 2 -> {
+        return new Ranged("Gun", "pew pew", 10, 10);
+      }
+      default -> {
+        return null;
+      }
+
+    }
+  }
+  private Ranged createSpecificRanged(String name) {
+
+    switch (name) {
+      case "rifle" -> {
+        return new Ranged("Rifle", "Bigger pew", 20, 5);
+      }
+      case "gun" -> {
         return new Ranged("Gun", "pew pew", 10, 10);
       }
       default -> {

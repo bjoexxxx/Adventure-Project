@@ -29,6 +29,10 @@ public class Userinterface {
         " The same applies for go \"south\", \"go east\" and \"go west\".");
     System.out.println("- If there seems to be more than one door in a room, you need to type \"open south\" or \"open north\" ect.");
     System.out.println("-\"health\" will display your health. ");
+    System.out.println("-\"take (item name)\" will add an item from the room to your inventory. ");
+    System.out.println("-\"inventory\" will display your inventory. ");
+    System.out.println("-\"equip (weapon name)\" will move a weapon from your inventory to your hand. ");
+    System.out.println("-\"attack (enemy name)\" will use the weapon in your hand to strike an enemy. ");
     System.out.println("-\"reload\" will give your ranged weapon 10 new bullets. ");
     System.out.println();
 
